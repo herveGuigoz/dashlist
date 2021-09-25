@@ -21,5 +21,10 @@ back-ssh: ## Connect to the container in ssh
 back-db-schema-update: ## Update database schema
 	docker-compose exec books_php bin/console doctrine:migrations:migrate --no-interaction
  
- docs: #
+docs: ## Export swagger documentation
 	docker-compose exec books_php bin/console api:openapi:export --output=swagger_docs.json
+
+.DEFAULT_GOAL := help
+help:
+	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
+.PHONY: help
