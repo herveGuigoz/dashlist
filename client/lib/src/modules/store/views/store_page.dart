@@ -1,23 +1,24 @@
-import 'package:client/src/modules/books/state/models.dart';
-import 'package:client/src/modules/books/state/provider.dart';
+import 'package:client/src/modules/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BooksPage extends ConsumerWidget {
-  const BooksPage({Key? key}) : super(key: key);
+class StoresPage extends ConsumerWidget {
+  const StoresPage({Key? key}) : super(key: key);
 
-  static const routeName = '/books';
+  static const routeName = '/stores';
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final response = watch(booksProvider);
+    final response = watch(storesProvider);
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: response.when(
-        data: (books) => ListView.builder(
-          itemCount: books.length,
-          itemBuilder: (context, index) => BookTile(book: books[index]),
+        data: (stores) => ListView.builder(
+          restorationId: 'storesListView',
+          itemCount: stores.length,
+          itemBuilder: (context, index) => StoreTile(store: stores[index]),
         ),
         loading: () => const _Loading(),
         error: (error, stackTrace) => _Error(error: error),
@@ -26,15 +27,15 @@ class BooksPage extends ConsumerWidget {
   }
 }
 
-class BookTile extends StatelessWidget {
-  const BookTile({Key? key, required this.book}) : super(key: key);
+class StoreTile extends StatelessWidget {
+  const StoreTile({Key? key, required this.store}) : super(key: key);
 
-  final Book book;
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(book.title),
+      title: Text(store.name),
     );
   }
 }

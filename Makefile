@@ -19,7 +19,20 @@ back-ssh: ## Connect to the container in ssh
 	docker exec -it books_php sh
 
 back-db-schema-update: ## Update database schema
-	docker-compose exec books_php bin/console doctrine:migrations:migrate --no-interaction
+	docker-compose exec php bin/console doctrine:migrations:migrate --no-interaction
+
+back-db-reset: ## Reset the database with fixtures data
+	docker-compose exec php bin/console hautelook:fixtures:load --no-interaction --purge-with-truncate
+
+back-db-schema-reset: ## Drop the database and run migrations
+	docker-compose exec php bin/console doctrine:database:drop --force
+	docker-compose exec php bin/console doctrine:database:create
+	docker-compose exec php bin/console doctrine:migrations:migrate --no-interaction
+	docker-compose exec php bin/console doctrine:schema:validate
+
+back-db-full-reset: ## Drop the database, run migrations and hydrate the database with fixtures data
+	make back-db-schema-reset
+	make back-db-reset
  
 docs: ## Export swagger documentation
 	docker-compose exec books_php bin/console api:openapi:export --output=swagger_docs.json

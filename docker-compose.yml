@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   php:
-    container_name: books_php
+    container_name: cocook_php
     build:
       context: ./api
       target: api_platform_php
@@ -18,7 +18,7 @@ services:
       start_period: 30s
 
   consumer:
-    container_name: books_consumer
+    container_name: cocook_consumer
     build:
       context: ./api
       target: api_platform_php
@@ -35,7 +35,7 @@ services:
       start_period: 30s
 
   pwa:
-    container_name: books_pwa
+    container_name: cocook_pwa
     build:
       context: ./pwa
       target: api_platform_pwa_prod
@@ -44,7 +44,7 @@ services:
       NEXT_PUBLIC_ENTRYPOINT: http://caddy
 
   caddy:
-    container_name: books_caddy
+    container_name: cocook_caddy
     build:
       context: api/
       target: api_platform_caddy
@@ -76,7 +76,7 @@ services:
         protocol: udp
 
   database:
-    container_name: books_database
+    container_name: cocook_database
     image: postgres:13-alpine
     environment:
       - POSTGRES_DB=api
