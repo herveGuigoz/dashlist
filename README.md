@@ -50,6 +50,8 @@ Swagger interface.
 
 [Read the contributing guide](.github/CONTRIBUTING.md)
 
-## Credits
+## Extract Mercure hub on Response
 
-Created by [Kévin Dunglas](https://dunglas.fr). Commercial support available at [Les-Tilleuls.coop](https://les-tilleuls.coop).
+```js
+response.headers.get('Link').match(/<([^>]+)>;\s+rel="[^"]+mercure[^"]*"/)
+```
