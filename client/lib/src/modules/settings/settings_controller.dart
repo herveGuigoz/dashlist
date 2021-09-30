@@ -11,6 +11,12 @@ import 'settings_service.dart';
 class SettingsController with ChangeNotifier {
   SettingsController(this._settingsService);
 
+  static SettingsController of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<InheritedSettingsController>()!
+        .notifier!;
+  }
+
   // Make SettingsService a private variable so it is not used directly.
   final SettingsService _settingsService;
 
@@ -48,4 +54,13 @@ class SettingsController with ChangeNotifier {
     // SettingService.
     await _settingsService.updateThemeMode(newThemeMode);
   }
+}
+
+class InheritedSettingsController
+    extends InheritedNotifier<SettingsController> {
+  const InheritedSettingsController({
+    Key? key,
+    required SettingsController notifier,
+    required Widget child,
+  }) : super(key: key, notifier: notifier, child: child);
 }

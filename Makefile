@@ -16,7 +16,7 @@ reset: ## Reset all installation (use it with precaution!)
 	make install
 
 back-ssh: ## Connect to the container in ssh
-	docker exec -it books_php sh
+	docker exec -it cocook_php sh
 
 back-db-schema-update: ## Update database schema
 	docker-compose exec php bin/console doctrine:migrations:migrate --no-interaction
@@ -35,7 +35,7 @@ back-db-full-reset: ## Drop the database, run migrations and hydrate the databas
 	make back-db-reset
  
 docs: ## Export swagger documentation
-	docker-compose exec books_php bin/console api:openapi:export --output=swagger_docs.json
+	docker-compose exec cocook_php bin/console api:openapi:export --output=swagger_docs.json
 
 .DEFAULT_GOAL := help
 help:

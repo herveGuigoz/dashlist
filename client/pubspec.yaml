@@ -17,6 +17,9 @@ dependencies:
   flutter_riverpod: ^0.14.0+3
   freezed_annotation: ^0.14.3
   http: ^0.13.3
+  mercure_client:
+    path: /Users/herveguigoz/dev/dart/mercure_client
+  path_to_regexp: ^0.4.0
 
 dev_dependencies:
   flutter_test:

@@ -10,20 +10,39 @@ class StoresPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final response = watch(storesProvider);
-
+    final stream = watch(mercureStream);
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: response.when(
-        data: (stores) => ListView.builder(
-          restorationId: 'storesListView',
-          itemCount: stores.length,
-          itemBuilder: (context, index) => StoreTile(store: stores[index]),
-        ),
+      appBar: AppBar(),
+      body: stream.when(
+        data: (event) => Text(event.data),
         loading: () => const _Loading(),
         error: (error, stackTrace) => _Error(error: error),
       ),
     );
+
+    // final stores = watch(mercure);
+    // return Scaffold(
+    //   appBar: AppBar(),
+    //   body: ListView.builder(
+    //     itemCount: stores.length,
+    //     itemBuilder: (context, index) => Text(stores[index].data),
+    //   ),
+    // );
+
+    // final response = watch(storesProvider);
+    // return Scaffold(
+    //   backgroundColor: Colors.transparent,
+    //   body: response.when(
+    //     data: (stores) => ListView.builder(
+    //       restorationId: 'storesListView',
+    //       itemCount: stores.length,
+    //       itemBuilder: (context, index) => StoreTile(store: stores[index]),
+    //     ),
+    //     loading: () => const _Loading(),
+    //     error: (error, stackTrace) => _Error(error: error),
+    //   ),
+    // );
   }
 }
 
@@ -61,6 +80,17 @@ class _Error extends StatelessWidget {
     print(error);
     return Center(
       child: Text(error.toString()),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
     );
   }
 }
