@@ -34,15 +34,6 @@ services:
       retries: 3
       start_period: 30s
 
-  pwa:
-    container_name: cocook_pwa
-    build:
-      context: ./pwa
-      target: api_platform_pwa_prod
-    environment:
-      API_PLATFORM_CLIENT_GENERATOR_ENTRYPOINT: http://caddy
-      NEXT_PUBLIC_ENTRYPOINT: http://caddy
-
   caddy:
     container_name: cocook_caddy
     build:
@@ -50,9 +41,7 @@ services:
       target: api_platform_caddy
     depends_on:
       - php
-      - pwa
     environment:
-      PWA_UPSTREAM: pwa:3000
       SERVER_NAME: ${SERVER_NAME:-localhost, caddy:80}
       MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY:-!ChangeMe!}
       MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY:-!ChangeMe!}
@@ -79,13 +68,24 @@ services:
     container_name: cocook_database
     image: postgres:13-alpine
     environment:
-      - POSTGRES_DB=api
-      - POSTGRES_PASSWORD=!ChangeMe!
-      - POSTGRES_USER=api-platform
+      - POSTGRES_DB=cocook
+      - POSTGRES_PASSWORD=psw
+      - POSTGRES_USER=herveGuigoz
     volumes:
       - db_data:/var/lib/postgresql/data:rw
       # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./api/docker/db/data:/var/lib/postgresql/data:rw
+  
+  adminer:
+    container_name: cocook_adminer
+    image: adminer
+    restart: unless-stopped
+    environment:
+      ADMINER_DESIGN: rmsoft
+    ports:
+      - '8999:8080'
+    depends_on:
+      - database
 
 volumes:
   php_socket:

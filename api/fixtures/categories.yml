@@ -1,0 +1,91 @@
+'App\Entity\Category':
+    category_1:
+        name: 'Bio'
+
+    category_2:
+        name: 'Bricolage'
+        description: 'Outillage'
+
+    category_3:
+        name: 'Fruits'
+        description: 'Melon, Abricots, Pêches, Nectarines'
+
+    category_4:
+        name: 'Légumes'
+        description: 'Concombres, Avocats, Courgettes et Radis'
+
+    category_5:
+        name: 'Plats cuisinés'
+        description: 'Pizza'
+
+    category_6:
+        name: 'Viandes'
+        description: 'Boeuf, Veau, Porc, Grillades'
+
+    category_7:
+        name: 'Volailles'
+        description: 'Poulets, Dinde'
+
+    category_8:
+        name: 'Poissons'
+        description: 'Crevettes, Moules, Saumons'
+
+    category_9:
+        name: 'Pâtisseries'
+        description: 'Pâtisseries, Viennoiseries'
+
+    category_10:
+        name: 'Frais'
+        description: 'Oeufs, Yaourts, Fromages, Charcuterie, Plats cuisinés'
+
+    category_11:
+        name: 'Surgeles'
+        description: 'Glaces'
+
+    category_12:
+        name: 'Boissons'
+        description: 'Eaux, Lait, Jus de fruits, Sodas, Bières'
+
+    category_13:
+        name: 'Epicerie salee'
+        description: 'Apéritifs, Pâtes, Riz, Farine'
+
+    category_14:
+        name: 'Epicerie sucree'
+        description: 'Café, Thé, Petit déjeuner, Biscuits, Gâteaux, Farines'
+
+    category_15:
+        name: 'Hygiene et beaute'
+        description: 'Soins du corps, Papier toilette, Mouchoirs, Cotons'
+
+    category_16:
+        name: 'Parapharmacie'
+        description: 'Dentaire, Crème solaire'
+
+    category_17:
+        name: 'Entretien et Nettoyage'
+        description: 'Lessives, Produits nettoyants, Ampoules, Piles'
+
+    category_18:
+        name: 'Jardin'
+        description: 'Plantes, Fleurs, Jardinières'
+
+    category_19:
+        name: 'Culture'
+        description: 'Consoles, Jeux Vidéos, Livres'
+
+    category_20:
+        name: 'Electroménager'
+        description: 'Cafetières, Bouilloires, Gros Electroménager'
+
+    category_21:
+        name: 'Image et Son'
+        description: 'TV, Casques et Ecouteurs'
+
+    category_22:
+        name: 'Maison et Décoration'
+        description: 'Linge de maison, Linge de maison'
+
+    category_23:
+        name: 'Mode'
+        description: 'Vêtements, Chaussures'

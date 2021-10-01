@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Controller\RemoveCompletedItemAction;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
@@ -18,10 +19,19 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Entity]
 #[ApiResource(
+    collectionOperations: [
+        'get',
+        'post'
+    ],
     itemOperations: [
         'get',
         'put',
-        'delete'
+        'delete',
+        'clear' => [
+            'method' => 'GET',
+            'path' => '/shopping_lists/{id}/clear',
+            'controller' => RemoveCompletedItemAction::class,
+        ],
     ],
     mercure: true,
     denormalizationContext: ['groups' => ['list:write']],
@@ -31,27 +41,46 @@ class ShoppingList
 {
     #[ORM\Id, ORM\GeneratedValue(strategy: 'CUSTOM'), ORM\CustomIdGenerator(class: UuidGenerator::class)]
     #[ORM\Column(type: 'uuid', unique: true)]
+    #[Groups(groups: ['list:read'])]
     private ?UuidInterface $id = null;
 
-    /**
-     * The name of the shop.
-     */
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank]
     #[Groups(groups: ['list:write', 'list:read'])]
     public ?string $name = null;
 
-    /**
-     * The items's on this list.
-     */
-    #[ORM\OneToMany(mappedBy: 'list', targetEntity: ListItem::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
-    #[ApiSubresource]
+    #[ORM\OneToMany(mappedBy: 'shoppingList', targetEntity: ListItem::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups(groups: ['list:read'])]
     private Collection $items;
+
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
 
     public function getId(): ?UuidInterface
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ListItem[]
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
     }
 
     public function addItem(ListItem $item, bool $updateRelation = true): void
@@ -62,23 +91,21 @@ class ShoppingList
 
         $this->items->add($item);
         if ($updateRelation) {
-            $item->setList($this, false);
+            $item->setShoppingList($this, false);
         }
     }
 
-    public function removeItem(ListItem $item, bool $updateRelation = true): void
+    public function removeItem(ListItem $item): void
     {
         $this->items->removeElement($item);
-        if ($updateRelation) {
-            $item->setList(null, false);
-        }
     }
 
-    /**
-     * @return Collection<int, ListItem>
-     */
-    public function getItems(): iterable
+    public function removeCompletedItem(): void
     {
-        return $this->items;
+        foreach ($this->items as $item) {
+            if($item->getIsCompleted()) {
+                $this->removeItem($item);
+            }
+        }
     }
 }

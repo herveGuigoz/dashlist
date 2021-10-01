@@ -4,6 +4,7 @@
 
 
 # https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
+# TODO use tag 8.1 https://github.com/docker-library/php
 ARG PHP_VERSION=8.0
 ARG CADDY_VERSION=2
 

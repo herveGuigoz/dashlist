@@ -13,4 +13,5 @@ framework:
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
-            App\Entity\Book: doctrine
+            App\Entity\ShoppingList: doctrine
+            App\Entity\ListItem: doctrine
