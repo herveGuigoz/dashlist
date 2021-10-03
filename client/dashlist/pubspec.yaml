@@ -1,5 +1,5 @@
-name: client
-description: A new Flutter project.
+name: dashlist
+description: Shopping list application
 
 # Prevent accidental publishing to pub.dev.
 publish_to: 'none'
