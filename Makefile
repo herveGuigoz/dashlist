@@ -10,6 +10,9 @@ start: ## Start project
 stop: ## Stop project
 	docker-compose stop
 
+logs: ## Show logs
+	docker-compose logs -f
+
 reset: ## Reset all installation (use it with precaution!)
 	docker-compose kill
 	docker-compose down --volumes --remove-orphans

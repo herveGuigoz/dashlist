@@ -25,8 +25,8 @@ class ApiClient {
   final String baseURL;
 
   /// Sends an HTTP GET request for the given uri.
-  Future<Response> get(String uri) async {
-    final res = await client.get(Uri.parse('$baseURL$uri'), headers: headers);
+  Future<Response> get(String path) async {
+    final res = await client.get(Uri.https(baseURL, path), headers: headers);
     if (res.statusCode != 200) throw ApiException(res.statusCode);
     return res;
   }
