@@ -1,18 +1,18 @@
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
 
+import '../../../../configuration.dart';
 import '../../../services/services.dart';
 import 'models.dart';
 
-typedef ShoppingListRef
-    = StateNotifierProvider<ShoppingListController, ShoppingListState>;
-
 const _shoppingListURL = '/shopping_lists';
 
-final shoppingLists = FutureProvider((ref) async {
+/// Retrieves the collection of [ShoppingList] resources.
+final shoppingListCollection = FutureProvider((ref) async {
   final client = ref.read(httpClientProvider);
 
   final response = await client.get(_shoppingListURL);
@@ -20,58 +20,90 @@ final shoppingLists = FutureProvider((ref) async {
   return shoppingListFromJson(response.body);
 });
 
-final dashlistRef = ShoppingListRef(
-  (ref) => ref.watch(shoppingLists).maybeWhen(
-        data: (items) => ShoppingListController(items),
-        orElse: () {
-          throw Exception('ShoppingListController is not initialized');
-        },
-      ),
+/// State provider of [ShoppingList] ressources.
+/// @Throw Exception if futureShops wasn't called first.
+final shops = StateNotifierProvider<ShoppingListController, List<ShoppingList>>(
+  (ref) {
+    final response = ref.watch(shoppingListCollection);
+    final baseURL = ref.read(configuration).baseUrl;
+
+    return response.maybeWhen(
+      data: (items) => ShoppingListController(baseURL, items),
+      orElse: () {
+        throw Exception('ShoppingListController is not initialized');
+      },
+    );
+  },
 );
 
-class ShoppingListController extends StateNotifier<ShoppingListState> {
-  ShoppingListController(List<ShoppingList> items)
-      : super(ShoppingListState.fromIterable(items)) {
-    _subscribe();
+/// State controller of [ShoppingList] ressources.
+/// Listen for Mercure events in order to notify listener on updates.
+class ShoppingListController extends ListNotifier<ShoppingList> {
+  ShoppingListController(this.baseURL, List<ShoppingList> items)
+      : super(items) {
+    _subscription = Mercure(url: mercureHub, topics: [topic]).listen(_onEvent);
   }
 
-  StreamSubscription? _subscription;
+  /// Api endpoint
+  final String baseURL;
 
-  void _subscribe() {
-    _subscription = Mercure(
-      url: 'https://localhost/.well-known/mercure',
-      topics: ['https://localhost/shopping_lists/{id}'],
-    ).listen((event) {
-      final item = ShoppingList.fromJson(event.data as Map<String, dynamic>);
-      state = state.update(item);
-    });
+  /// URL to receive updates from mercure.
+  String get mercureHub => 'https://$baseURL/.well-known/mercure';
+
+  /// Mercure topics for [ShoppingList] events
+  String get topic => 'https://$baseURL/shopping_lists/{id}';
+
+  late final StreamSubscription _subscription;
+
+  void _onEvent(MercureEvent event) {
+    final json = jsonDecode(event.data) as Map<String, dynamic>;
+    // If mercure event contains `name` key that either an creation or update,
+    // as for delete event, json contains only the id.
+    if (json.containsKey('name')) {
+      updateWith(ShoppingList.fromJson(json));
+    } else {
+      remove(state.firstWhere((e) => e.id == json['id'] as String));
+    }
   }
 
-  // void update(ShoppingList value) {
-  //   if (state.any((list) => list.id == value.id)) {}
-  // }
+  @override
+  bool match(ShoppingList value, ShoppingList other) => value.id == other.id;
 
   @override
   void dispose() {
-    _subscription?.cancel();
+    _subscription.cancel();
     super.dispose();
   }
 }
 
-class ShoppingListState {
-  ShoppingListState._(this._root);
+/// Helper to provide utilities on List updates
+abstract class ListNotifier<T> extends StateNotifier<List<T>> {
+  ListNotifier(List<T> state) : super(state);
 
-  ShoppingListState.empty() : _root = <String, ShoppingList>{};
+  @protected
+  bool match(T value, T other);
 
-  ShoppingListState.fromIterable(List<ShoppingList> iterable)
-      : _root = {for (final item in iterable) item.name: item};
+  @protected
+  void add(T value) {
+    state = [...state, value];
+  }
 
-  final Map<String, ShoppingList> _root;
+  @protected
+  void remove(T value) {
+    state = state.where((element) => match(element, value)).toList();
+  }
 
-  Iterable<ShoppingList> get value => _root.values;
+  @protected
+  void replace(T value) {
+    state = state.map((item) => match(item, value) ? value : item).toList();
+  }
 
-  ShoppingListState update(ShoppingList item) {
-    _root[item.id] = item;
-    return ShoppingListState._(_root);
+  @protected
+  void updateWith(T value) {
+    if (state.any((element) => match(element, value))) {
+      replace(value);
+    } else {
+      add(value);
+    }
   }
 }

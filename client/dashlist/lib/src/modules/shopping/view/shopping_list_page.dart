@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 
 import '../state/providers.dart';
 
+// TODO own theme
 const gray11 = Color(0xFFe8e8ea);
 
 class ShoppingListPage extends ConsumerWidget {
@@ -14,7 +15,7 @@ class ShoppingListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncList = ref.watch(shoppingLists);
+    final asyncList = ref.watch(shoppingListCollection);
 
     return asyncList.when(
       data: (_) => const ShoppingListView(),
@@ -29,11 +30,12 @@ class ShoppingListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final items = ref.watch(dashlistRef).value.toList();
+    final items = ref.watch(shops);
 
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
+          const SliverAppBar(), // TODO
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             sliver: SliverList(
@@ -103,7 +105,6 @@ class _Error extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(error);
     return Material(
       child: Center(
         child: Text(error.toString()),

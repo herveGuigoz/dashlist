@@ -11,7 +11,7 @@ const _pattern = r'<([^>]+)>;\srel="mercure"';
 final httpClientProvider = Provider(
   (ref) => ApiClient(
     client: Client(),
-    baseURL: ref.read(configurationProvider).baseUrl,
+    baseURL: ref.read(configuration).baseUrl,
   ),
   name: 'httpClientProvider',
 );

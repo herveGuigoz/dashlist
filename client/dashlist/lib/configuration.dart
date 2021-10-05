@@ -3,7 +3,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// App configuration provider
-final configurationProvider = Provider((ref) => const Configuration.fromEnv());
+final configuration = Provider((ref) => const Configuration.fromEnv());
 
 /// App configuration
 class Configuration {
