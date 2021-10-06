@@ -1,3 +1,4 @@
+import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -67,15 +68,7 @@ class Cocook extends ConsumerWidget {
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
       // SettingsController to display the correct theme.
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.blueGrey,
-        ),
-        appBarTheme: const AppBarTheme(
-          color: Colors.white,
-        ),
-      ),
+      theme: DashlistTheme.light,
       darkTheme: ThemeData.dark(),
       themeMode: ref.watch(settingsRef),
     );

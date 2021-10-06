@@ -1,17 +1,19 @@
 import 'dart:math' as math;
 
-import 'package:dashlist/src/services/services.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../components/components.dart';
+import '../../../navigation/navigation.dart';
+import '../../../services/services.dart';
 import '../shopping.dart';
 
 class ShoppingListDetailsPage extends ConsumerWidget {
   const ShoppingListDetailsPage({Key? key, required this.id}) : super(key: key);
 
+  /// Path: :id
   static const routeName = ':id';
 
   final String id;
@@ -41,6 +43,10 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
     return shoppingList.items.any((item) => item.isCompleted);
   }
 
+  Future<void> _createShopItem() async {
+    TheRouter.of(context).push('/add/${shoppingList.id}');
+  }
+
   Future<void> onTitleEdited(String input) async {
     if (input.length > 3) {
       try {
@@ -66,7 +72,7 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
     return Unfocus(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {}, // todo: createShopItem
+          onPressed: _createShopItem,
           child: const Icon(Icons.add),
         ),
         body: SafeArea(
@@ -108,66 +114,6 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
     );
   }
 }
-
-// class ShoppingListDetailsView extends ConsumerWidget {
-//   const ShoppingListDetailsView({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final textTheme = Theme.of(context).textTheme;
-
-//     final shoppingList = ref.watch(scopedShoppingList);
-//     final hasCompletedItems = shoppingList.items.any(
-//       (item) => item.isCompleted,
-//     );
-
-//     return Unfocus(
-//       child: Scaffold(
-//         floatingActionButton: FloatingActionButton(
-//           onPressed: () {}, // todo: createShopItem
-//           child: const Icon(Icons.add),
-//         ),
-//         body: SafeArea(
-//           child: CustomScrollView(
-//             slivers: [
-//               SliverAppBar(
-//                 pinned: true,
-//                 expandedHeight: FlexibleHeader.kExpandedHeight,
-//                 leading: const AppBackButton(),
-//                 flexibleSpace: FlexibleHeader(
-//                   title: InputText(
-//                     initialValue: shoppingList.name,
-//                     style: textTheme.headline6!.copyWith(
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                     onChanged: onTitleEdited,
-//                   ),
-//                 ),
-//                 actions: [
-//                   IconButton(
-//                     onPressed: hasCompletedItems
-//                         ? () async => ref
-//                             .read(shopActions)
-//                             .deleteCompletedItems(shoppingList)
-//                         : null,
-//                     icon: DashListIcons.delete,
-//                   ),
-//                 ],
-//               ),
-//               SliverPadding(
-//                 // todo addaptive paddings
-//                 padding: const EdgeInsets.symmetric(horizontal: 21),
-//                 sliver: SliverShoppingListItems(
-//                   shoppingListId: shoppingList.id,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class SliverShoppingListItems extends ConsumerWidget {
   const SliverShoppingListItems({
@@ -224,7 +170,7 @@ class ListItemsBuilderDelegate {
   }
 }
 
-class CheckboxListItem extends StatelessWidget {
+class CheckboxListItem extends ConsumerWidget {
   const CheckboxListItem(this.shopItem, {Key? key}) : super(key: key);
 
   static const gray5 = Color(0xFF615e69);
@@ -234,7 +180,7 @@ class CheckboxListItem extends StatelessWidget {
   bool get isCompleted => shopItem.isCompleted;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var textStyle = const TextStyle(fontSize: 15, color: gray5);
     if (isCompleted) {
       textStyle = const TextStyle(
@@ -254,16 +200,21 @@ class CheckboxListItem extends StatelessWidget {
           children: [
             TextSpan(text: shopItem.quantity),
             const TextSpan(text: ' '),
-            // TextSpan(text: shopItem.description), // todo description?
+            TextSpan(text: shopItem.name),
           ],
         ),
       ),
       value: isCompleted,
-      onChanged: (completed) {
+      onChanged: (completed) async {
         if (completed != null) {
-          final updatedItem = shopItem.copyWith(isCompleted: completed);
-          // todo update()
-          // context.read<ShoppingListDetailsLogic>().update(updatedItem);
+          try {
+            final service = ref.read(shopActions);
+            await service.editShopItemCompletion(shopItem);
+          } on ApiException catch (exception) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(exception.reason)),
+            );
+          }
         }
       },
     );

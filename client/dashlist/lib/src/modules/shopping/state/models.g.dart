@@ -27,7 +27,7 @@ _$_Item _$$_ItemFromJson(Map<String, dynamic> json) => _$_Item(
       name: json['name'] as String,
       quantity: json['quantity'] as String?,
       isCompleted: json['isCompleted'] as bool,
-      category: Category.fromJson(json['category'] as Map<String, dynamic>),
+      category: ItemCategory.fromJson(json['category'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
@@ -38,12 +38,13 @@ Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'category': instance.category,
     };
 
-_$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
+_$_ItemCategory _$$_ItemCategoryFromJson(Map<String, dynamic> json) =>
+    _$_ItemCategory(
       name: json['name'] as String,
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
+Map<String, dynamic> _$$_ItemCategoryToJson(_$_ItemCategory instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

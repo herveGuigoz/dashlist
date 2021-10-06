@@ -1,3 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:dashlist/src/modules/shopping/state/actions.dart';
+import 'package:dashlist/src/modules/shopping/view/create_list.dart';
+import 'package:dashlist/src/services/http/http.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,6 +19,7 @@ const gray11 = Color(0xFFe8e8ea);
 class ShoppingListPage extends ConsumerWidget {
   const ShoppingListPage({Key? key}) : super(key: key);
 
+  /// Path: /
   static const routeName = '/';
 
   @override
@@ -44,10 +50,29 @@ class ShoppingListPage extends ConsumerWidget {
   }
 }
 
-class _AppBar extends StatelessWidget {
+class _AppBar extends ConsumerStatefulWidget {
   const _AppBar({
     Key? key,
   }) : super(key: key);
+
+  @override
+  ConsumerState<_AppBar> createState() => _AppBarState();
+}
+
+class _AppBarState extends ConsumerState<_AppBar> {
+  Future<void> _createNewShoppingList() async {
+    final name = await CreateListModal.show(context);
+
+    if (name != null && name.isNotEmpty) {
+      try {
+        await ref.read(shopActions).createNewShoppingList(name);
+      } on ApiException catch (exception) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(exception.reason)),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +83,7 @@ class _AppBar extends StatelessWidget {
           children: [
             const Text('Listes de courses'),
             IconButton(
-              onPressed: () {}, //=> _createNewShoppingList(context),
+              onPressed: _createNewShoppingList,
               icon: DashListIcons.addCircle,
             ),
           ],

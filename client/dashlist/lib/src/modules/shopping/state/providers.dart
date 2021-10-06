@@ -9,7 +9,11 @@ import '../../../../configuration.dart';
 import '../../../services/services.dart';
 import 'models.dart';
 
+/// '/shopping_lists'
 const shoppingListURL = '/shopping_lists';
+
+/// '/list_items'
+const shoppingListItemsURL = '/list_items';
 
 /// Retrieves the collection of [ShoppingList] resources.
 final shoppingListCollection = FutureProvider((ref) async {
@@ -57,6 +61,12 @@ final shopItems = Provider.autoDispose.family<Map<String, List<Item>>, String>(
     return map;
   },
 );
+
+/// Retrieves the collection of [Category] resources.
+final categoriesProvider = FutureProvider<List<ItemCategory>>((ref) async {
+  final response = await ref.read(httpClientProvider).get('/categories');
+  return categoriesListFromJson(response.body);
+});
 
 /// State controller of [ShoppingList] ressources.
 /// Listen for Mercure events in order to notify listener on updates.

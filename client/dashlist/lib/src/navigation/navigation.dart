@@ -66,9 +66,29 @@ final theRouter = Provider(
           ),
         ],
       ),
+      TheRoute(
+        path: CreateShoppingItemPage.routeName,
+        name: 'CreateShoppingItemPage',
+        pageBuilder: (context, state) {
+          final uuid = state.params['id']!;
+          if (!ref.shoppingListExist(uuid)) {
+            // todo redirection
+          }
+          return MaterialPage<void>(
+            key: state.pageKey,
+            child: CreateShoppingItemPage(id: state.params['id']!),
+          );
+        },
+      )
     ],
     errorPageBuilder: (context, state) => NoTransitionPage<void>(
       child: DefaultNotFoundPage(path: state.location),
     ),
   ),
 );
+
+extension on ProviderRef {
+  bool shoppingListExist(String uuid) {
+    return read(shops).any((element) => element.id == uuid);
+  }
+}

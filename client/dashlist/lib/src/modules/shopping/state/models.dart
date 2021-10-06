@@ -21,6 +21,15 @@ String shoppingListToJson(List<ShoppingList> data) {
   );
 }
 
+/// Parse json list of [ItemCategory]
+List<ItemCategory> categoriesListFromJson(String str) {
+  return List<ItemCategory>.from(
+    (json.decode(str) as List<dynamic>).map<ItemCategory>(
+      (dynamic x) => ItemCategory.fromJson(x as Map<String, dynamic>),
+    ),
+  ).toList();
+}
+
 @freezed
 class ShoppingList with _$ShoppingList {
   const factory ShoppingList({
@@ -40,21 +49,21 @@ class Item with _$Item {
     required String name,
     String? quantity,
     required bool isCompleted,
-    required Category category,
+    required ItemCategory category,
   }) = _Item;
 
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
 }
 
 @freezed
-class Category with _$Category {
-  const factory Category({
+class ItemCategory with _$ItemCategory {
+  const factory ItemCategory({
     required String name,
     String? description,
-  }) = _Category;
+  }) = _ItemCategory;
 
-  factory Category.fromJson(Map<String, dynamic> json) =>
-      _$CategoryFromJson(json);
+  factory ItemCategory.fromJson(Map<String, dynamic> json) =>
+      _$ItemCategoryFromJson(json);
 }
 
 class ShopItemValueObject {
@@ -68,5 +77,13 @@ class ShopItemValueObject {
   final String shoppingListId;
   final String name;
   final String quantity;
-  final Category category;
+  final ItemCategory category;
+
+  Map<String, String> toJson() {
+    return {
+      'name': name,
+      'shoppingList': '/shopping_lists/$shoppingListId',
+      'category': '/categories/${category.name}'
+    };
+  }
 }

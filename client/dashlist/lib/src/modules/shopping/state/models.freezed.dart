@@ -217,7 +217,7 @@ class _$ItemTearOff {
       required String name,
       String? quantity,
       required bool isCompleted,
-      required Category category}) {
+      required ItemCategory category}) {
     return _Item(
       id: id,
       name: name,
@@ -241,7 +241,7 @@ mixin _$Item {
   String get name => throw _privateConstructorUsedError;
   String? get quantity => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
-  Category get category => throw _privateConstructorUsedError;
+  ItemCategory get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -257,9 +257,9 @@ abstract class $ItemCopyWith<$Res> {
       String name,
       String? quantity,
       bool isCompleted,
-      Category category});
+      ItemCategory category});
 
-  $CategoryCopyWith<$Res> get category;
+  $ItemCategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -298,13 +298,13 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as ItemCategory,
     ));
   }
 
   @override
-  $CategoryCopyWith<$Res> get category {
-    return $CategoryCopyWith<$Res>(_value.category, (value) {
+  $ItemCategoryCopyWith<$Res> get category {
+    return $ItemCategoryCopyWith<$Res>(_value.category, (value) {
       return _then(_value.copyWith(category: value));
     });
   }
@@ -320,10 +320,10 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       String name,
       String? quantity,
       bool isCompleted,
-      Category category});
+      ItemCategory category});
 
   @override
-  $CategoryCopyWith<$Res> get category;
+  $ItemCategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -363,7 +363,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as ItemCategory,
     ));
   }
 }
@@ -389,7 +389,7 @@ class _$_Item implements _Item {
   @override
   final bool isCompleted;
   @override
-  final Category category;
+  final ItemCategory category;
 
   @override
   String toString() {
@@ -441,7 +441,7 @@ abstract class _Item implements Item {
       required String name,
       String? quantity,
       required bool isCompleted,
-      required Category category}) = _$_Item;
+      required ItemCategory category}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -454,60 +454,61 @@ abstract class _Item implements Item {
   @override
   bool get isCompleted => throw _privateConstructorUsedError;
   @override
-  Category get category => throw _privateConstructorUsedError;
+  ItemCategory get category => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;
 }
 
-Category _$CategoryFromJson(Map<String, dynamic> json) {
-  return _Category.fromJson(json);
+ItemCategory _$ItemCategoryFromJson(Map<String, dynamic> json) {
+  return _ItemCategory.fromJson(json);
 }
 
 /// @nodoc
-class _$CategoryTearOff {
-  const _$CategoryTearOff();
+class _$ItemCategoryTearOff {
+  const _$ItemCategoryTearOff();
 
-  _Category call({required String name, String? description}) {
-    return _Category(
+  _ItemCategory call({required String name, String? description}) {
+    return _ItemCategory(
       name: name,
       description: description,
     );
   }
 
-  Category fromJson(Map<String, Object> json) {
-    return Category.fromJson(json);
+  ItemCategory fromJson(Map<String, Object> json) {
+    return ItemCategory.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Category = _$CategoryTearOff();
+const $ItemCategory = _$ItemCategoryTearOff();
 
 /// @nodoc
-mixin _$Category {
+mixin _$ItemCategory {
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CategoryCopyWith<Category> get copyWith =>
+  $ItemCategoryCopyWith<ItemCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategoryCopyWith<$Res> {
-  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res>;
+abstract class $ItemCategoryCopyWith<$Res> {
+  factory $ItemCategoryCopyWith(
+          ItemCategory value, $Res Function(ItemCategory) then) =
+      _$ItemCategoryCopyWithImpl<$Res>;
   $Res call({String name, String? description});
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
-  _$CategoryCopyWithImpl(this._value, this._then);
+class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
+  _$ItemCategoryCopyWithImpl(this._value, this._then);
 
-  final Category _value;
+  final ItemCategory _value;
   // ignore: unused_field
-  final $Res Function(Category) _then;
+  final $Res Function(ItemCategory) _then;
 
   @override
   $Res call({
@@ -528,28 +529,31 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$CategoryCopyWith(_Category value, $Res Function(_Category) then) =
-      __$CategoryCopyWithImpl<$Res>;
+abstract class _$ItemCategoryCopyWith<$Res>
+    implements $ItemCategoryCopyWith<$Res> {
+  factory _$ItemCategoryCopyWith(
+          _ItemCategory value, $Res Function(_ItemCategory) then) =
+      __$ItemCategoryCopyWithImpl<$Res>;
   @override
   $Res call({String name, String? description});
 }
 
 /// @nodoc
-class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
-    implements _$CategoryCopyWith<$Res> {
-  __$CategoryCopyWithImpl(_Category _value, $Res Function(_Category) _then)
-      : super(_value, (v) => _then(v as _Category));
+class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
+    implements _$ItemCategoryCopyWith<$Res> {
+  __$ItemCategoryCopyWithImpl(
+      _ItemCategory _value, $Res Function(_ItemCategory) _then)
+      : super(_value, (v) => _then(v as _ItemCategory));
 
   @override
-  _Category get _value => super._value as _Category;
+  _ItemCategory get _value => super._value as _ItemCategory;
 
   @override
   $Res call({
     Object? name = freezed,
     Object? description = freezed,
   }) {
-    return _then(_Category(
+    return _then(_ItemCategory(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -564,11 +568,11 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Category implements _Category {
-  const _$_Category({required this.name, this.description});
+class _$_ItemCategory implements _ItemCategory {
+  const _$_ItemCategory({required this.name, this.description});
 
-  factory _$_Category.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryFromJson(json);
+  factory _$_ItemCategory.fromJson(Map<String, dynamic> json) =>
+      _$$_ItemCategoryFromJson(json);
 
   @override
   final String name;
@@ -577,13 +581,13 @@ class _$_Category implements _Category {
 
   @override
   String toString() {
-    return 'Category(name: $name, description: $description)';
+    return 'ItemCategory(name: $name, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Category &&
+        (other is _ItemCategory &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.description, description) ||
@@ -599,20 +603,21 @@ class _$_Category implements _Category {
 
   @JsonKey(ignore: true)
   @override
-  _$CategoryCopyWith<_Category> get copyWith =>
-      __$CategoryCopyWithImpl<_Category>(this, _$identity);
+  _$ItemCategoryCopyWith<_ItemCategory> get copyWith =>
+      __$ItemCategoryCopyWithImpl<_ItemCategory>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryToJson(this);
+    return _$$_ItemCategoryToJson(this);
   }
 }
 
-abstract class _Category implements Category {
-  const factory _Category({required String name, String? description}) =
-      _$_Category;
+abstract class _ItemCategory implements ItemCategory {
+  const factory _ItemCategory({required String name, String? description}) =
+      _$_ItemCategory;
 
-  factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
+  factory _ItemCategory.fromJson(Map<String, dynamic> json) =
+      _$_ItemCategory.fromJson;
 
   @override
   String get name => throw _privateConstructorUsedError;
@@ -620,6 +625,6 @@ abstract class _Category implements Category {
   String? get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CategoryCopyWith<_Category> get copyWith =>
+  _$ItemCategoryCopyWith<_ItemCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
