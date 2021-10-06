@@ -1,4 +1,4 @@
-part of 'routing.dart';
+part of 'navigation.dart';
 
 /// The default not found page.
 class DefaultNotFoundPage extends StatelessWidget {

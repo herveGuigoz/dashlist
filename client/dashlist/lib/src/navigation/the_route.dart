@@ -1,4 +1,4 @@
-part of 'routing.dart';
+part of 'navigation.dart';
 
 /// for route state during routing
 class TheRouterState {

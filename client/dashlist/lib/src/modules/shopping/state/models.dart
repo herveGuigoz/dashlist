@@ -56,3 +56,17 @@ class Category with _$Category {
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
 }
+
+class ShopItemValueObject {
+  ShopItemValueObject({
+    required this.shoppingListId,
+    required this.name,
+    required this.quantity,
+    required this.category,
+  });
+
+  final String shoppingListId;
+  final String name;
+  final String quantity;
+  final Category category;
+}

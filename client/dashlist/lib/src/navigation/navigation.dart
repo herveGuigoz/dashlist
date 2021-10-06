@@ -7,8 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_to_regexp/path_to_regexp.dart' as p2re;
 
 import '../modules/settings/settings_view.dart';
-import '../modules/shopping/view/shopping_list_page.dart';
-import '../modules/store/store.dart';
+import '../modules/shopping/shopping.dart';
 
 part 'the_pages.dart';
 part 'the_route.dart';
@@ -43,7 +42,7 @@ final theRouter = Provider(
     routes: [
       TheRoute(
         path: SettingsPage.routeName,
-        name: 'settings',
+        name: 'SettingsPage',
         pageBuilder: (context, state) => MaterialPage<void>(
           key: state.pageKey,
           child: const SettingsPage(),
@@ -51,11 +50,21 @@ final theRouter = Provider(
       ),
       TheRoute(
         path: ShoppingListPage.routeName,
-        name: 'stores',
+        name: 'ShoppingListPage',
         pageBuilder: (context, state) => MaterialPage<void>(
           key: state.pageKey,
           child: const ShoppingListPage(),
         ),
+        routes: [
+          TheRoute(
+            path: ShoppingListDetailsPage.routeName,
+            name: 'ShoppingListDetailsPage',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: ShoppingListDetailsPage(id: state.params['id']!),
+            ),
+          ),
+        ],
       ),
     ],
     errorPageBuilder: (context, state) => NoTransitionPage<void>(

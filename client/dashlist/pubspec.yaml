@@ -11,6 +11,8 @@ environment:
 
 dependencies:
   collection: ^1.15.0
+  dashlist_theme: 
+    path: ../dashlist_theme
   flutter:
     sdk: flutter
   flutter_localizations:

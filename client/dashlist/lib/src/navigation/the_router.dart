@@ -1,4 +1,4 @@
-part of 'routing.dart';
+part of 'navigation.dart';
 
 class TheRouter extends ChangeNotifier {
   TheRouter({

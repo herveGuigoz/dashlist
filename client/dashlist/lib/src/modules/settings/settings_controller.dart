@@ -1,66 +1,32 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'settings_service.dart';
 
+final settingsRef = StateNotifierProvider<SettingsController, ThemeMode>(
+  (ref) => SettingsController(SettingsService()),
+);
+
 /// A class that many Widgets can interact with to read user settings, update
 /// user settings, or listen to user settings changes.
-///
-/// Controllers glue Data Services to Flutter Widgets. The SettingsController
-/// uses the SettingsService to store and retrieve user settings.
-class SettingsController with ChangeNotifier {
-  SettingsController(this._settingsService);
-
-  static SettingsController of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<InheritedSettingsController>()!
-        .notifier!;
-  }
+class SettingsController extends StateNotifier<ThemeMode> {
+  SettingsController(this._settingsService)
+      : super(_settingsService.themeMode());
 
   // Make SettingsService a private variable so it is not used directly.
   final SettingsService _settingsService;
-
-  // Make ThemeMode a private variable so it is not updated directly without
-  // also persisting the changes with the SettingsService.
-  late ThemeMode _themeMode;
-
-  // Allow Widgets to read the user's preferred ThemeMode.
-  ThemeMode get themeMode => _themeMode;
-
-  /// Load the user's settings from the SettingsService. It may load from a
-  /// local database or the internet. The controller only knows it can load the
-  /// settings from the service.
-  Future<void> loadSettings() async {
-    _themeMode = await _settingsService.themeMode();
-
-    // Important! Inform listeners a change has occurred.
-    notifyListeners();
-  }
 
   /// Update and persist the ThemeMode based on the user's selection.
   Future<void> updateThemeMode(ThemeMode? newThemeMode) async {
     if (newThemeMode == null) return;
 
     // Dot not perform any work if new and old ThemeMode are identical
-    if (newThemeMode == _themeMode) return;
+    if (newThemeMode == state) return;
 
     // Otherwise, store the new theme mode in memory
-    _themeMode = newThemeMode;
+    state = newThemeMode;
 
-    // Important! Inform listeners a change has occurred.
-    notifyListeners();
-
-    // Persist the changes to a local database or the internet using the
-    // SettingService.
+    // Persist the changes to a local database.
     await _settingsService.updateThemeMode(newThemeMode);
   }
-}
-
-class InheritedSettingsController
-    extends InheritedNotifier<SettingsController> {
-  const InheritedSettingsController({
-    Key? key,
-    required SettingsController notifier,
-    required Widget child,
-  }) : super(key: key, notifier: notifier, child: child);
 }

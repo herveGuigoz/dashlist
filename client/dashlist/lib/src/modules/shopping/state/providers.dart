@@ -9,13 +9,13 @@ import '../../../../configuration.dart';
 import '../../../services/services.dart';
 import 'models.dart';
 
-const _shoppingListURL = '/shopping_lists';
+const shoppingListURL = '/shopping_lists';
 
 /// Retrieves the collection of [ShoppingList] resources.
 final shoppingListCollection = FutureProvider((ref) async {
   final client = ref.read(httpClientProvider);
 
-  final response = await client.get(_shoppingListURL);
+  final response = await client.get(shoppingListURL);
 
   return shoppingListFromJson(response.body);
 });
@@ -33,6 +33,28 @@ final shops = StateNotifierProvider<ShoppingListController, List<ShoppingList>>(
         throw Exception('ShoppingListController is not initialized');
       },
     );
+  },
+);
+
+/// Retrieve a [ShoppingList] ressources from his uuid.
+final shop = Provider.family.autoDispose<ShoppingList, String>((ref, uuid) {
+  final ressources = ref.watch(shops);
+  return ressources.firstWhere((ressource) => ressource.id == uuid);
+});
+
+final scopedShoppingList = Provider.autoDispose<ShoppingList>(
+  (ref) => throw Exception('scopedShoppingList not found in context'),
+);
+
+/// Groups the items by category.
+final shopItems = Provider.autoDispose.family<Map<String, List<Item>>, String>(
+  (ref, id) {
+    final shoppingList = ref.watch(shop(id));
+    final map = <String, List<Item>>{};
+    for (final item in shoppingList.items) {
+      (map[item.category.name] ??= []).add(item);
+    }
+    return map;
   },
 );
 
