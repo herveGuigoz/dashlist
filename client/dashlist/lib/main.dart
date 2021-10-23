@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'src/app.dart';
+import 'src/services/http/handshake_override.dart';
 
 Future<void> main() async {
   HttpOverrides.runWithHttpOverrides(() {
@@ -11,13 +12,4 @@ Future<void> main() async {
       const ProviderScope(child: Main()),
     );
   }, HandshakeOverride());
-}
-
-/// Accept secure connection with bad certifiacte
-class HandshakeOverride extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback = (cert, host, port) => true;
-  }
 }

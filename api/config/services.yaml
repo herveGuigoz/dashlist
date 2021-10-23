@@ -36,3 +36,4 @@ services:
         decorates: api_platform.openapi.factory
 
     App\DataPersister\BlogPostDataPersister: ~
+    

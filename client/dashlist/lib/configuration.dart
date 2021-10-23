@@ -3,15 +3,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// App configuration provider
-final configuration = Provider((ref) => const Configuration.fromEnv());
+final configuration = Provider((ref) => Configuration.fromEnv());
 
 /// App configuration
 class Configuration {
   /// App configuration from environment
-  const Configuration.fromEnv({
+  Configuration.fromEnv({
     this.baseUrl = const String.fromEnvironment('BASE_URL'),
-  });
+  }) : mercureHub = 'https://$baseUrl/.well-known/mercure';
 
-  /// server endpoint
+  /// Server endpoint
   final String baseUrl;
+
+  /// Mercure subscriber url.
+  final String mercureHub;
 }

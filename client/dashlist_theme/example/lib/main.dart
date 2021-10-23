@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
+
+import 'colors.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Plugin example app')),
-        body: const SizedBox(),
+    const AppTheme(
+      appThemeData: AppThemeData(),
+      child: MaterialApp(
+        home: GalleryLayout(),
       ),
     ),
   );
+}
+
+class GalleryLayout extends StatelessWidget {
+  const GalleryLayout({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: const [
+        ColorsGallery(),
+      ],
+    );
+  }
 }

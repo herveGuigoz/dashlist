@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:dashlist/main_debug.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -38,8 +39,15 @@ void _log2(String value) {
 
 final theRouter = Provider(
   (ref) => TheRouter(
-    initialLocation: ShoppingListPage.routeName,
     routes: [
+      TheRoute(
+        path: '/debug',
+        name: 'debug',
+        pageBuilder: (context, state) => NoTransitionPage<void>(
+          key: state.pageKey,
+          child: const Debug(),
+        ),
+      ),
       TheRoute(
         path: SettingsPage.routeName,
         name: 'SettingsPage',

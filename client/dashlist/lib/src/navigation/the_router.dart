@@ -578,6 +578,7 @@ class TheRouterDelegate extends RouterDelegate<Uri>
     return builderWithNav(
       context,
       Navigator(
+        key: _key,
         pages: pages,
         onPopPage: (route, dynamic result) {
           if (!route.didPop(result)) return false;

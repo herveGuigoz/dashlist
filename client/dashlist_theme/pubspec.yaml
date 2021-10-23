@@ -8,14 +8,18 @@ environment:
   flutter: ">=1.20.0"
 
 dependencies:
+  figma_squircle: ^0.5.3
   flutter:
     sdk: flutter
+  freezed_annotation: ^0.14.3
   google_fonts: ^2.1.0
   path_icon: ^0.7.0
 
 dev_dependencies:
+  build_runner: ^2.1.4
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  freezed: ^0.14.5
 
 flutter:

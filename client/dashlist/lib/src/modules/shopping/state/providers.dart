@@ -29,10 +29,10 @@ final shoppingListCollection = FutureProvider((ref) async {
 final shops = StateNotifierProvider<ShoppingListController, List<ShoppingList>>(
   (ref) {
     final response = ref.watch(shoppingListCollection);
-    final baseURL = ref.read(configuration).baseUrl;
+    final appConfiguration = ref.read(configuration);
 
     return response.maybeWhen(
-      data: (items) => ShoppingListController(baseURL, items),
+      data: (items) => ShoppingListController(appConfiguration, items),
       orElse: () {
         throw Exception('ShoppingListController is not initialized');
       },
@@ -71,16 +71,18 @@ final categoriesProvider = FutureProvider<List<ItemCategory>>((ref) async {
 /// State controller of [ShoppingList] ressources.
 /// Listen for Mercure events in order to notify listener on updates.
 class ShoppingListController extends ListNotifier<ShoppingList> {
-  ShoppingListController(this.baseURL, List<ShoppingList> items)
+  ShoppingListController(this.configuration, List<ShoppingList> items)
       : super(items) {
     _subscription = Mercure(url: mercureHub, topics: [topic]).listen(_onEvent);
   }
 
+  final Configuration configuration;
+
   /// Api endpoint
-  final String baseURL;
+  String get baseURL => configuration.baseUrl;
 
   /// URL to receive updates from mercure.
-  String get mercureHub => 'https://$baseURL/.well-known/mercure';
+  String get mercureHub => configuration.mercureHub;
 
   /// Mercure topics for [ShoppingList] events
   String get topic => 'https://$baseURL/shopping_lists/{id}';
