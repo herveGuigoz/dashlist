@@ -1,0 +1,16 @@
+{
+  "@context":"\/contexts\/ListItem",
+  "@id":"\/list_items\/c7be362e-f97d-4788-95f0-28a7ee1ba666",
+  "@type":"ListItem",
+  "id":"c7be362e-f97d-4788-95f0-28a7ee1ba666",
+  "name":"Tomato",
+  "quantity":null,
+  "isCompleted":true,
+  "shoppingList":"\/shopping_lists\/d5fa6a1c-f998-4a31-b9e3-4cec6a1a8a20",
+  "category":{
+    "@id":"\/categories\/Bio",
+    "@type":"Category",
+    "name":"Bio",
+    "description":null
+  }
+}

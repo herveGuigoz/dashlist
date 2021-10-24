@@ -18,13 +18,14 @@ Future<void> main() async {
   }, HandshakeOverride());
 }
 
+final uri = Uri().replace(query: '?topic=coucou');
 final mercureStream = StreamProvider((ref) async* {
   final config = ref.watch(configuration);
   yield* Mercure(
     url: ref.watch(configuration).mercureHub,
     topics: [
       'https://${config.baseUrl}/shopping_lists/{id}',
-      // 'https://${config.baseUrl}/list_items/{id}',
+      'https://${config.baseUrl}/list_items/{id}',
     ],
   );
 });
@@ -42,7 +43,10 @@ class Debug extends ConsumerWidget {
         body: Padding(
           padding: const EdgeInsets.all(32),
           child: stream.when(
-            data: (event) => JsonView.string(event.data),
+            data: (event) {
+              print(event.data);
+              return JsonView.string(event.data);
+            },
             loading: () => const Loader(),
             error: (error, _) => Error(error: error),
           ),

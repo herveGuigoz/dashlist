@@ -35,11 +35,25 @@ class ShoppingList with _$ShoppingList {
   const factory ShoppingList({
     required String id,
     required String name,
-    required List<Item> items,
+    @JsonKey(defaultValue: <Item>[]) required List<Item> items,
   }) = _ShoppingList;
 
   factory ShoppingList.fromJson(Map<String, dynamic> json) =>
       _$ShoppingListFromJson(json);
+
+  const ShoppingList._();
+
+  ShoppingList updateItem(Item value) {
+    bool match(Item item) => item.id == value.id;
+
+    if (items.any(match)) {
+      return copyWith(
+        items: items.map((item) => match(item) ? value : item).toList(),
+      );
+    }
+
+    return copyWith(items: [...items, value]);
+  }
 }
 
 @freezed

@@ -14,5 +14,6 @@ services:
 
   caddy:
     environment:
+      SERVER_NAME: ${SERVER_NAME:-herve-guigoz.com, caddy:80}
       MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY}
       MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY}

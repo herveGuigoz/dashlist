@@ -1,12 +1,10 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
 
 import '../../../../configuration.dart';
 import '../../../services/services.dart';
+import 'controller.dart';
 import 'models.dart';
 
 /// '/shopping_lists'
@@ -14,6 +12,24 @@ const shoppingListURL = '/shopping_lists';
 
 /// '/list_items'
 const shoppingListItemsURL = '/list_items';
+
+/// Mercure topics for [ShoppingList] and [Item] events
+final topicsProvider = Provider<List<String>>((ref) {
+  final appConfiguration = ref.watch(configuration);
+  final baseURL = appConfiguration.baseUrl;
+
+  return [
+    'https://$baseURL/shopping_lists/{id}',
+    'https://$baseURL/list_items/{id}',
+  ];
+});
+
+final mercureProvider = Provider<Mercure>((ref) {
+  final appConfiguration = ref.watch(configuration);
+  final topics = ref.read(topicsProvider);
+
+  return Mercure(url: appConfiguration.mercureHub, topics: topics);
+});
 
 /// Retrieves the collection of [ShoppingList] resources.
 final shoppingListCollection = FutureProvider((ref) async {
@@ -29,10 +45,9 @@ final shoppingListCollection = FutureProvider((ref) async {
 final shops = StateNotifierProvider<ShoppingListController, List<ShoppingList>>(
   (ref) {
     final response = ref.watch(shoppingListCollection);
-    final appConfiguration = ref.read(configuration);
 
     return response.maybeWhen(
-      data: (items) => ShoppingListController(appConfiguration, items),
+      data: (items) => ShoppingListController(ref.read(mercureProvider), items),
       orElse: () {
         throw Exception('ShoppingListController is not initialized');
       },
@@ -67,77 +82,3 @@ final categoriesProvider = FutureProvider<List<ItemCategory>>((ref) async {
   final response = await ref.read(httpClientProvider).get('/categories');
   return categoriesListFromJson(response.body);
 });
-
-/// State controller of [ShoppingList] ressources.
-/// Listen for Mercure events in order to notify listener on updates.
-class ShoppingListController extends ListNotifier<ShoppingList> {
-  ShoppingListController(this.configuration, List<ShoppingList> items)
-      : super(items) {
-    _subscription = Mercure(url: mercureHub, topics: [topic]).listen(_onEvent);
-  }
-
-  final Configuration configuration;
-
-  /// Api endpoint
-  String get baseURL => configuration.baseUrl;
-
-  /// URL to receive updates from mercure.
-  String get mercureHub => configuration.mercureHub;
-
-  /// Mercure topics for [ShoppingList] events
-  String get topic => 'https://$baseURL/shopping_lists/{id}';
-
-  late final StreamSubscription _subscription;
-
-  void _onEvent(MercureEvent event) {
-    final json = jsonDecode(event.data) as Map<String, dynamic>;
-    // If mercure event contains `name` key that either an creation or update,
-    // as for delete event, json contains only the id.
-    if (json.containsKey('name')) {
-      updateWith(ShoppingList.fromJson(json));
-    } else {
-      remove(state.firstWhere((e) => e.id == json['id'] as String));
-    }
-  }
-
-  @override
-  bool match(ShoppingList value, ShoppingList other) => value.id == other.id;
-
-  @override
-  void dispose() {
-    _subscription.cancel();
-    super.dispose();
-  }
-}
-
-/// Helper to provide utilities on List updates
-abstract class ListNotifier<T> extends StateNotifier<List<T>> {
-  ListNotifier(List<T> state) : super(state);
-
-  @protected
-  bool match(T value, T other);
-
-  @protected
-  void add(T value) {
-    state = [...state, value];
-  }
-
-  @protected
-  void remove(T value) {
-    state = state.where((element) => match(element, value)).toList();
-  }
-
-  @protected
-  void replace(T value) {
-    state = state.map((item) => match(item, value) ? value : item).toList();
-  }
-
-  @protected
-  void updateWith(T value) {
-    if (state.any((element) => match(element, value))) {
-      replace(value);
-    } else {
-      add(value);
-    }
-  }
-}

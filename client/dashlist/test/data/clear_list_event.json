@@ -1,0 +1,17 @@
+{
+  "id":"e6dede71-a4a5-461e-864c-f29792b0c6fe",
+  "name":"Super U",
+  "items":[
+    {
+      "id":"f9833f2b-0330-4102-a0fb-e85972ef42da",
+      "name":"Tomates",
+      "quantity":null,
+      "isCompleted":false,
+      "shoppingList":"\/shopping_lists\/e6dede71-a4a5-461e-864c-f29792b0c6fe",
+      "category":{
+        "name":"Bio",
+        "description":null
+        }
+    }
+  ]
+}

@@ -22,7 +22,7 @@ dependencies:
   freezed_annotation: ^0.14.3
   gap: ^2.0.0
   http: ^0.13.3
-  mercure_client: ^1.0.0
+  mercure_client: ^1.0.1
   path_to_regexp: ^0.4.0
 
 dev_dependencies:
@@ -31,6 +31,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^0.14.5
   json_serializable: ^5.0.2
+  mocktail: ^0.2.0
   
 
 flutter:

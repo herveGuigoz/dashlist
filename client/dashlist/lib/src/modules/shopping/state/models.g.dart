@@ -10,9 +10,10 @@ _$_ShoppingList _$$_ShoppingListFromJson(Map<String, dynamic> json) =>
     _$_ShoppingList(
       id: json['id'] as String,
       name: json['name'] as String,
-      items: (json['items'] as List<dynamic>)
-          .map((e) => Item.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      items: (json['items'] as List<dynamic>?)
+              ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$_ShoppingListToJson(_$_ShoppingList instance) =>

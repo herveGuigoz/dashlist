@@ -8,6 +8,9 @@ run: ## run flutter app
 run-dev: ## run flutter app
 	flutter run --dart-define BASE_URL=localhost
 
+run-debug: ## run debug mercure
+	flutter run --dart-define BASE_URL=localhost --target lib/main_debug.dart
+
 .DEFAULT_GOAL := help
 help:
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'

@@ -1,0 +1,8 @@
+{
+  "@context":"\/contexts\/ShoppingList",
+  "@id":"\/shopping_lists\/8eeced17-1fab-4d14-9649-3b6213c779d0",
+  "@type":"ShoppingList",
+  "id":"8eeced17-1fab-4d14-9649-3b6213c779d0",
+  "name":"Grand Frais",
+  "items":[]
+}

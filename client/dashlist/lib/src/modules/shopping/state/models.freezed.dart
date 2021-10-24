@@ -22,7 +22,9 @@ class _$ShoppingListTearOff {
   const _$ShoppingListTearOff();
 
   _ShoppingList call(
-      {required String id, required String name, required List<Item> items}) {
+      {required String id,
+      required String name,
+      @JsonKey(defaultValue: <Item>[]) required List<Item> items}) {
     return _ShoppingList(
       id: id,
       name: name,
@@ -42,6 +44,7 @@ const $ShoppingList = _$ShoppingListTearOff();
 mixin _$ShoppingList {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: <Item>[])
   List<Item> get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +58,10 @@ abstract class $ShoppingListCopyWith<$Res> {
   factory $ShoppingListCopyWith(
           ShoppingList value, $Res Function(ShoppingList) then) =
       _$ShoppingListCopyWithImpl<$Res>;
-  $Res call({String id, String name, List<Item> items});
+  $Res call(
+      {String id,
+      String name,
+      @JsonKey(defaultValue: <Item>[]) List<Item> items});
 }
 
 /// @nodoc
@@ -96,7 +102,10 @@ abstract class _$ShoppingListCopyWith<$Res>
           _ShoppingList value, $Res Function(_ShoppingList) then) =
       __$ShoppingListCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, List<Item> items});
+  $Res call(
+      {String id,
+      String name,
+      @JsonKey(defaultValue: <Item>[]) List<Item> items});
 }
 
 /// @nodoc
@@ -134,9 +143,12 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShoppingList implements _ShoppingList {
+class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
-      {required this.id, required this.name, required this.items});
+      {required this.id,
+      required this.name,
+      @JsonKey(defaultValue: <Item>[]) required this.items})
+      : super._();
 
   factory _$_ShoppingList.fromJson(Map<String, dynamic> json) =>
       _$$_ShoppingListFromJson(json);
@@ -146,6 +158,7 @@ class _$_ShoppingList implements _ShoppingList {
   @override
   final String name;
   @override
+  @JsonKey(defaultValue: <Item>[])
   final List<Item> items;
 
   @override
@@ -183,11 +196,13 @@ class _$_ShoppingList implements _ShoppingList {
   }
 }
 
-abstract class _ShoppingList implements ShoppingList {
+abstract class _ShoppingList extends ShoppingList {
   const factory _ShoppingList(
-      {required String id,
-      required String name,
-      required List<Item> items}) = _$_ShoppingList;
+          {required String id,
+          required String name,
+          @JsonKey(defaultValue: <Item>[]) required List<Item> items}) =
+      _$_ShoppingList;
+  const _ShoppingList._() : super._();
 
   factory _ShoppingList.fromJson(Map<String, dynamic> json) =
       _$_ShoppingList.fromJson;
@@ -197,6 +212,7 @@ abstract class _ShoppingList implements ShoppingList {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
+  @JsonKey(defaultValue: <Item>[])
   List<Item> get items => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

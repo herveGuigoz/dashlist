@@ -41,6 +41,6 @@ class ShopingListActions {
   /// Clear completed shopping list items.
   /// @Throw ApiException
   Future<void> deleteCompletedItems(ShoppingList shoppingList) async {
-    await _client.delete(shoppingListURL);
+    await _client.get('$shoppingListURL/${shoppingList.id}/clear');
   }
 }
