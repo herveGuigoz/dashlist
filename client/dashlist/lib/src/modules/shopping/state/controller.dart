@@ -25,9 +25,11 @@ class ShoppingListController extends ListNotifier<ShoppingList> {
     final eventType = json['@type'] as String?;
 
     if (eventType == ShoppingList.eventType) {
-      mapListEventToState(json);
-    } else if (eventType == Item.eventType) {
-      mapItemEventToState(json);
+      return mapListEventToState(json);
+    }
+
+    if (eventType == Item.eventType) {
+      return mapItemEventToState(json);
     }
   }
 
@@ -36,7 +38,7 @@ class ShoppingListController extends ListNotifier<ShoppingList> {
     // For delete event, json contains only the id.
     if (json.length > 1) {
       updateWith(ShoppingList.fromJson(json));
-    } else {
+    } else if (json.containsKey('id')) {
       remove(state.firstWhere((e) => e.id == json['id'] as String));
     }
   }

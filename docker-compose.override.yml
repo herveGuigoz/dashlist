@@ -26,9 +26,3 @@ services:
       - ./api/public:/srv/api/public:ro
     environment:
       MERCURE_EXTRA_DIRECTIVES: demo /srv/mercure-assets/
-
-  database:
-    ports:
-      - target: 5432
-        published: 5432
-        protocol: tcp
