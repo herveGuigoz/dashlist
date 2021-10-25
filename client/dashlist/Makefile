@@ -8,7 +8,10 @@ run: ## run flutter app
 run-dev: ## run flutter app
 	flutter run --dart-define BASE_URL=localhost
 
-run-debug-dev: ## debug mercure
+run-debug: ## debug mercure in production
+	flutter run --dart-define BASE_URL=${BASE_URL} --device-id macos --target lib/main_debug.dart
+
+run-debug-dev: ## debug mercure in dev
 	flutter run --dart-define BASE_URL=localhost --device-id macos --target lib/main_debug.dart
 
 .DEFAULT_GOAL := help
