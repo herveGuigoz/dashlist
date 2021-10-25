@@ -20,8 +20,8 @@ final mercureProvider = Provider((ref) {
   return Mercure(
     url: configuration.mercureHub,
     topics: [
-      'https://${configuration.baseURL}/shopping_lists/{id}',
-      'https://${configuration.baseURL}/list_items/{id}',
+      'https://${configuration.baseURL}/$shoppingListURL/{id}',
+      'https://${configuration.baseURL}/$shoppingListItemsURL/{id}',
     ],
   );
 });
@@ -46,7 +46,7 @@ final shops = StateNotifierProvider<ShoppingListController, List<ShoppingList>>(
         return ShoppingListController(ref.watch(mercureProvider), items);
       },
       orElse: () {
-        throw Exception('ShoppingListController is not initialized');
+        throw Exception('provider shoppingListCollection is not initialized');
       },
     );
   },

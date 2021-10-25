@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 /// The default not found page.
 class DefaultNotFoundPage extends StatelessWidget {
@@ -20,11 +19,4 @@ class DefaultNotFoundPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class NoTransitionPage<T> extends CustomTransitionPage<T> {
-  NoTransitionPage({
-    LocalKey? key,
-    required Widget child,
-  }) : super(key: key, child: child, transitionsBuilder: (_, __, ___, c) => c);
 }
