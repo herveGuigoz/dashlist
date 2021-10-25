@@ -7,6 +7,9 @@ install: ## Install project
 start: ## Start project
 	docker-compose up -d --remove-orphans --no-recreate
 
+start-prod: ## Start project in production environment
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
 stop: ## Stop project
 	docker-compose stop
 
