@@ -1,8 +1,8 @@
 .SILENT:
 
 install: ## Install project
-	docker-compose pull
-	docker-compose up --build -d
+	docker-compose build --pull --no-cache
+	docker-compose up -d
 
 start: ## Start project
 	docker-compose up -d --remove-orphans --no-recreate
