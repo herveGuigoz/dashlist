@@ -1,4 +1,4 @@
-package com.herveguigoz.dev.client
+package com.herveguigoz.dashlist
 
 import io.flutter.embedding.android.FlutterActivity
 
