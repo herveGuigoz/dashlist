@@ -1,4 +1,3 @@
-import 'package:dashlist/src/navigation/navigation.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart';
 
-import '../../../configuration.dart';
+import '../../modules/app/configuration.dart';
 import 'http_enum.dart';
 
 export 'package:http/http.dart' show Response;

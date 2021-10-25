@@ -3,10 +3,13 @@
 include .env
 
 run: ## run flutter app
-	flutter run --dart-define BASE_URL=${BASE_URL}
+	flutter run --dart-define BASE_URL=${BASE_URL} --target lib/main.dart
 
 run-dev: ## run flutter app
 	flutter run --dart-define BASE_URL=localhost
+
+run-debug: ## debug mercure
+	flutter run --dart-define BASE_URL=${BASE_URL} --target lib/main_debug.dart
 
 .DEFAULT_GOAL := help
 help:

@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
 
-import '../../../../configuration.dart';
 import '../../../services/services.dart';
+import '../../app/configuration.dart';
 import 'models.dart';
 
 /// '/shopping_lists'

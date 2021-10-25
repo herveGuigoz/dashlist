@@ -6,15 +6,14 @@ import 'package:flutter_json_view/flutter_json_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
 
-import 'configuration.dart';
+import 'bootstrap.dart';
 import 'src/components/components.dart';
+import 'src/modules/app/configuration.dart';
 import 'src/services/http/handshake_override.dart';
 
 Future<void> main() async {
   HttpOverrides.runWithHttpOverrides(() {
-    runApp(
-      const ProviderScope(child: Debug()),
-    );
+    bootstrap(() => const ProviderScope(child: Debug()));
   }, HandshakeOverride());
 }
 
