@@ -108,6 +108,7 @@ class ShopItemValueObject {
   Map<String, String> toJson() {
     return {
       'name': name,
+      if (quantity.isNotEmpty) 'quantity': quantity,
       'shoppingList': '/shopping_lists/$shoppingListId',
       'category': '/categories/${category.name}'
     };

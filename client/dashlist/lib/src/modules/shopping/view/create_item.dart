@@ -17,8 +17,8 @@ const _textStyle = TextStyle(
 );
 const _padding = EdgeInsets.only(top: 32);
 
-class CreateShoppingItemPage extends ConsumerStatefulWidget {
-  const CreateShoppingItemPage({
+class CreateItemPage extends ConsumerStatefulWidget {
+  const CreateItemPage({
     Key? key,
     required this.id,
   }) : super(key: key);
@@ -26,16 +26,16 @@ class CreateShoppingItemPage extends ConsumerStatefulWidget {
   /// Path: /add/:id'
   static const routeName = '/add/:id';
 
+  /// The [ShoppingList] id
   final String id;
 
   @override
-  ConsumerState<CreateShoppingItemPage> createState() {
+  ConsumerState<CreateItemPage> createState() {
     return _CreateShoppingItemPageState();
   }
 }
 
-class _CreateShoppingItemPageState
-    extends ConsumerState<CreateShoppingItemPage> {
+class _CreateShoppingItemPageState extends ConsumerState<CreateItemPage> {
   final _pageController = PageController();
   final _nameController = TextEditingController();
   final _quantityController = TextEditingController();
@@ -56,8 +56,8 @@ class _CreateShoppingItemPageState
   void _animateToPage(int page) {
     _pageController.animateToPage(
       page,
-      duration: kThemeAnimationDuration,
-      curve: Curves.easeOut,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeOutCubic,
     );
   }
 
@@ -95,13 +95,13 @@ class _CreateShoppingItemPageState
           physics: const NeverScrollableScrollPhysics(),
           children: [
             FormPage(
-              delegate: NameFormDelegate(),
+              delegate: const NameFormDelegate(),
               textController: _nameController,
               focusNode: _focuses[0]!,
               onPressed: () => _nextPage(1),
             ),
             FormPage(
-              delegate: QuantityFormDelegate(),
+              delegate: const QuantityFormDelegate(),
               textController: _quantityController,
               focusNode: _focuses[1]!,
               onPressed: () => _nextPage(2),
@@ -130,71 +130,6 @@ class _CreateShoppingItemPageState
   }
 }
 
-class _SelectCategoryPage extends StatelessWidget {
-  const _SelectCategoryPage({
-    Key? key,
-    required this.categories,
-    required this.onPressed,
-  }) : super(key: key);
-
-  final List<ItemCategory> categories;
-  final void Function(ItemCategory category) onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPersistentHeader(delegate: _CategoryHeader()),
-        SliverFixedExtentList(
-          delegate: SliverChildListDelegate.fixed([
-            for (final category in categories)
-              ListTile(
-                dense: true,
-                title: Text(category.name),
-                subtitle: Text(
-                  category.description ?? 'Rayon ${category.name}',
-                ),
-                onTap: () => onPressed(category),
-              )
-          ]),
-          itemExtent: 56,
-        ),
-      ],
-    );
-  }
-}
-
-class _CategoryHeader extends SliverPersistentHeaderDelegate {
-  static const double _height = 100;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    return const Padding(
-      padding: _padding,
-      child: Text(
-        'Dans quelle rayon trouve-t-on\ncet article?',
-        textAlign: TextAlign.center,
-        style: _textStyle,
-      ),
-    );
-  }
-
-  @override
-  double get maxExtent => _height;
-
-  @override
-  double get minExtent => _height;
-
-  @override
-  bool shouldRebuild(_CategoryHeader oldDelegate) {
-    return false;
-  }
-}
-
 abstract class FormDelegate {
   const FormDelegate();
 
@@ -202,19 +137,21 @@ abstract class FormDelegate {
 
   String? get hintText => null;
 
-  TextInputType? get keyboardType => null;
+  TextInputType get keyboardType => TextInputType.text;
 
-  List<TextInputFormatter>? get inputFormatters => [];
+  List<TextInputFormatter> get inputFormatters => [];
 
   bool validate(String input) => true;
 }
 
 class NameFormDelegate extends FormDelegate {
+  const NameFormDelegate();
+
   @override
   String get title => 'Quel nom pour cet article?';
 
   @override
-  List<TextInputFormatter>? get inputFormatters {
+  List<TextInputFormatter> get inputFormatters {
     return [
       LengthLimitingTextInputFormatter(21),
       FilteringTextInputFormatter.singleLineFormatter,
@@ -226,11 +163,13 @@ class NameFormDelegate extends FormDelegate {
 }
 
 class QuantityFormDelegate extends FormDelegate {
+  const QuantityFormDelegate();
+
   @override
   String get title => 'Voulez-vous définir une quantitée?';
 
   @override
-  List<TextInputFormatter>? get inputFormatters {
+  List<TextInputFormatter> get inputFormatters {
     return [
       LengthLimitingTextInputFormatter(5),
       FilteringTextInputFormatter.allow(RegExp(r'[0-9a-zA-Z\s]')),
@@ -308,5 +247,70 @@ class _FormPageState extends State<FormPage> {
         ),
       ),
     );
+  }
+}
+
+class _SelectCategoryPage extends StatelessWidget {
+  const _SelectCategoryPage({
+    Key? key,
+    required this.categories,
+    required this.onPressed,
+  }) : super(key: key);
+
+  final List<ItemCategory> categories;
+  final void Function(ItemCategory category) onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverPersistentHeader(delegate: _CategoryHeader()),
+        SliverFixedExtentList(
+          delegate: SliverChildListDelegate.fixed([
+            for (final category in categories)
+              ListTile(
+                dense: true,
+                title: Text(category.name),
+                subtitle: Text(
+                  category.description ?? 'Rayon ${category.name}',
+                ),
+                onTap: () => onPressed(category),
+              )
+          ]),
+          itemExtent: 56,
+        ),
+      ],
+    );
+  }
+}
+
+class _CategoryHeader extends SliverPersistentHeaderDelegate {
+  static const double _height = 100;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return const Padding(
+      padding: _padding,
+      child: Text(
+        'Dans quelle rayon trouve-t-on\ncet article?',
+        textAlign: TextAlign.center,
+        style: _textStyle,
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => _height;
+
+  @override
+  double get minExtent => _height;
+
+  @override
+  bool shouldRebuild(_CategoryHeader oldDelegate) {
+    return false;
   }
 }

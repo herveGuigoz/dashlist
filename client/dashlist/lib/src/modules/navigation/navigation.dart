@@ -40,7 +40,7 @@ final theRouter = Provider((ref) {
         ),
       ),
       GoRoute(
-        path: CreateShoppingItemPage.routeName,
+        path: CreateItemPage.routeName,
         name: 'CreateShoppingItemPage',
         pageBuilder: (context, state) {
           final uuid = state.params['id']!;
@@ -49,7 +49,7 @@ final theRouter = Provider((ref) {
           }
           return MaterialPage<void>(
             key: state.pageKey,
-            child: CreateShoppingItemPage(id: state.params['id']!),
+            child: CreateItemPage(id: state.params['id']!),
           );
         },
       )
