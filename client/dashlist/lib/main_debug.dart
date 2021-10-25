@@ -6,25 +6,24 @@ import 'package:flutter_json_view/flutter_json_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
 
-import 'configuration.dart';
+import 'bootstrap.dart';
 import 'src/components/components.dart';
+import 'src/modules/app/configuration.dart';
 import 'src/services/http/handshake_override.dart';
 
 Future<void> main() async {
   HttpOverrides.runWithHttpOverrides(() {
-    runApp(
-      const ProviderScope(child: Debug()),
-    );
+    bootstrap(() => const ProviderScope(child: Debug()));
   }, HandshakeOverride());
 }
 
 final mercureStream = StreamProvider((ref) async* {
-  final config = ref.watch(configuration);
+  final configuration = ref.watch(configurationProvider);
   yield* Mercure(
-    url: ref.watch(configuration).mercureHub,
+    url: configuration.mercureHub,
     topics: [
-      'https://${config.baseUrl}/shopping_lists/{id}',
-      // 'https://${config.baseUrl}/list_items/{id}',
+      'https://${configuration.baseURL}/shopping_lists/{id}',
+      'https://${configuration.baseURL}/list_items/{id}',
     ],
   );
 });

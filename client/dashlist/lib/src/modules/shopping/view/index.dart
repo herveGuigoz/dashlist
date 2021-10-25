@@ -1,26 +1,41 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:dashlist/src/modules/shopping/state/actions.dart';
-import 'package:dashlist/src/modules/shopping/view/create_list.dart';
-import 'package:dashlist/src/services/http/http.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../components/components.dart';
-import '../../../navigation/navigation.dart';
+import '../../../services/http/http.dart';
+import '../state/actions.dart';
 import '../state/providers.dart';
+import 'create_list.dart';
 
-// TODO own theme
 const gray11 = Color(0xFFe8e8ea);
 
+/// Initialize shopping list state.
 class ShoppingListPage extends ConsumerWidget {
   const ShoppingListPage({Key? key}) : super(key: key);
 
   /// Path: /
   static const routeName = '/';
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncList = ref.watch(shoppingListCollection);
+
+    return asyncList.when(
+      data: (_) => const ShoppingListView(),
+      loading: () => const Loader(),
+      error: (error, _) => Error(error: error),
+    );
+  }
+}
+
+class ShoppingListView extends ConsumerWidget {
+  const ShoppingListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -111,7 +126,7 @@ class ShoppingListCard extends ConsumerWidget {
       elevation: 0,
       child: InkWell(
         onTap: () {
-          TheRouter.of(context).go('/${shoppingList.id}');
+          GoRouter.of(context).go('/${shoppingList.id}');
         },
         child: Padding(
           padding: const EdgeInsets.all(32),

@@ -134,9 +134,10 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShoppingList implements _ShoppingList {
+class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
-      {required this.id, required this.name, required this.items});
+      {required this.id, required this.name, required this.items})
+      : super._();
 
   factory _$_ShoppingList.fromJson(Map<String, dynamic> json) =>
       _$$_ShoppingListFromJson(json);
@@ -183,11 +184,12 @@ class _$_ShoppingList implements _ShoppingList {
   }
 }
 
-abstract class _ShoppingList implements ShoppingList {
+abstract class _ShoppingList extends ShoppingList {
   const factory _ShoppingList(
       {required String id,
       required String name,
       required List<Item> items}) = _$_ShoppingList;
+  const _ShoppingList._() : super._();
 
   factory _ShoppingList.fromJson(Map<String, dynamic> json) =
       _$_ShoppingList.fromJson;
@@ -370,13 +372,14 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Item implements _Item {
+class _$_Item extends _Item {
   const _$_Item(
       {required this.id,
       required this.name,
       this.quantity,
       required this.isCompleted,
-      required this.category});
+      required this.category})
+      : super._();
 
   factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
@@ -435,13 +438,14 @@ class _$_Item implements _Item {
   }
 }
 
-abstract class _Item implements Item {
+abstract class _Item extends Item {
   const factory _Item(
       {required String id,
       required String name,
       String? quantity,
       required bool isCompleted,
       required ItemCategory category}) = _$_Item;
+  const _Item._() : super._();
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 

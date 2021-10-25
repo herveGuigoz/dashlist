@@ -4,9 +4,9 @@ import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../components/components.dart';
-import '../../../navigation/navigation.dart';
 import '../../../services/services.dart';
 import '../shopping.dart';
 
@@ -44,7 +44,7 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
   }
 
   Future<void> _createShopItem() async {
-    TheRouter.of(context).push('/add/${shoppingList.id}');
+    GoRouter.of(context).push('/add/${shoppingList.id}');
   }
 
   Future<void> onTitleEdited(String input) async {

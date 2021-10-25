@@ -1,0 +1,8 @@
+{
+  "@context":"\/contexts\/ShoppingList",
+  "@id":"\/shopping_lists\/8727e24f-5484-4ca5-9c7d-02bde0d0dcea",
+  "@type":"ShoppingList",
+  "id":"8727e24f-5484-4ca5-9c7d-02bde0d0dcea",
+  "name":"List 1",
+  "items":[]
+}

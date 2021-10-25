@@ -21,8 +21,9 @@ dependencies:
   flutter_riverpod: ^1.0.0-dev.7
   freezed_annotation: ^0.14.3
   gap: ^2.0.0
+  go_router: ^2.2.0
   http: ^0.13.3
-  mercure_client: ^1.0.0
+  mercure_client: ^1.0.1
   path_to_regexp: ^0.4.0
 
 dev_dependencies:

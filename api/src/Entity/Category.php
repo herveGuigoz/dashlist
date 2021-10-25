@@ -5,8 +5,6 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Doctrine\UuidGenerator;
-use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -17,11 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class Category
 {
-
-    // #[ORM\Id, ORM\GeneratedValue(strategy: 'CUSTOM'), ORM\CustomIdGenerator(class: UuidGenerator::class)]
-    // #[ORM\Column(type: 'uuid', unique: true)]
-    // private ?UuidInterface $id = null;
-
     #[ORM\Id]
     #[ORM\Column(type: 'string', length: 255, unique: true)]
     #[Assert\NotBlank]
@@ -32,11 +25,6 @@ class Category
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Groups(groups: ['category:read', 'category:write', 'item:read', 'list:read'])]
     private ?String $description;
-
-    // public function getId(): ?UuidInterface
-    // {
-    //     return $this->id;
-    // }
 
     public function getName(): ?string
     {
