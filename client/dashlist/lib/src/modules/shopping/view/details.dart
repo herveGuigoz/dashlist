@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path_to_regexp/path_to_regexp.dart';
 
 import '../../../components/components.dart';
 import '../../../services/services.dart';
@@ -15,6 +16,7 @@ class ShoppingListDetailsPage extends ConsumerWidget {
 
   /// Path: :id
   static const routeName = ':id';
+  static String path(String id) => pathToFunction(routeName).call({'id': id});
 
   final String id;
 
@@ -44,7 +46,7 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
   }
 
   Future<void> _createShopItem() async {
-    GoRouter.of(context).push('/add/${shoppingList.id}');
+    GoRouter.of(context).push(CreateItemPage.path(shoppingList.id));
   }
 
   Future<void> onTitleEdited(String input) async {
@@ -101,7 +103,6 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
                 ],
               ),
               SliverPadding(
-                // todo addaptive paddings
                 padding: const EdgeInsets.symmetric(horizontal: 21),
                 sliver: SliverShoppingListItems(
                   shoppingListId: shoppingList.id,
@@ -157,6 +158,7 @@ class ListItemsBuilderDelegate {
     final textTheme = Theme.of(context).textTheme.caption;
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(_categories[index], style: textTheme),

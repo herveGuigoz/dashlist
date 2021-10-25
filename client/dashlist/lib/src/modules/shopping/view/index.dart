@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:dashlist/src/modules/shopping/shopping.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -126,7 +127,9 @@ class ShoppingListCard extends ConsumerWidget {
       elevation: 0,
       child: InkWell(
         onTap: () {
-          GoRouter.of(context).go('/${shoppingList.id}');
+          GoRouter.of(context).go(
+            ShoppingListDetailsPage.path(shoppingList.id),
+          );
         },
         child: Padding(
           padding: const EdgeInsets.all(32),

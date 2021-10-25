@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:path_to_regexp/path_to_regexp.dart';
 
 import '../../../components/components.dart';
 import '../../../services/services.dart';
@@ -18,13 +19,11 @@ const _textStyle = TextStyle(
 const _padding = EdgeInsets.only(top: 32);
 
 class CreateItemPage extends ConsumerStatefulWidget {
-  const CreateItemPage({
-    Key? key,
-    required this.id,
-  }) : super(key: key);
+  const CreateItemPage({Key? key, required this.id}) : super(key: key);
 
   /// Path: /add/:id'
   static const routeName = '/add/:id';
+  static String path(String id) => pathToFunction(routeName).call({'id': id});
 
   /// The [ShoppingList] id
   final String id;
