@@ -5,6 +5,9 @@ include .env
 run: ## run flutter app
 	flutter run --dart-define BASE_URL=${BASE_URL} --target lib/main.dart
 
+run-release: ## run flutter app in release
+	flutter run --dart-define BASE_URL=${BASE_URL} --release --target lib/main.dart
+
 run-dev: ## run flutter app
 	flutter run --dart-define BASE_URL=localhost
 

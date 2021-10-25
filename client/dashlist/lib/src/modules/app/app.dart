@@ -18,6 +18,7 @@ class Main extends ConsumerWidget {
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
+      title: 'ShoppingList',
       restorationScopeId: 'app',
       localizationsDelegates: const [
         AppLocalizations.delegate,
