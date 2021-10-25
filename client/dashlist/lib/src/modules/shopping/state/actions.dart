@@ -13,11 +13,13 @@ class ShopingListActions {
 
   final ApiClient _client;
 
+  /// Create new [ShoppingList] ressource.
+  /// @Throw ApiException
   Future<void> createNewShoppingList(String name) async {
     await _client.post(shoppingListURL, body: {'name': name});
   }
 
-  /// Edit [ShoppingList] name ressource.
+  /// Edit [ShoppingList] name.
   /// @Throw ApiException
   Future<void> editShoppingListName(ShoppingList value, String name) async {
     await _client.put('$shoppingListURL/${value.id}', body: {'name': name});
@@ -38,9 +40,9 @@ class ShopingListActions {
     );
   }
 
-  /// Clear completed shopping list items.
+  /// Clear completed [Item].
   /// @Throw ApiException
   Future<void> deleteCompletedItems(ShoppingList shoppingList) async {
-    await _client.delete(shoppingListURL);
+    await _client.get('$shoppingListURL/${shoppingList.id}/clear');
   }
 }

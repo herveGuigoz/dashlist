@@ -17,15 +17,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Entity]
 #[ApiResource(
-    iri: 'https://schema.org/ListItem',
     collectionOperations: [
         'get',
-        'post' => ['messenger' => true, 'output' => false, 'status' => 201]
+        'post'
     ],
     itemOperations: [
         'get',
-        'put' => ['messenger' => true, 'output' => false, 'status' => 200]
+        'put'
     ],
+    mercure: true,
     denormalizationContext: ['groups' => ['item:write']],
     normalizationContext: ['groups' => ['item:read']],
 )]
@@ -36,9 +36,6 @@ class ListItem
     #[Groups(groups: ['item:read', 'list:read'])]
     private ?UuidInterface $id = null;
 
-    /**
-     * The name of the shop.
-     */
     #[ORM\Column(type: 'text')]
     #[ApiProperty(iri: 'http://schema.org/name')]
     #[Assert\NotBlank]

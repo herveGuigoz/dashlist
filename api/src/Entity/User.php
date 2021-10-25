@@ -22,9 +22,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email = null;
 
-    /**
-     * The hashed password.
-     */
     #[ORM\Column(type: 'string')]
     private ?string $password = null;
 

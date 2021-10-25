@@ -11,7 +11,7 @@ export 'package:http/http.dart' show Response;
 final httpClientProvider = Provider(
   (ref) => ApiClient(
     client: Client(),
-    baseURL: ref.read(configuration).baseUrl,
+    baseURL: ref.watch(configurationProvider).baseURL,
   ),
   name: 'httpClientProvider',
 );

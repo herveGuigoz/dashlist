@@ -6,6 +6,7 @@ namespace App\Service;
 
 use ApiPlatform\Core\Api\IriConverterInterface;
 use ApiPlatform\Core\Api\UrlGeneratorInterface;
+use ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mercure\HubInterface;
@@ -17,8 +18,6 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 class MercureService
 {
-    private const FORMAT = 'json';
-
     public function __construct(
         private IriConverterInterface $iriConverter,
         private SerializerInterface $serializer,
@@ -34,7 +33,7 @@ class MercureService
           $this->iriConverter->getIriFromItem($data, UrlGeneratorInterface::ABS_URL),
           $this->serializer->serialize(
               $data,
-              self::FORMAT,
+              ItemNormalizer::FORMAT,
           )
         );
 

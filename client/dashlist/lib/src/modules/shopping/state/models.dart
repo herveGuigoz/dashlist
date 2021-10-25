@@ -30,20 +30,42 @@ List<ItemCategory> categoriesListFromJson(String str) {
   ).toList();
 }
 
+abstract class Model {
+  const Model();
+
+  String get id;
+
+  bool match(Model other) => id == other.id;
+}
+
 @freezed
-class ShoppingList with _$ShoppingList {
+class ShoppingList extends Model with _$ShoppingList {
   const factory ShoppingList({
     required String id,
     required String name,
     required List<Item> items,
   }) = _ShoppingList;
 
+  const ShoppingList._();
+
   factory ShoppingList.fromJson(Map<String, dynamic> json) =>
       _$ShoppingListFromJson(json);
+
+  static String eventType = 'ShoppingList';
+
+  ShoppingList updateItemsWith(Item item) {
+    bool matchId(Item element) => element.id == item.id;
+
+    if (items.any(matchId)) {
+      return copyWith(items: items.map((e) => matchId(e) ? item : e).toList());
+    }
+
+    return copyWith(items: [...items, item]);
+  }
 }
 
 @freezed
-class Item with _$Item {
+class Item extends Model with _$Item {
   const factory Item({
     required String id,
     required String name,
@@ -52,7 +74,11 @@ class Item with _$Item {
     required ItemCategory category,
   }) = _Item;
 
+  const Item._();
+
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+
+  static String eventType = 'ListItem';
 }
 
 @freezed

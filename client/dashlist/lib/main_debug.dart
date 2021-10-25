@@ -18,12 +18,12 @@ Future<void> main() async {
 }
 
 final mercureStream = StreamProvider((ref) async* {
-  final config = ref.watch(configuration);
+  final configuration = ref.watch(configurationProvider);
   yield* Mercure(
-    url: ref.watch(configuration).mercureHub,
+    url: configuration.mercureHub,
     topics: [
-      'https://${config.baseUrl}/shopping_lists/{id}',
-      // 'https://${config.baseUrl}/list_items/{id}',
+      'https://${configuration.baseURL}/shopping_lists/{id}',
+      'https://${configuration.baseURL}/list_items/{id}',
     ],
   );
 });

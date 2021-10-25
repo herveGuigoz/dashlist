@@ -1,0 +1,16 @@
+{
+  "@context":"\/contexts\/ListItem",
+  "@id":"\/list_items\/2698795e-29e2-4668-8463-2f42946c5218",
+  "@type":"ListItem",
+  "id":"2698795e-29e2-4668-8463-2f42946c5218",
+  "name":"Item 1",
+  "quantity":null,
+  "isCompleted":true,
+  "shoppingList":"\/shopping_lists\/2207a034-d49e-4001-b03f-424277943fef",
+  "category":{
+    "@id":"\/categories\/Bio",
+    "@type":"Category",
+    "name":"Bio",
+    "description":null
+  }
+}
