@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:path_to_regexp/path_to_regexp.dart';
 
-import '../../../components/components.dart';
-import '../../../services/services.dart';
-import '../shopping.dart';
+import '../../../../components/components.dart';
+import '../../../../services/services.dart';
+import '../../shopping.dart';
 
 // todo theme
 const gray6 = Color(0xFF77757f);

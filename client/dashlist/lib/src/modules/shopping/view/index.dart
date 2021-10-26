@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:dashlist/src/modules/shopping/shopping.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,9 +9,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../../components/components.dart';
 import '../../../services/http/http.dart';
+import '../shopping.dart';
 import '../state/actions.dart';
 import '../state/providers.dart';
-import 'create_list.dart';
+import 'create.dart';
 
 const gray11 = Color(0xFFe8e8ea);
 

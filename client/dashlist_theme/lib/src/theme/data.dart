@@ -150,7 +150,3 @@ class _FallbackAppIconThemeData
     ),
   );
 }
-
-// class FallbackAppIconThemeData with _$AppIconThemeData  {}
-// https://www.twitch.tv/videos/1161496330
-// 01:12:37

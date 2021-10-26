@@ -6,9 +6,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../components/components.dart';
-import '../../../services/services.dart';
-import '../shopping.dart';
+import '../../../../components/components.dart';
+import '../../../../services/services.dart';
+import '../../shopping.dart';
 
 class ShoppingListDetailsPage extends ConsumerWidget {
   const ShoppingListDetailsPage({Key? key, required this.id}) : super(key: key);
