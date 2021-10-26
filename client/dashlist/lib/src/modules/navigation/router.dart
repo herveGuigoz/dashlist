@@ -43,11 +43,12 @@ final theRouter = Provider((ref) {
       GoRoute(
         path: CreateItemPage.routeName,
         name: 'CreateShoppingItemPage',
-        pageBuilder: (context, state) {
-          final uuid = state.params['id']!;
-          if (!ref.shoppingListExist(uuid)) {
-            // todo redirection
+        redirect: (state) {
+          if (!ref.shoppingListExist(state.params['id']!)) {
+            return ShoppingListPage.routeName;
           }
+        },
+        pageBuilder: (context, state) {
           return MaterialPage<void>(
             key: state.pageKey,
             child: CreateItemPage(id: state.params['id']!),
