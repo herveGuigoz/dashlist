@@ -127,9 +127,7 @@ class ShoppingListCard extends ConsumerWidget {
       elevation: 0,
       child: InkWell(
         onTap: () {
-          GoRouter.of(context).go(
-            ShoppingListDetailsPage.path(shoppingList.id),
-          );
+          GoRouter.of(context).go('/${shoppingList.id}');
         },
         child: Padding(
           padding: const EdgeInsets.all(32),

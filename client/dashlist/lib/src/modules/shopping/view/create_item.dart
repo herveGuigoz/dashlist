@@ -140,6 +140,8 @@ abstract class FormDelegate {
 
   List<TextInputFormatter> get inputFormatters => [];
 
+  int get maxLines => 1;
+
   bool validate(String input) => true;
 }
 
@@ -150,12 +152,7 @@ class NameFormDelegate extends FormDelegate {
   String get title => 'Quel nom pour cet article?';
 
   @override
-  List<TextInputFormatter> get inputFormatters {
-    return [
-      LengthLimitingTextInputFormatter(21),
-      FilteringTextInputFormatter.singleLineFormatter,
-    ];
-  }
+  int get maxLines => 2;
 
   @override
   bool validate(String input) => input.length > 2;
@@ -210,25 +207,27 @@ class _FormPageState extends State<FormPage> {
         color: gray6,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 32),
+        padding: const EdgeInsets.only(top: 32, left: 16, right: 16),
         child: Column(
           children: [
             Text(delegate.title),
             const Gap(8),
-            TextFormField(
-              controller: widget.textController,
-              focusNode: widget.focusNode,
-              autofocus: true,
-              keyboardType: delegate.keyboardType,
-              inputFormatters: delegate.inputFormatters,
-              style: const TextStyle(color: gray8, fontSize: 28),
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: delegate.hintText,
+            Expanded(
+              child: TextFormField(
+                controller: widget.textController,
+                focusNode: widget.focusNode,
+                autofocus: true,
+                keyboardType: delegate.keyboardType,
+                inputFormatters: delegate.inputFormatters,
+                maxLines: delegate.maxLines,
+                style: const TextStyle(color: gray8, fontSize: 28),
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: delegate.hintText,
+                ),
               ),
             ),
-            const Spacer(),
             ButtonBar(
               children: [
                 ValueListenableBuilder<TextEditingValue>(

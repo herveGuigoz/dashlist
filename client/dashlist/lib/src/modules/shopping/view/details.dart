@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path_to_regexp/path_to_regexp.dart';
 
 import '../../../components/components.dart';
 import '../../../services/services.dart';
@@ -14,9 +13,8 @@ import '../shopping.dart';
 class ShoppingListDetailsPage extends ConsumerWidget {
   const ShoppingListDetailsPage({Key? key, required this.id}) : super(key: key);
 
-  /// Path: :id
+  /// Path: /:id
   static const routeName = ':id';
-  static String path(String id) => pathToFunction(routeName).call({'id': id});
 
   final String id;
 
@@ -196,15 +194,23 @@ class CheckboxListItem extends ConsumerWidget {
       dense: true,
       contentPadding: EdgeInsets.zero,
       controlAffinity: ListTileControlAffinity.leading,
-      title: RichText(
-        text: TextSpan(
-          style: textStyle,
-          children: [
-            TextSpan(text: shopItem.quantity),
-            const TextSpan(text: ' '),
-            TextSpan(text: shopItem.name),
-          ],
-        ),
+      title: Row(
+        children: [
+          Expanded(
+            child: Text(
+              shopItem.name,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.subscript_sharp),
+              Text(shopItem.quantity ?? '0'),
+              Icon(Icons.add),
+            ],
+          )
+        ],
       ),
       value: isCompleted,
       onChanged: (completed) async {
