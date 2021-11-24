@@ -181,15 +181,6 @@ class CheckboxListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var textStyle = const TextStyle(fontSize: 15, color: gray5);
-    if (isCompleted) {
-      textStyle = const TextStyle(
-        fontSize: 15,
-        decoration: TextDecoration.lineThrough,
-        color: gray9,
-      );
-    }
-
     return CheckboxListTile(
       dense: true,
       contentPadding: EdgeInsets.zero,
@@ -202,14 +193,7 @@ class CheckboxListItem extends ConsumerWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.subscript_sharp),
-              Text(shopItem.quantity ?? '0'),
-              Icon(Icons.add),
-            ],
-          )
+          if (shopItem.quantity != null) Text(shopItem.quantity!),
         ],
       ),
       value: isCompleted,
