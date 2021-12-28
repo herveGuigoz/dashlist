@@ -1,18 +1,13 @@
 .SILENT:
 
-include .env
-
 run: ## run flutter app
-	flutter run --dart-define BASE_URL=${BASE_URL} --target lib/main.dart
+	flutter run --dart-define BASE_URL=localhost --target lib/main.dart
 
 run-release: ## run flutter app in release
-	flutter run --dart-define BASE_URL=${BASE_URL} --release --target lib/main.dart
-
-run-dev: ## run flutter app
-	flutter run --dart-define BASE_URL=localhost
+	flutter run --dart-define BASE_URL=herve-guigoz.com --release --target lib/main.dart
 
 run-debug: ## debug mercure in production
-	flutter run --dart-define BASE_URL=${BASE_URL} --device-id macos --target lib/main_debug.dart
+	flutter run --dart-define BASE_URL=herve-guigoz.com --device-id macos --target lib/main_debug.dart
 
 run-debug-dev: ## debug mercure in dev
 	flutter run --dart-define BASE_URL=localhost --device-id macos --target lib/main_debug.dart

@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 class DashlistTheme {
-  static const primaryColor = DashlistColors.blue8;
+  static const primaryColor = DashlistColors.teal500;
   static const double appBarHeight = 100;
   static const double buttonHeight = 55;
 
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
     primarySwatch: toMaterialColor(primaryColor),
-    scaffoldBackgroundColor: DashlistColors.gray12,
+    scaffoldBackgroundColor: DashlistColors.teal100,
     textTheme: _textTheme,
     appBarTheme: _appBarTheme,
     textButtonTheme: _textButtonTheme,
@@ -26,21 +26,20 @@ class DashlistTheme {
   static final _appBarTheme = AppBarTheme(
     titleTextStyle: _textTheme.headline5,
     systemOverlayStyle: SystemUiOverlayStyle.light,
-    backgroundColor: DashlistColors.gray12,
+    backgroundColor: DashlistColors.teal100,
     elevation: 0,
-    textTheme: _textTheme,
-    iconTheme: const IconThemeData(color: DashlistColors.gray1),
+    iconTheme: const IconThemeData(color: DashlistColors.gray900),
   );
 
   static final _textButtonTheme = TextButtonThemeData(
-    style: TextButton.styleFrom(primary: DashlistColors.gray1),
+    style: TextButton.styleFrom(primary: DashlistColors.gray900),
   );
 
   static final _outlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      primary: DashlistColors.gray1,
+      primary: DashlistColors.gray300,
       minimumSize: const Size(double.infinity, buttonHeight),
-      side: const BorderSide(color: DashlistColors.gray1),
+      side: const BorderSide(color: DashlistColors.gray500),
     ),
   );
 
@@ -52,7 +51,7 @@ class DashlistTheme {
   );
 
   static const _floatingActionButtonTheme = FloatingActionButtonThemeData(
-    backgroundColor: DashlistColors.gray12,
+    backgroundColor: DashlistColors.gray300,
     foregroundColor: primaryColor,
   );
 }
