@@ -22,7 +22,7 @@ reset: ## Reset all installation (use it with precaution!)
 	make install
 
 back-ssh: ## Connect to the container in ssh
-	docker exec -it cocook_php sh
+	docker exec -it dashlist_php sh
 
 back-db-schema-update: ## Update database schema
 	docker-compose exec cocook_php bin/console doctrine:migrations:migrate --no-interaction
