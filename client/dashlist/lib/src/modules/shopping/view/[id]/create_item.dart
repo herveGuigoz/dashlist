@@ -1,12 +1,11 @@
+import 'package:dashlist/src/components/components.dart';
+import 'package:dashlist/src/modules/shopping/shopping.dart';
+import 'package:dashlist/src/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:path_to_regexp/path_to_regexp.dart';
-
-import '../../../../components/components.dart';
-import '../../../../services/services.dart';
-import '../../shopping.dart';
 
 // todo theme
 const gray6 = Color(0xFF77757f);
@@ -63,12 +62,14 @@ class _CreateShoppingItemPageState extends ConsumerState<CreateItemPage> {
   Future<void> _submitForm(ItemCategory category) async {
     try {
       final service = ref.read(shopActions);
-      await service.createShopItem(ShopItemValueObject(
-        shoppingListId: widget.id,
-        name: _nameController.value.text.trim(),
-        quantity: _quantityController.value.text.trim(),
-        category: category,
-      ));
+      await service.createShopItem(
+        ShopItemValueObject(
+          shoppingListId: widget.id,
+          name: _nameController.value.text.trim(),
+          quantity: _quantityController.value.text.trim(),
+          category: category,
+        ),
+      );
     } on ApiException catch (exception) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(exception.reason)),
@@ -113,7 +114,7 @@ class _CreateShoppingItemPageState extends ConsumerState<CreateItemPage> {
         ),
       ),
       loading: () => const Loader(),
-      error: (error, _) => Error(error: error),
+      error: (error, _) => const ErrorLayout(),
     );
   }
 

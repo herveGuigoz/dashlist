@@ -1,20 +1,20 @@
 import 'dart:io';
 
+import 'package:dashlist/bootstrap.dart';
+import 'package:dashlist/src/components/components.dart';
+import 'package:dashlist/src/modules/app/configuration.dart';
+import 'package:dashlist/src/services/http/handshake_override.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_json_view/flutter_json_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
 
-import 'bootstrap.dart';
-import 'src/components/components.dart';
-import 'src/modules/app/configuration.dart';
-import 'src/services/http/handshake_override.dart';
-
-Future<void> main() async {
-  HttpOverrides.runWithHttpOverrides(() {
-    bootstrap(() => const ProviderScope(child: Debug()));
-  }, HandshakeOverride());
+Future<void> main() {
+  return HttpOverrides.runWithHttpOverrides(
+    () => bootstrap(() => const ProviderScope(child: Debug())),
+    HandshakeOverride(),
+  );
 }
 
 final mercureStream = StreamProvider((ref) async* {

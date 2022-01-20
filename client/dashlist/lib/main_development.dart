@@ -1,13 +1,13 @@
 import 'dart:io';
 
+import 'package:dashlist/bootstrap.dart';
+import 'package:dashlist/src/modules/app/app.dart';
+import 'package:dashlist/src/services/http/handshake_override.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'bootstrap.dart';
-import 'src/modules/app/app.dart';
-import 'src/services/http/handshake_override.dart';
-
-Future<void> main() async {
-  HttpOverrides.runWithHttpOverrides(() {
-    bootstrap(() => const ProviderScope(child: Main()));
-  }, HandshakeOverride());
+Future<void> main() {
+  return HttpOverrides.runWithHttpOverrides(
+    () => bootstrap(() => const ProviderScope(child: Main())),
+    HandshakeOverride(),
+  );
 }

@@ -1,11 +1,11 @@
+import 'package:dashlist/src/modules/app/configuration.dart';
+import 'package:dashlist/src/modules/shopping/state/controller.dart';
+import 'package:dashlist/src/modules/shopping/state/models/models.dart';
+import 'package:dashlist/src/modules/shopping/state/subscriber.dart';
+import 'package:dashlist/src/services/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mercure_client/mercure_client.dart';
-
-import '../../../services/services.dart';
-import '../../app/configuration.dart';
-import 'controller.dart';
-import 'models.dart';
 
 /// '/shopping_lists'
 const shoppingListURL = '/shopping_lists';
@@ -32,7 +32,7 @@ final shoppingListCollection = FutureProvider((ref) async {
 
   final response = await client.get(shoppingListURL);
 
-  return shoppingListFromJson(response.body);
+  return ShoppingListCodec.decodeResponse(response);
 });
 
 /// State provider of [ShoppingList] ressources.
@@ -40,10 +40,14 @@ final shoppingListCollection = FutureProvider((ref) async {
 final shops = StateNotifierProvider<ShoppingListController, List<ShoppingList>>(
   (ref) {
     final response = ref.watch(shoppingListCollection);
+    final messenger = ref.watch(messageBus);
+    final mercure = MercureSubscriber(ref.read(mercureProvider), messenger);
+
+    ref.onDispose(mercure.dispose);
 
     return response.maybeWhen(
       data: (items) {
-        return ShoppingListController(ref.watch(mercureProvider), items);
+        return ShoppingListController(mercure, messenger, items);
       },
       orElse: () {
         throw Exception('provider shoppingListCollection is not initialized');
@@ -77,5 +81,5 @@ final shopItems = Provider.autoDispose.family<Map<String, List<Item>>, String>(
 /// Retrieves the collection of [Category] resources.
 final categoriesProvider = FutureProvider<List<ItemCategory>>((ref) async {
   final response = await ref.read(httpClientProvider).get('/categories');
-  return categoriesListFromJson(response.body);
+  return CategoryCodec.decodeResponse(response);
 });

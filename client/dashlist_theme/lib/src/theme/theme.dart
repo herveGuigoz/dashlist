@@ -50,7 +50,7 @@ class AppThemeData {
     systemOverlayStyle: SystemUiOverlayStyle.light,
     backgroundColor: DashlistColors.gray12,
     elevation: 0,
-    textTheme: _textTheme,
+    toolbarTextStyle: _textTheme.headline5,
     iconTheme: const IconThemeData(color: DashlistColors.gray1),
   );
 

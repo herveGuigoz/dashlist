@@ -1,62 +1,58 @@
 import 'dart:async';
-import 'dart:convert';
 
+import 'package:dashlist/src/modules/shopping/state/models/models.dart';
+import 'package:dashlist/src/modules/shopping/state/subscriber.dart';
+import 'package:dashlist/src/services/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mercure_client/mercure_client.dart';
-
-import 'models.dart';
 
 typedef Json = Map<String, dynamic>;
 
 /// State controller of [ShoppingList] ressources.
 /// Listen for Mercure events in order to notify listener on updates.
 class ShoppingListController extends ListNotifier<ShoppingList> {
-  ShoppingListController(Mercure mercure, List<ShoppingList> items)
-      : super(items) {
-    _subscription = mercure.listen(_onEvent);
+  ShoppingListController(
+    this.mercureSubscriber,
+    MessageBus bus,
+    List<ShoppingList> items,
+  ) : super(items) {
+    _eventBusSubscription = bus.onEvent().listen(onBusEvent);
   }
 
-  late final StreamSubscription _subscription;
+  final MercureSubscriber mercureSubscriber;
+  late final StreamSubscription _eventBusSubscription;
 
-  void _onEvent(MercureEvent event) {
-    final json = jsonDecode(event.data) as Json;
-
-    final eventType = json['@type'] as String?;
-
-    if (eventType == ShoppingList.eventType) {
-      return mapListEventToState(json);
-    }
-
-    if (eventType == Item.eventType) {
-      return mapItemEventToState(json);
-    }
+  void onBusEvent(BusEvent event) {
+    event.when(
+      shoppingList: update,
+      shoppingListDeleted: delete,
+      item: updateListItems,
+    );
   }
 
-  /// Update state with [ShoppingList] event from SSE.
-  void mapListEventToState(Json json) {
-    // For delete event, json contains only the id.
-    if (json.length > 1) {
-      updateWith(ShoppingList.fromJson(json));
-    } else if (json.containsKey('id')) {
-      remove(state.firstWhere((e) => e.id == json['id'] as String));
-    }
-  }
+  void updateListItems(Item value) {
+    // todo: check if list exist
+    var list = state.firstWhere((e) => e.id == value.shoppingList);
+    final itemExist = list.items.any((item) => item.id == value.id);
 
-  /// Update state with [Item] event from SSE.
-  void mapItemEventToState(Json json) {
-    final shoppingListId = json.getshoppingListId();
-    bool matchId(ShoppingList list) => list.id == shoppingListId;
-
-    if (state.any(matchId)) {
-      final item = Item.fromJson(json);
-      updateWith(state.firstWhere(matchId).updateItemsWith(item));
+    if (itemExist) {
+      list = list.copyWith(
+        items: [
+          for (final item in list.items)
+            if (value.id == item.id) value else item
+        ],
+      );
+    } else {
+      list = list.copyWith(items: [...list.items, value]);
     }
+
+    update(list);
   }
 
   @override
   void dispose() {
-    _subscription.cancel();
+    mercureSubscriber.dispose();
+    _eventBusSubscription.cancel();
     super.dispose();
   }
 }
@@ -71,29 +67,27 @@ abstract class ListNotifier<T extends Model> extends StateNotifier<List<T>> {
   }
 
   @protected
-  void remove(T value) {
-    state = state.where((item) => item.match(value)).toList();
+  void delete(String id) {
+    state = [
+      for (final item in state)
+        if (id != item.id) item
+    ];
   }
 
   @protected
   void replace(T value) {
-    state = state.map((item) => item.match(value) ? value : item).toList();
+    state = [
+      for (final item in state)
+        if (item.match(value)) value else item
+    ];
   }
 
   @protected
-  void updateWith(T value) {
+  void update(T value) {
     if (state.any((item) => item.match(value))) {
       replace(value);
     } else {
       add(value);
-    }
-  }
-}
-
-extension on Json {
-  String? getshoppingListId({String key = 'shoppingList'}) {
-    if (containsKey(key)) {
-      return RegExp(r'.+\/(.+)').firstMatch(this[key] as String)?.group(1);
     }
   }
 }

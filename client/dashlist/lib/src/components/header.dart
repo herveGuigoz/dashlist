@@ -28,47 +28,50 @@ class FlexibleHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return LayoutBuilder(builder: (context, index) {
-      final s = context
-          .dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>()!;
-      final delta = s.maxExtent - s.minExtent;
-      // 0.0 -> Expanded
-      // 1.0 -> Collapsed to toolbar
-      final t = (1.0 - (s.currentExtent - s.minExtent) / delta).clamp(0.0, 1.0);
+    return LayoutBuilder(
+      builder: (context, index) {
+        final s = context
+            .dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>()!;
+        final delta = s.maxExtent - s.minExtent;
+        // 0.0 -> Expanded
+        // 1.0 -> Collapsed to toolbar
+        final t =
+            (1.0 - (s.currentExtent - s.minExtent) / delta).clamp(0.0, 1.0);
 
-      final scaleValue = Tween<double>(begin: 1.5, end: 1).transform(t);
+        final scaleValue = Tween<double>(begin: 1.5, end: 1).transform(t);
 
-      final paddingLeft = Tween<double>(
-        begin: padding.left,
-        end: padding.left + 32,
-      ).transform(t);
+        final paddingLeft = Tween<double>(
+          begin: padding.left,
+          end: padding.left + 32,
+        ).transform(t);
 
-      final paddingBottom = Tween<double>(
-        begin: padding.bottom + 8,
-        end: padding.bottom,
-      ).transform(t);
+        final paddingBottom = Tween<double>(
+          begin: padding.bottom + 8,
+          end: padding.bottom,
+        ).transform(t);
 
-      final scaleTransform = Matrix4.identity()
-        ..scale(scaleValue, scaleValue, 1);
+        final scaleTransform = Matrix4.identity()
+          ..scale(scaleValue, scaleValue, 1);
 
-      return DefaultTextStyle(
-        style: textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
-        child: ClipRect(
-          child: Padding(
-            padding: EdgeInsetsDirectional.only(
-              start: paddingLeft,
-              bottom: paddingBottom,
-            ),
-            child: Transform(
-              transform: scaleTransform,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: title,
+        return DefaultTextStyle(
+          style: textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),
+          child: ClipRect(
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(
+                start: paddingLeft,
+                bottom: paddingBottom,
+              ),
+              child: Transform(
+                transform: scaleTransform,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: title,
+                ),
               ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

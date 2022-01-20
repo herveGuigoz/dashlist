@@ -1,12 +1,11 @@
+import 'package:dashlist/src/modules/navigation/navigation.dart';
+import 'package:dashlist/src/modules/settings/settings_controller.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../navigation/navigation.dart';
-import '../settings/settings_controller.dart';
 
 class Main extends ConsumerWidget {
   const Main({Key? key}) : super(key: key);

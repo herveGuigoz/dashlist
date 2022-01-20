@@ -1,7 +1,6 @@
+import 'package:dashlist/src/modules/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'settings_controller.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
