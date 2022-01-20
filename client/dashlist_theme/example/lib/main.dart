@@ -7,7 +7,7 @@ import 'colors.dart';
 void main() {
   runApp(
     const AppTheme(
-      appThemeData: AppThemeData(),
+      appThemeData: DashlistThemeData(),
       child: MaterialApp(
         home: GalleryLayout(),
       ),

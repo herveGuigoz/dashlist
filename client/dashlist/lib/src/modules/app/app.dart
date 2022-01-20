@@ -32,7 +32,7 @@ class Main extends ConsumerWidget {
       onGenerateTitle: (context) {
         return AppLocalizations.of(context)!.appTitle;
       },
-      theme: DashlistTheme.light,
+      theme: AppThemeData.light,
       darkTheme: ThemeData.dark(),
       themeMode: ref.watch(settingsRef),
     );

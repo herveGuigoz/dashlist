@@ -9,19 +9,19 @@ import 'package:path_icon/path_icon.dart';
 part 'data.freezed.dart';
 
 @freezed
-class AppThemeData with _$AppThemeData {
-  const factory AppThemeData({
-    @Default(AppThemeColorData()) AppThemeColorData colors,
-    @Default(AppThemeTextStyleData()) AppThemeTextStyleData textStyles,
-    @Default(AppThemeEdgeInsetsData()) AppThemeEdgeInsetsData edgeInsets,
-    @Default(AppThemeBorderRadiusData()) AppThemeBorderRadiusData borderRadius,
-    @Default(_FallbackAppIconThemeData()) AppIconThemeData icons,
-  }) = _AppThemeData;
+class DashlistThemeData with _$DashlistThemeData {
+  const factory DashlistThemeData({
+    @Default(DashlistColorData()) DashlistColorData colors,
+    @Default(DashlistTextStyleData()) DashlistTextStyleData textStyles,
+    @Default(DashlistEdgeInsetsData()) DashlistEdgeInsetsData edgeInsets,
+    @Default(DashlistRadiusData()) DashlistRadiusData borderRadius,
+    @Default(_FallbackIconThemeData()) DashlistIconThemeData icons,
+  }) = _DashlistThemeData;
 }
 
 @freezed
-class AppThemeColorData with _$AppThemeColorData {
-  const factory AppThemeColorData({
+class DashlistColorData with _$DashlistColorData {
+  const factory DashlistColorData({
     @Default(Color(0xFF4FD1BA)) Color accent1,
     @Default(Color(0xFF3AA995)) Color accent2,
     @Default(Color(0xFF363360)) Color foreground1,
@@ -32,12 +32,12 @@ class AppThemeColorData with _$AppThemeColorData {
     @Default(Color(0xFFEFEFF9)) Color background3,
     @Default(Color(0xFFE96980)) Color error,
     @Default(Color(0xFFEB7330)) Color warning,
-  }) = _AppThemeColorData;
+  }) = _DashlistColorData;
 }
 
 @freezed
-class AppThemeTextStyleData with _$AppThemeTextStyleData {
-  const factory AppThemeTextStyleData({
+class DashlistTextStyleData with _$DashlistTextStyleData {
+  const factory DashlistTextStyleData({
     @Default(TextStyle(
       fontFamily: 'Poppins',
       fontSize: 36,
@@ -95,21 +95,21 @@ class AppThemeTextStyleData with _$AppThemeTextStyleData {
       decoration: TextDecoration.none,
     ))
         paragraph3Bold,
-  }) = _AppThemeTextStyleData;
+  }) = _DashlistTextStyleData;
 }
 
 @freezed
-class AppThemeEdgeInsetsData with _$AppThemeEdgeInsetsData {
-  const factory AppThemeEdgeInsetsData({
+class DashlistEdgeInsetsData with _$DashlistEdgeInsetsData {
+  const factory DashlistEdgeInsetsData({
     @Default(EdgeInsets.all(4)) EdgeInsets small,
     @Default(EdgeInsets.all(12)) EdgeInsets regular,
     @Default(EdgeInsets.all(24)) EdgeInsets large,
-  }) = _AppThemeEdgeInsetsData;
+  }) = _DashlistEdgeInsetsData;
 }
 
 @freezed
-class AppThemeBorderRadiusData with _$AppThemeBorderRadiusData {
-  const factory AppThemeBorderRadiusData({
+class DashlistRadiusData with _$DashlistRadiusData {
+  const factory DashlistRadiusData({
     @Default(SmoothBorderRadius.all(
       SmoothRadius(cornerRadius: 4, cornerSmoothing: 1),
     ))
@@ -122,28 +122,32 @@ class AppThemeBorderRadiusData with _$AppThemeBorderRadiusData {
       SmoothRadius(cornerRadius: 24, cornerSmoothing: 1),
     ))
         SmoothBorderRadius large,
-  }) = _AppThemeBorderRadiusData;
+  }) = _DashlistRadiusData;
 }
 
 @freezed
-class AppIconData with _$AppIconData {
-  const factory AppIconData({required PathIconData pathIcon}) = _AppIconData;
+class DashlistIconData with _$DashlistIconData {
+  const factory DashlistIconData({
+    required PathIconData pathIcon,
+  }) = _DashlistIconData;
 }
 
 @freezed
-class AppIconThemeData with _$AppIconThemeData {
-  const factory AppIconThemeData({
-    required AppIconData add,
-  }) = _AppIconThemeData;
+class DashlistIconThemeData with _$DashlistIconThemeData {
+  const factory DashlistIconThemeData({
+    required DashlistIconData add,
+  }) = _DashlistIconThemeData;
 }
 
-class _FallbackAppIconThemeData
-    with _$AppIconThemeData
-    implements AppIconThemeData {
-  const _FallbackAppIconThemeData();
+class _FallbackIconThemeData
+    with _$DashlistIconThemeData
+    implements DashlistIconThemeData {
+  const _FallbackIconThemeData();
+
   @override
-  AppIconData get add => _add;
-  static final _add = AppIconData(
+  DashlistIconData get add => _add;
+
+  static final _add = DashlistIconData(
     pathIcon: PathIconData.fromData(
       'M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 3.5C7.30558 3.5 3.5 7.30558 3.5 12C3.5 16.6944 7.30558 20.5 12 20.5C16.6944 20.5 20.5 16.6944 20.5 12C20.5 7.30558 16.6944 3.5 12 3.5ZM12 7C12.4142 7 12.75 7.33579 12.75 7.75V11.25H16.25C16.6642 11.25 17 11.5858 17 12C17 12.4142 16.6642 12.75 16.25 12.75H12.75V16.25C12.75 16.6642 12.4142 17 12 17C11.5858 17 11.25 16.6642 11.25 16.25V12.75H7.75C7.33579 12.75 7 12.4142 7 12C7 11.5858 7.33579 11.25 7.75 11.25H11.25V7.75C11.25 7.33579 11.5858 7 12 7Z',
       viewBox: const Rect.fromLTWH(0, 0, 24, 24),

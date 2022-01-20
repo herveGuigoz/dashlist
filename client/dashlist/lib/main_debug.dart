@@ -36,7 +36,7 @@ class Debug extends ConsumerWidget {
     final stream = ref.watch(mercureStream);
 
     return MaterialApp(
-      theme: DashlistTheme.light,
+      theme: AppThemeData.light,
       home: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(32),
