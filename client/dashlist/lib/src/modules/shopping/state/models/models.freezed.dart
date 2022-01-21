@@ -13,10 +13,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ShoppingList _$ShoppingListFromJson(Map<String, dynamic> json) {
-  return _ShoppingList.fromJson(json);
-}
-
 /// @nodoc
 class _$ShoppingListTearOff {
   const _$ShoppingListTearOff();
@@ -29,10 +25,6 @@ class _$ShoppingListTearOff {
       items: items,
     );
   }
-
-  ShoppingList fromJson(Map<String, Object> json) {
-    return ShoppingList.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -44,7 +36,6 @@ mixin _$ShoppingList {
   String get name => throw _privateConstructorUsedError;
   List<Item> get items => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ShoppingListCopyWith<ShoppingList> get copyWith =>
       throw _privateConstructorUsedError;
@@ -133,14 +124,11 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
       {required this.id, required this.name, required this.items})
       : super._();
-
-  factory _$_ShoppingList.fromJson(Map<String, dynamic> json) =>
-      _$$_ShoppingListFromJson(json);
 
   @override
   final String id;
@@ -177,11 +165,6 @@ class _$_ShoppingList extends _ShoppingList {
   @override
   _$ShoppingListCopyWith<_ShoppingList> get copyWith =>
       __$ShoppingListCopyWithImpl<_ShoppingList>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ShoppingListToJson(this);
-  }
 }
 
 abstract class _ShoppingList extends ShoppingList {
@@ -190,9 +173,6 @@ abstract class _ShoppingList extends ShoppingList {
       required String name,
       required List<Item> items}) = _$_ShoppingList;
   const _ShoppingList._() : super._();
-
-  factory _ShoppingList.fromJson(Map<String, dynamic> json) =
-      _$_ShoppingList.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;
@@ -206,10 +186,6 @@ abstract class _ShoppingList extends ShoppingList {
       throw _privateConstructorUsedError;
 }
 
-Item _$ItemFromJson(Map<String, dynamic> json) {
-  return _Item.fromJson(json);
-}
-
 /// @nodoc
 class _$ItemTearOff {
   const _$ItemTearOff();
@@ -219,18 +195,16 @@ class _$ItemTearOff {
       required String name,
       String? quantity,
       required bool isCompleted,
-      required ItemCategory category}) {
+      required ItemCategory category,
+      required String shoppingList}) {
     return _Item(
       id: id,
       name: name,
       quantity: quantity,
       isCompleted: isCompleted,
       category: category,
+      shoppingList: shoppingList,
     );
-  }
-
-  Item fromJson(Map<String, Object> json) {
-    return Item.fromJson(json);
   }
 }
 
@@ -244,8 +218,8 @@ mixin _$Item {
   String? get quantity => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
   ItemCategory get category => throw _privateConstructorUsedError;
+  String get shoppingList => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
 }
@@ -259,7 +233,8 @@ abstract class $ItemCopyWith<$Res> {
       String name,
       String? quantity,
       bool isCompleted,
-      ItemCategory category});
+      ItemCategory category,
+      String shoppingList});
 
   $ItemCategoryCopyWith<$Res> get category;
 }
@@ -279,6 +254,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? quantity = freezed,
     Object? isCompleted = freezed,
     Object? category = freezed,
+    Object? shoppingList = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -301,6 +277,10 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ItemCategory,
+      shoppingList: shoppingList == freezed
+          ? _value.shoppingList
+          : shoppingList // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -322,7 +302,8 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       String name,
       String? quantity,
       bool isCompleted,
-      ItemCategory category});
+      ItemCategory category,
+      String shoppingList});
 
   @override
   $ItemCategoryCopyWith<$Res> get category;
@@ -344,6 +325,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? quantity = freezed,
     Object? isCompleted = freezed,
     Object? category = freezed,
+    Object? shoppingList = freezed,
   }) {
     return _then(_Item(
       id: id == freezed
@@ -366,22 +348,25 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ItemCategory,
+      shoppingList: shoppingList == freezed
+          ? _value.shoppingList
+          : shoppingList // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Item extends _Item {
   const _$_Item(
       {required this.id,
       required this.name,
       this.quantity,
       required this.isCompleted,
-      required this.category})
+      required this.category,
+      required this.shoppingList})
       : super._();
-
-  factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
   @override
   final String id;
@@ -393,10 +378,12 @@ class _$_Item extends _Item {
   final bool isCompleted;
   @override
   final ItemCategory category;
+  @override
+  final String shoppingList;
 
   @override
   String toString() {
-    return 'Item(id: $id, name: $name, quantity: $quantity, isCompleted: $isCompleted, category: $category)';
+    return 'Item(id: $id, name: $name, quantity: $quantity, isCompleted: $isCompleted, category: $category, shoppingList: $shoppingList)';
   }
 
   @override
@@ -415,7 +402,10 @@ class _$_Item extends _Item {
                     .equals(other.isCompleted, isCompleted)) &&
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
-                    .equals(other.category, category)));
+                    .equals(other.category, category)) &&
+            (identical(other.shoppingList, shoppingList) ||
+                const DeepCollectionEquality()
+                    .equals(other.shoppingList, shoppingList)));
   }
 
   @override
@@ -425,17 +415,13 @@ class _$_Item extends _Item {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(isCompleted) ^
-      const DeepCollectionEquality().hash(category);
+      const DeepCollectionEquality().hash(category) ^
+      const DeepCollectionEquality().hash(shoppingList);
 
   @JsonKey(ignore: true)
   @override
   _$ItemCopyWith<_Item> get copyWith =>
       __$ItemCopyWithImpl<_Item>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ItemToJson(this);
-  }
 }
 
 abstract class _Item extends Item {
@@ -444,10 +430,9 @@ abstract class _Item extends Item {
       required String name,
       String? quantity,
       required bool isCompleted,
-      required ItemCategory category}) = _$_Item;
+      required ItemCategory category,
+      required String shoppingList}) = _$_Item;
   const _Item._() : super._();
-
-  factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;
@@ -459,6 +444,8 @@ abstract class _Item extends Item {
   bool get isCompleted => throw _privateConstructorUsedError;
   @override
   ItemCategory get category => throw _privateConstructorUsedError;
+  @override
+  String get shoppingList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;

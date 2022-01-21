@@ -1,14 +1,12 @@
 import 'dart:math' as math;
 
+import 'package:dashlist/src/components/components.dart';
+import 'package:dashlist/src/modules/shopping/shopping.dart';
+import 'package:dashlist/src/services/services.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../components/components.dart';
-import '../../../../services/services.dart';
-import '../../shopping.dart';
 
 class ShoppingListDetailsPage extends ConsumerWidget {
   const ShoppingListDetailsPage({Key? key, required this.id}) : super(key: key);
@@ -194,23 +192,16 @@ class CheckboxListItem extends ConsumerWidget {
       dense: true,
       contentPadding: EdgeInsets.zero,
       controlAffinity: ListTileControlAffinity.leading,
-      title: Row(
-        children: [
-          Expanded(
-            child: Text(
-              shopItem.name,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.subscript_sharp),
-              Text(shopItem.quantity ?? '0'),
-              Icon(Icons.add),
-            ],
-          )
-        ],
+      title: RichText(
+        overflow: TextOverflow.ellipsis,
+        text: TextSpan(
+          style: textStyle,
+          children: [
+            if (shopItem.quantity != null) TextSpan(text: shopItem.quantity),
+            const TextSpan(text: ' '),
+            TextSpan(text: shopItem.name)
+          ],
+        ),
       ),
       value: isCompleted,
       onChanged: (completed) async {

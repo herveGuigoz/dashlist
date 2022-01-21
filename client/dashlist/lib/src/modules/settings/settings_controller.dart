@@ -1,7 +1,6 @@
+import 'package:dashlist/src/modules/settings/settings_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'settings_service.dart';
 
 final settingsRef = StateNotifierProvider<SettingsController, ThemeMode>(
   (ref) => SettingsController(SettingsService()),

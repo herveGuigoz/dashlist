@@ -1,18 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:dashlist/src/components/components.dart';
+import 'package:dashlist/src/modules/shopping/shopping.dart';
+import 'package:dashlist/src/modules/shopping/view/create.dart';
+import 'package:dashlist/src/services/http/http.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../components/components.dart';
-import '../../../services/http/http.dart';
-import '../shopping.dart';
-import '../state/actions.dart';
-import '../state/providers.dart';
-import 'create.dart';
 
 const gray11 = Color(0xFFe8e8ea);
 
@@ -28,9 +25,9 @@ class ShoppingListPage extends ConsumerWidget {
     final asyncList = ref.watch(shoppingListCollection);
 
     return asyncList.when(
-      data: (_) => const ShoppingListView(),
       loading: () => const Loader(),
-      error: (error, _) => Error(error: error),
+      error: (error, _) => const ErrorLayout(),
+      data: (_) => const ShoppingListView(),
     );
   }
 }
@@ -43,24 +40,26 @@ class ShoppingListView extends ConsumerWidget {
     final items = ref.watch(shops);
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          const _AppBar(),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => ProviderScope(
-                  overrides: [
-                    scopedShoppingList.overrideWithValue(items[index])
-                  ],
-                  child: const ShoppingListCard(),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            const _AppBar(),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => ProviderScope(
+                    overrides: [
+                      scopedShoppingList.overrideWithValue(items[index])
+                    ],
+                    child: const ShoppingListCard(),
+                  ),
+                  childCount: items.length,
                 ),
-                childCount: items.length,
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -93,19 +92,19 @@ class _AppBarState extends ConsumerState<_AppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: FlexibleHeader.kExpandedHeight,
-      flexibleSpace: FlexibleHeader(
-        title: Row(
-          children: [
-            const Text('Listes de courses'),
-            IconButton(
-              onPressed: _createNewShoppingList,
-              icon: DashListIcons.addCircle,
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+      pinned: true,
+      centerTitle: true,
+      expandedHeight: 90,
+      flexibleSpace: const FlexibleHeader(
+        title: Text('Listes de courses'),
+        // padding: EdgeInsets.symmetric(horizontal: 32),
       ),
+      actions: [
+        IconButton(
+          onPressed: _createNewShoppingList,
+          icon: DashListIcons.addCircle,
+        ),
+      ],
     );
   }
 }
@@ -117,34 +116,55 @@ class ShoppingListCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final shoppingList = ref.watch(scopedShoppingList);
 
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      color: gray11,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: const BorderSide(color: gray11),
+    return Slidable(
+      key: ValueKey('_Slidable_${shoppingList.id}_'),
+      endActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (_) {
+              ref.read(shopActions).deleteShoppingList(shoppingList);
+            },
+            backgroundColor: Colors.transparent,
+            foregroundColor: DashlistColors.gray6,
+            icon: Icons.delete,
+          ),
+        ],
       ),
-      elevation: 0,
-      child: InkWell(
-        onTap: () {
-          GoRouter.of(context).go('/${shoppingList.id}');
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: gray11),
+        ),
+        elevation: 0,
+        child: InkWell(
+          onTap: () {
+            GoRouter.of(context).go('/${shoppingList.id}');
+          },
+          child: Row(
             children: [
-              Text(
-                shoppingList.name,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      shoppingList.name,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(8),
+                    Text(
+                      '${shoppingList.items.length} Articles',
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                  ],
                 ),
-              ),
-              const Gap(8),
-              Text(
-                '${shoppingList.items.length} Articles',
-                style: Theme.of(context).textTheme.caption,
               ),
             ],
           ),

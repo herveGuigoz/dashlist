@@ -1,15 +1,13 @@
+import 'package:dashlist/src/modules/navigation/pages.dart';
+import 'package:dashlist/src/modules/navigation/transitions.dart';
+import 'package:dashlist/src/modules/settings/settings.dart';
+import 'package:dashlist/src/modules/shopping/shopping.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../modules/settings/settings.dart';
-import '../../modules/shopping/shopping.dart';
-import 'pages.dart';
-import 'transitions.dart';
-
 final theRouter = Provider((ref) {
   return GoRouter(
-    initialLocation: ShoppingListPage.routeName,
     errorPageBuilder: (context, state) => NoTransitionPage<void>(
       child: DefaultNotFoundPage(path: state.location),
     ),

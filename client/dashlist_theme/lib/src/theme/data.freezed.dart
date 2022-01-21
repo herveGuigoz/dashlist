@@ -14,16 +14,16 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AppThemeDataTearOff {
-  const _$AppThemeDataTearOff();
+class _$DashlistThemeDataTearOff {
+  const _$DashlistThemeDataTearOff();
 
-  _AppThemeData call(
-      {AppThemeColorData colors = const AppThemeColorData(),
-      AppThemeTextStyleData textStyles = const AppThemeTextStyleData(),
-      AppThemeEdgeInsetsData edgeInsets = const AppThemeEdgeInsetsData(),
-      AppThemeBorderRadiusData borderRadius = const AppThemeBorderRadiusData(),
-      AppIconThemeData icons = const _FallbackAppIconThemeData()}) {
-    return _AppThemeData(
+  _DashlistThemeData call(
+      {DashlistColorData colors = const DashlistColorData(),
+      DashlistTextStyleData textStyles = const DashlistTextStyleData(),
+      DashlistEdgeInsetsData edgeInsets = const DashlistEdgeInsetsData(),
+      DashlistRadiusData borderRadius = const DashlistRadiusData(),
+      DashlistIconThemeData icons = const _FallbackIconThemeData()}) {
+    return _DashlistThemeData(
       colors: colors,
       textStyles: textStyles,
       edgeInsets: edgeInsets,
@@ -34,48 +34,48 @@ class _$AppThemeDataTearOff {
 }
 
 /// @nodoc
-const $AppThemeData = _$AppThemeDataTearOff();
+const $DashlistThemeData = _$DashlistThemeDataTearOff();
 
 /// @nodoc
-mixin _$AppThemeData {
-  AppThemeColorData get colors => throw _privateConstructorUsedError;
-  AppThemeTextStyleData get textStyles => throw _privateConstructorUsedError;
-  AppThemeEdgeInsetsData get edgeInsets => throw _privateConstructorUsedError;
-  AppThemeBorderRadiusData get borderRadius =>
-      throw _privateConstructorUsedError;
-  AppIconThemeData get icons => throw _privateConstructorUsedError;
+mixin _$DashlistThemeData {
+  DashlistColorData get colors => throw _privateConstructorUsedError;
+  DashlistTextStyleData get textStyles => throw _privateConstructorUsedError;
+  DashlistEdgeInsetsData get edgeInsets => throw _privateConstructorUsedError;
+  DashlistRadiusData get borderRadius => throw _privateConstructorUsedError;
+  DashlistIconThemeData get icons => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppThemeDataCopyWith<AppThemeData> get copyWith =>
+  $DashlistThemeDataCopyWith<DashlistThemeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppThemeDataCopyWith<$Res> {
-  factory $AppThemeDataCopyWith(
-          AppThemeData value, $Res Function(AppThemeData) then) =
-      _$AppThemeDataCopyWithImpl<$Res>;
+abstract class $DashlistThemeDataCopyWith<$Res> {
+  factory $DashlistThemeDataCopyWith(
+          DashlistThemeData value, $Res Function(DashlistThemeData) then) =
+      _$DashlistThemeDataCopyWithImpl<$Res>;
   $Res call(
-      {AppThemeColorData colors,
-      AppThemeTextStyleData textStyles,
-      AppThemeEdgeInsetsData edgeInsets,
-      AppThemeBorderRadiusData borderRadius,
-      AppIconThemeData icons});
+      {DashlistColorData colors,
+      DashlistTextStyleData textStyles,
+      DashlistEdgeInsetsData edgeInsets,
+      DashlistRadiusData borderRadius,
+      DashlistIconThemeData icons});
 
-  $AppThemeColorDataCopyWith<$Res> get colors;
-  $AppThemeTextStyleDataCopyWith<$Res> get textStyles;
-  $AppThemeEdgeInsetsDataCopyWith<$Res> get edgeInsets;
-  $AppThemeBorderRadiusDataCopyWith<$Res> get borderRadius;
-  $AppIconThemeDataCopyWith<$Res> get icons;
+  $DashlistColorDataCopyWith<$Res> get colors;
+  $DashlistTextStyleDataCopyWith<$Res> get textStyles;
+  $DashlistEdgeInsetsDataCopyWith<$Res> get edgeInsets;
+  $DashlistRadiusDataCopyWith<$Res> get borderRadius;
+  $DashlistIconThemeDataCopyWith<$Res> get icons;
 }
 
 /// @nodoc
-class _$AppThemeDataCopyWithImpl<$Res> implements $AppThemeDataCopyWith<$Res> {
-  _$AppThemeDataCopyWithImpl(this._value, this._then);
+class _$DashlistThemeDataCopyWithImpl<$Res>
+    implements $DashlistThemeDataCopyWith<$Res> {
+  _$DashlistThemeDataCopyWithImpl(this._value, this._then);
 
-  final AppThemeData _value;
+  final DashlistThemeData _value;
   // ignore: unused_field
-  final $Res Function(AppThemeData) _then;
+  final $Res Function(DashlistThemeData) _then;
 
   @override
   $Res call({
@@ -89,98 +89,98 @@ class _$AppThemeDataCopyWithImpl<$Res> implements $AppThemeDataCopyWith<$Res> {
       colors: colors == freezed
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
-              as AppThemeColorData,
+              as DashlistColorData,
       textStyles: textStyles == freezed
           ? _value.textStyles
           : textStyles // ignore: cast_nullable_to_non_nullable
-              as AppThemeTextStyleData,
+              as DashlistTextStyleData,
       edgeInsets: edgeInsets == freezed
           ? _value.edgeInsets
           : edgeInsets // ignore: cast_nullable_to_non_nullable
-              as AppThemeEdgeInsetsData,
+              as DashlistEdgeInsetsData,
       borderRadius: borderRadius == freezed
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
-              as AppThemeBorderRadiusData,
+              as DashlistRadiusData,
       icons: icons == freezed
           ? _value.icons
           : icons // ignore: cast_nullable_to_non_nullable
-              as AppIconThemeData,
+              as DashlistIconThemeData,
     ));
   }
 
   @override
-  $AppThemeColorDataCopyWith<$Res> get colors {
-    return $AppThemeColorDataCopyWith<$Res>(_value.colors, (value) {
+  $DashlistColorDataCopyWith<$Res> get colors {
+    return $DashlistColorDataCopyWith<$Res>(_value.colors, (value) {
       return _then(_value.copyWith(colors: value));
     });
   }
 
   @override
-  $AppThemeTextStyleDataCopyWith<$Res> get textStyles {
-    return $AppThemeTextStyleDataCopyWith<$Res>(_value.textStyles, (value) {
+  $DashlistTextStyleDataCopyWith<$Res> get textStyles {
+    return $DashlistTextStyleDataCopyWith<$Res>(_value.textStyles, (value) {
       return _then(_value.copyWith(textStyles: value));
     });
   }
 
   @override
-  $AppThemeEdgeInsetsDataCopyWith<$Res> get edgeInsets {
-    return $AppThemeEdgeInsetsDataCopyWith<$Res>(_value.edgeInsets, (value) {
+  $DashlistEdgeInsetsDataCopyWith<$Res> get edgeInsets {
+    return $DashlistEdgeInsetsDataCopyWith<$Res>(_value.edgeInsets, (value) {
       return _then(_value.copyWith(edgeInsets: value));
     });
   }
 
   @override
-  $AppThemeBorderRadiusDataCopyWith<$Res> get borderRadius {
-    return $AppThemeBorderRadiusDataCopyWith<$Res>(_value.borderRadius,
-        (value) {
+  $DashlistRadiusDataCopyWith<$Res> get borderRadius {
+    return $DashlistRadiusDataCopyWith<$Res>(_value.borderRadius, (value) {
       return _then(_value.copyWith(borderRadius: value));
     });
   }
 
   @override
-  $AppIconThemeDataCopyWith<$Res> get icons {
-    return $AppIconThemeDataCopyWith<$Res>(_value.icons, (value) {
+  $DashlistIconThemeDataCopyWith<$Res> get icons {
+    return $DashlistIconThemeDataCopyWith<$Res>(_value.icons, (value) {
       return _then(_value.copyWith(icons: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$AppThemeDataCopyWith<$Res>
-    implements $AppThemeDataCopyWith<$Res> {
-  factory _$AppThemeDataCopyWith(
-          _AppThemeData value, $Res Function(_AppThemeData) then) =
-      __$AppThemeDataCopyWithImpl<$Res>;
+abstract class _$DashlistThemeDataCopyWith<$Res>
+    implements $DashlistThemeDataCopyWith<$Res> {
+  factory _$DashlistThemeDataCopyWith(
+          _DashlistThemeData value, $Res Function(_DashlistThemeData) then) =
+      __$DashlistThemeDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {AppThemeColorData colors,
-      AppThemeTextStyleData textStyles,
-      AppThemeEdgeInsetsData edgeInsets,
-      AppThemeBorderRadiusData borderRadius,
-      AppIconThemeData icons});
+      {DashlistColorData colors,
+      DashlistTextStyleData textStyles,
+      DashlistEdgeInsetsData edgeInsets,
+      DashlistRadiusData borderRadius,
+      DashlistIconThemeData icons});
 
   @override
-  $AppThemeColorDataCopyWith<$Res> get colors;
+  $DashlistColorDataCopyWith<$Res> get colors;
   @override
-  $AppThemeTextStyleDataCopyWith<$Res> get textStyles;
+  $DashlistTextStyleDataCopyWith<$Res> get textStyles;
   @override
-  $AppThemeEdgeInsetsDataCopyWith<$Res> get edgeInsets;
+  $DashlistEdgeInsetsDataCopyWith<$Res> get edgeInsets;
   @override
-  $AppThemeBorderRadiusDataCopyWith<$Res> get borderRadius;
+  $DashlistRadiusDataCopyWith<$Res> get borderRadius;
   @override
-  $AppIconThemeDataCopyWith<$Res> get icons;
+  $DashlistIconThemeDataCopyWith<$Res> get icons;
 }
 
 /// @nodoc
-class __$AppThemeDataCopyWithImpl<$Res> extends _$AppThemeDataCopyWithImpl<$Res>
-    implements _$AppThemeDataCopyWith<$Res> {
-  __$AppThemeDataCopyWithImpl(
-      _AppThemeData _value, $Res Function(_AppThemeData) _then)
-      : super(_value, (v) => _then(v as _AppThemeData));
+class __$DashlistThemeDataCopyWithImpl<$Res>
+    extends _$DashlistThemeDataCopyWithImpl<$Res>
+    implements _$DashlistThemeDataCopyWith<$Res> {
+  __$DashlistThemeDataCopyWithImpl(
+      _DashlistThemeData _value, $Res Function(_DashlistThemeData) _then)
+      : super(_value, (v) => _then(v as _DashlistThemeData));
 
   @override
-  _AppThemeData get _value => super._value as _AppThemeData;
+  _DashlistThemeData get _value => super._value as _DashlistThemeData;
 
   @override
   $Res call({
@@ -190,67 +190,69 @@ class __$AppThemeDataCopyWithImpl<$Res> extends _$AppThemeDataCopyWithImpl<$Res>
     Object? borderRadius = freezed,
     Object? icons = freezed,
   }) {
-    return _then(_AppThemeData(
+    return _then(_DashlistThemeData(
       colors: colors == freezed
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
-              as AppThemeColorData,
+              as DashlistColorData,
       textStyles: textStyles == freezed
           ? _value.textStyles
           : textStyles // ignore: cast_nullable_to_non_nullable
-              as AppThemeTextStyleData,
+              as DashlistTextStyleData,
       edgeInsets: edgeInsets == freezed
           ? _value.edgeInsets
           : edgeInsets // ignore: cast_nullable_to_non_nullable
-              as AppThemeEdgeInsetsData,
+              as DashlistEdgeInsetsData,
       borderRadius: borderRadius == freezed
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
-              as AppThemeBorderRadiusData,
+              as DashlistRadiusData,
       icons: icons == freezed
           ? _value.icons
           : icons // ignore: cast_nullable_to_non_nullable
-              as AppIconThemeData,
+              as DashlistIconThemeData,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AppThemeData with DiagnosticableTreeMixin implements _AppThemeData {
-  const _$_AppThemeData(
-      {this.colors = const AppThemeColorData(),
-      this.textStyles = const AppThemeTextStyleData(),
-      this.edgeInsets = const AppThemeEdgeInsetsData(),
-      this.borderRadius = const AppThemeBorderRadiusData(),
-      this.icons = const _FallbackAppIconThemeData()});
+class _$_DashlistThemeData
+    with DiagnosticableTreeMixin
+    implements _DashlistThemeData {
+  const _$_DashlistThemeData(
+      {this.colors = const DashlistColorData(),
+      this.textStyles = const DashlistTextStyleData(),
+      this.edgeInsets = const DashlistEdgeInsetsData(),
+      this.borderRadius = const DashlistRadiusData(),
+      this.icons = const _FallbackIconThemeData()});
 
-  @JsonKey(defaultValue: const AppThemeColorData())
+  @JsonKey(defaultValue: const DashlistColorData())
   @override
-  final AppThemeColorData colors;
-  @JsonKey(defaultValue: const AppThemeTextStyleData())
+  final DashlistColorData colors;
+  @JsonKey(defaultValue: const DashlistTextStyleData())
   @override
-  final AppThemeTextStyleData textStyles;
-  @JsonKey(defaultValue: const AppThemeEdgeInsetsData())
+  final DashlistTextStyleData textStyles;
+  @JsonKey(defaultValue: const DashlistEdgeInsetsData())
   @override
-  final AppThemeEdgeInsetsData edgeInsets;
-  @JsonKey(defaultValue: const AppThemeBorderRadiusData())
+  final DashlistEdgeInsetsData edgeInsets;
+  @JsonKey(defaultValue: const DashlistRadiusData())
   @override
-  final AppThemeBorderRadiusData borderRadius;
-  @JsonKey(defaultValue: const _FallbackAppIconThemeData())
+  final DashlistRadiusData borderRadius;
+  @JsonKey(defaultValue: const _FallbackIconThemeData())
   @override
-  final AppIconThemeData icons;
+  final DashlistIconThemeData icons;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppThemeData(colors: $colors, textStyles: $textStyles, edgeInsets: $edgeInsets, borderRadius: $borderRadius, icons: $icons)';
+    return 'DashlistThemeData(colors: $colors, textStyles: $textStyles, edgeInsets: $edgeInsets, borderRadius: $borderRadius, icons: $icons)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppThemeData'))
+      ..add(DiagnosticsProperty('type', 'DashlistThemeData'))
       ..add(DiagnosticsProperty('colors', colors))
       ..add(DiagnosticsProperty('textStyles', textStyles))
       ..add(DiagnosticsProperty('edgeInsets', edgeInsets))
@@ -261,7 +263,7 @@ class _$_AppThemeData with DiagnosticableTreeMixin implements _AppThemeData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppThemeData &&
+        (other is _DashlistThemeData &&
             (identical(other.colors, colors) ||
                 const DeepCollectionEquality().equals(other.colors, colors)) &&
             (identical(other.textStyles, textStyles) ||
@@ -288,40 +290,39 @@ class _$_AppThemeData with DiagnosticableTreeMixin implements _AppThemeData {
 
   @JsonKey(ignore: true)
   @override
-  _$AppThemeDataCopyWith<_AppThemeData> get copyWith =>
-      __$AppThemeDataCopyWithImpl<_AppThemeData>(this, _$identity);
+  _$DashlistThemeDataCopyWith<_DashlistThemeData> get copyWith =>
+      __$DashlistThemeDataCopyWithImpl<_DashlistThemeData>(this, _$identity);
 }
 
-abstract class _AppThemeData implements AppThemeData {
-  const factory _AppThemeData(
-      {AppThemeColorData colors,
-      AppThemeTextStyleData textStyles,
-      AppThemeEdgeInsetsData edgeInsets,
-      AppThemeBorderRadiusData borderRadius,
-      AppIconThemeData icons}) = _$_AppThemeData;
+abstract class _DashlistThemeData implements DashlistThemeData {
+  const factory _DashlistThemeData(
+      {DashlistColorData colors,
+      DashlistTextStyleData textStyles,
+      DashlistEdgeInsetsData edgeInsets,
+      DashlistRadiusData borderRadius,
+      DashlistIconThemeData icons}) = _$_DashlistThemeData;
 
   @override
-  AppThemeColorData get colors => throw _privateConstructorUsedError;
+  DashlistColorData get colors => throw _privateConstructorUsedError;
   @override
-  AppThemeTextStyleData get textStyles => throw _privateConstructorUsedError;
+  DashlistTextStyleData get textStyles => throw _privateConstructorUsedError;
   @override
-  AppThemeEdgeInsetsData get edgeInsets => throw _privateConstructorUsedError;
+  DashlistEdgeInsetsData get edgeInsets => throw _privateConstructorUsedError;
   @override
-  AppThemeBorderRadiusData get borderRadius =>
-      throw _privateConstructorUsedError;
+  DashlistRadiusData get borderRadius => throw _privateConstructorUsedError;
   @override
-  AppIconThemeData get icons => throw _privateConstructorUsedError;
+  DashlistIconThemeData get icons => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppThemeDataCopyWith<_AppThemeData> get copyWith =>
+  _$DashlistThemeDataCopyWith<_DashlistThemeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppThemeColorDataTearOff {
-  const _$AppThemeColorDataTearOff();
+class _$DashlistColorDataTearOff {
+  const _$DashlistColorDataTearOff();
 
-  _AppThemeColorData call(
+  _DashlistColorData call(
       {Color accent1 = const Color(0xFF4FD1BA),
       Color accent2 = const Color(0xFF3AA995),
       Color foreground1 = const Color(0xFF363360),
@@ -332,7 +333,7 @@ class _$AppThemeColorDataTearOff {
       Color background3 = const Color(0xFFEFEFF9),
       Color error = const Color(0xFFE96980),
       Color warning = const Color(0xFFEB7330)}) {
-    return _AppThemeColorData(
+    return _DashlistColorData(
       accent1: accent1,
       accent2: accent2,
       foreground1: foreground1,
@@ -348,10 +349,10 @@ class _$AppThemeColorDataTearOff {
 }
 
 /// @nodoc
-const $AppThemeColorData = _$AppThemeColorDataTearOff();
+const $DashlistColorData = _$DashlistColorDataTearOff();
 
 /// @nodoc
-mixin _$AppThemeColorData {
+mixin _$DashlistColorData {
   Color get accent1 => throw _privateConstructorUsedError;
   Color get accent2 => throw _privateConstructorUsedError;
   Color get foreground1 => throw _privateConstructorUsedError;
@@ -364,15 +365,15 @@ mixin _$AppThemeColorData {
   Color get warning => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppThemeColorDataCopyWith<AppThemeColorData> get copyWith =>
+  $DashlistColorDataCopyWith<DashlistColorData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppThemeColorDataCopyWith<$Res> {
-  factory $AppThemeColorDataCopyWith(
-          AppThemeColorData value, $Res Function(AppThemeColorData) then) =
-      _$AppThemeColorDataCopyWithImpl<$Res>;
+abstract class $DashlistColorDataCopyWith<$Res> {
+  factory $DashlistColorDataCopyWith(
+          DashlistColorData value, $Res Function(DashlistColorData) then) =
+      _$DashlistColorDataCopyWithImpl<$Res>;
   $Res call(
       {Color accent1,
       Color accent2,
@@ -387,13 +388,13 @@ abstract class $AppThemeColorDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppThemeColorDataCopyWithImpl<$Res>
-    implements $AppThemeColorDataCopyWith<$Res> {
-  _$AppThemeColorDataCopyWithImpl(this._value, this._then);
+class _$DashlistColorDataCopyWithImpl<$Res>
+    implements $DashlistColorDataCopyWith<$Res> {
+  _$DashlistColorDataCopyWithImpl(this._value, this._then);
 
-  final AppThemeColorData _value;
+  final DashlistColorData _value;
   // ignore: unused_field
-  final $Res Function(AppThemeColorData) _then;
+  final $Res Function(DashlistColorData) _then;
 
   @override
   $Res call({
@@ -454,11 +455,11 @@ class _$AppThemeColorDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppThemeColorDataCopyWith<$Res>
-    implements $AppThemeColorDataCopyWith<$Res> {
-  factory _$AppThemeColorDataCopyWith(
-          _AppThemeColorData value, $Res Function(_AppThemeColorData) then) =
-      __$AppThemeColorDataCopyWithImpl<$Res>;
+abstract class _$DashlistColorDataCopyWith<$Res>
+    implements $DashlistColorDataCopyWith<$Res> {
+  factory _$DashlistColorDataCopyWith(
+          _DashlistColorData value, $Res Function(_DashlistColorData) then) =
+      __$DashlistColorDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {Color accent1,
@@ -474,15 +475,15 @@ abstract class _$AppThemeColorDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AppThemeColorDataCopyWithImpl<$Res>
-    extends _$AppThemeColorDataCopyWithImpl<$Res>
-    implements _$AppThemeColorDataCopyWith<$Res> {
-  __$AppThemeColorDataCopyWithImpl(
-      _AppThemeColorData _value, $Res Function(_AppThemeColorData) _then)
-      : super(_value, (v) => _then(v as _AppThemeColorData));
+class __$DashlistColorDataCopyWithImpl<$Res>
+    extends _$DashlistColorDataCopyWithImpl<$Res>
+    implements _$DashlistColorDataCopyWith<$Res> {
+  __$DashlistColorDataCopyWithImpl(
+      _DashlistColorData _value, $Res Function(_DashlistColorData) _then)
+      : super(_value, (v) => _then(v as _DashlistColorData));
 
   @override
-  _AppThemeColorData get _value => super._value as _AppThemeColorData;
+  _DashlistColorData get _value => super._value as _DashlistColorData;
 
   @override
   $Res call({
@@ -497,7 +498,7 @@ class __$AppThemeColorDataCopyWithImpl<$Res>
     Object? error = freezed,
     Object? warning = freezed,
   }) {
-    return _then(_AppThemeColorData(
+    return _then(_DashlistColorData(
       accent1: accent1 == freezed
           ? _value.accent1
           : accent1 // ignore: cast_nullable_to_non_nullable
@@ -544,10 +545,10 @@ class __$AppThemeColorDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppThemeColorData
+class _$_DashlistColorData
     with DiagnosticableTreeMixin
-    implements _AppThemeColorData {
-  const _$_AppThemeColorData(
+    implements _DashlistColorData {
+  const _$_DashlistColorData(
       {this.accent1 = const Color(0xFF4FD1BA),
       this.accent2 = const Color(0xFF3AA995),
       this.foreground1 = const Color(0xFF363360),
@@ -592,14 +593,14 @@ class _$_AppThemeColorData
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppThemeColorData(accent1: $accent1, accent2: $accent2, foreground1: $foreground1, foreground2: $foreground2, foregroundOpposite: $foregroundOpposite, background1: $background1, background2: $background2, background3: $background3, error: $error, warning: $warning)';
+    return 'DashlistColorData(accent1: $accent1, accent2: $accent2, foreground1: $foreground1, foreground2: $foreground2, foregroundOpposite: $foregroundOpposite, background1: $background1, background2: $background2, background3: $background3, error: $error, warning: $warning)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppThemeColorData'))
+      ..add(DiagnosticsProperty('type', 'DashlistColorData'))
       ..add(DiagnosticsProperty('accent1', accent1))
       ..add(DiagnosticsProperty('accent2', accent2))
       ..add(DiagnosticsProperty('foreground1', foreground1))
@@ -615,7 +616,7 @@ class _$_AppThemeColorData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppThemeColorData &&
+        (other is _DashlistColorData &&
             (identical(other.accent1, accent1) ||
                 const DeepCollectionEquality()
                     .equals(other.accent1, accent1)) &&
@@ -662,12 +663,12 @@ class _$_AppThemeColorData
 
   @JsonKey(ignore: true)
   @override
-  _$AppThemeColorDataCopyWith<_AppThemeColorData> get copyWith =>
-      __$AppThemeColorDataCopyWithImpl<_AppThemeColorData>(this, _$identity);
+  _$DashlistColorDataCopyWith<_DashlistColorData> get copyWith =>
+      __$DashlistColorDataCopyWithImpl<_DashlistColorData>(this, _$identity);
 }
 
-abstract class _AppThemeColorData implements AppThemeColorData {
-  const factory _AppThemeColorData(
+abstract class _DashlistColorData implements DashlistColorData {
+  const factory _DashlistColorData(
       {Color accent1,
       Color accent2,
       Color foreground1,
@@ -677,7 +678,7 @@ abstract class _AppThemeColorData implements AppThemeColorData {
       Color background2,
       Color background3,
       Color error,
-      Color warning}) = _$_AppThemeColorData;
+      Color warning}) = _$_DashlistColorData;
 
   @override
   Color get accent1 => throw _privateConstructorUsedError;
@@ -701,15 +702,15 @@ abstract class _AppThemeColorData implements AppThemeColorData {
   Color get warning => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppThemeColorDataCopyWith<_AppThemeColorData> get copyWith =>
+  _$DashlistColorDataCopyWith<_DashlistColorData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppThemeTextStyleDataTearOff {
-  const _$AppThemeTextStyleDataTearOff();
+class _$DashlistTextStyleDataTearOff {
+  const _$DashlistTextStyleDataTearOff();
 
-  _AppThemeTextStyleData call(
+  _DashlistTextStyleData call(
       {dynamic title1 = const TextStyle(
           fontFamily: 'Poppins',
           fontSize: 36,
@@ -751,7 +752,7 @@ class _$AppThemeTextStyleDataTearOff {
           fontSize: 10,
           fontWeight: FontWeight.bold,
           decoration: TextDecoration.none)}) {
-    return _AppThemeTextStyleData(
+    return _DashlistTextStyleData(
       title1: title1,
       title2: title2,
       paragraph1: paragraph1,
@@ -765,10 +766,10 @@ class _$AppThemeTextStyleDataTearOff {
 }
 
 /// @nodoc
-const $AppThemeTextStyleData = _$AppThemeTextStyleDataTearOff();
+const $DashlistTextStyleData = _$DashlistTextStyleDataTearOff();
 
 /// @nodoc
-mixin _$AppThemeTextStyleData {
+mixin _$DashlistTextStyleData {
   dynamic get title1 => throw _privateConstructorUsedError;
   dynamic get title2 => throw _privateConstructorUsedError;
   dynamic get paragraph1 => throw _privateConstructorUsedError;
@@ -779,15 +780,15 @@ mixin _$AppThemeTextStyleData {
   dynamic get paragraph3Bold => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppThemeTextStyleDataCopyWith<AppThemeTextStyleData> get copyWith =>
+  $DashlistTextStyleDataCopyWith<DashlistTextStyleData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppThemeTextStyleDataCopyWith<$Res> {
-  factory $AppThemeTextStyleDataCopyWith(AppThemeTextStyleData value,
-          $Res Function(AppThemeTextStyleData) then) =
-      _$AppThemeTextStyleDataCopyWithImpl<$Res>;
+abstract class $DashlistTextStyleDataCopyWith<$Res> {
+  factory $DashlistTextStyleDataCopyWith(DashlistTextStyleData value,
+          $Res Function(DashlistTextStyleData) then) =
+      _$DashlistTextStyleDataCopyWithImpl<$Res>;
   $Res call(
       {dynamic title1,
       dynamic title2,
@@ -800,13 +801,13 @@ abstract class $AppThemeTextStyleDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppThemeTextStyleDataCopyWithImpl<$Res>
-    implements $AppThemeTextStyleDataCopyWith<$Res> {
-  _$AppThemeTextStyleDataCopyWithImpl(this._value, this._then);
+class _$DashlistTextStyleDataCopyWithImpl<$Res>
+    implements $DashlistTextStyleDataCopyWith<$Res> {
+  _$DashlistTextStyleDataCopyWithImpl(this._value, this._then);
 
-  final AppThemeTextStyleData _value;
+  final DashlistTextStyleData _value;
   // ignore: unused_field
-  final $Res Function(AppThemeTextStyleData) _then;
+  final $Res Function(DashlistTextStyleData) _then;
 
   @override
   $Res call({
@@ -857,11 +858,11 @@ class _$AppThemeTextStyleDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppThemeTextStyleDataCopyWith<$Res>
-    implements $AppThemeTextStyleDataCopyWith<$Res> {
-  factory _$AppThemeTextStyleDataCopyWith(_AppThemeTextStyleData value,
-          $Res Function(_AppThemeTextStyleData) then) =
-      __$AppThemeTextStyleDataCopyWithImpl<$Res>;
+abstract class _$DashlistTextStyleDataCopyWith<$Res>
+    implements $DashlistTextStyleDataCopyWith<$Res> {
+  factory _$DashlistTextStyleDataCopyWith(_DashlistTextStyleData value,
+          $Res Function(_DashlistTextStyleData) then) =
+      __$DashlistTextStyleDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {dynamic title1,
@@ -875,15 +876,15 @@ abstract class _$AppThemeTextStyleDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AppThemeTextStyleDataCopyWithImpl<$Res>
-    extends _$AppThemeTextStyleDataCopyWithImpl<$Res>
-    implements _$AppThemeTextStyleDataCopyWith<$Res> {
-  __$AppThemeTextStyleDataCopyWithImpl(_AppThemeTextStyleData _value,
-      $Res Function(_AppThemeTextStyleData) _then)
-      : super(_value, (v) => _then(v as _AppThemeTextStyleData));
+class __$DashlistTextStyleDataCopyWithImpl<$Res>
+    extends _$DashlistTextStyleDataCopyWithImpl<$Res>
+    implements _$DashlistTextStyleDataCopyWith<$Res> {
+  __$DashlistTextStyleDataCopyWithImpl(_DashlistTextStyleData _value,
+      $Res Function(_DashlistTextStyleData) _then)
+      : super(_value, (v) => _then(v as _DashlistTextStyleData));
 
   @override
-  _AppThemeTextStyleData get _value => super._value as _AppThemeTextStyleData;
+  _DashlistTextStyleData get _value => super._value as _DashlistTextStyleData;
 
   @override
   $Res call({
@@ -896,7 +897,7 @@ class __$AppThemeTextStyleDataCopyWithImpl<$Res>
     Object? paragraph3 = freezed,
     Object? paragraph3Bold = freezed,
   }) {
-    return _then(_AppThemeTextStyleData(
+    return _then(_DashlistTextStyleData(
       title1: title1 == freezed ? _value.title1 : title1,
       title2: title2 == freezed ? _value.title2 : title2,
       paragraph1: paragraph1 == freezed ? _value.paragraph1 : paragraph1,
@@ -914,10 +915,10 @@ class __$AppThemeTextStyleDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppThemeTextStyleData
+class _$_DashlistTextStyleData
     with DiagnosticableTreeMixin
-    implements _AppThemeTextStyleData {
-  const _$_AppThemeTextStyleData(
+    implements _DashlistTextStyleData {
+  const _$_DashlistTextStyleData(
       {this.title1 = const TextStyle(
           fontFamily: 'Poppins',
           fontSize: 36,
@@ -1028,14 +1029,14 @@ class _$_AppThemeTextStyleData
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppThemeTextStyleData(title1: $title1, title2: $title2, paragraph1: $paragraph1, paragraph1Bold: $paragraph1Bold, paragraph2: $paragraph2, paragraph2Bold: $paragraph2Bold, paragraph3: $paragraph3, paragraph3Bold: $paragraph3Bold)';
+    return 'DashlistTextStyleData(title1: $title1, title2: $title2, paragraph1: $paragraph1, paragraph1Bold: $paragraph1Bold, paragraph2: $paragraph2, paragraph2Bold: $paragraph2Bold, paragraph3: $paragraph3, paragraph3Bold: $paragraph3Bold)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppThemeTextStyleData'))
+      ..add(DiagnosticsProperty('type', 'DashlistTextStyleData'))
       ..add(DiagnosticsProperty('title1', title1))
       ..add(DiagnosticsProperty('title2', title2))
       ..add(DiagnosticsProperty('paragraph1', paragraph1))
@@ -1049,7 +1050,7 @@ class _$_AppThemeTextStyleData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppThemeTextStyleData &&
+        (other is _DashlistTextStyleData &&
             (identical(other.title1, title1) ||
                 const DeepCollectionEquality().equals(other.title1, title1)) &&
             (identical(other.title2, title2) ||
@@ -1088,13 +1089,13 @@ class _$_AppThemeTextStyleData
 
   @JsonKey(ignore: true)
   @override
-  _$AppThemeTextStyleDataCopyWith<_AppThemeTextStyleData> get copyWith =>
-      __$AppThemeTextStyleDataCopyWithImpl<_AppThemeTextStyleData>(
+  _$DashlistTextStyleDataCopyWith<_DashlistTextStyleData> get copyWith =>
+      __$DashlistTextStyleDataCopyWithImpl<_DashlistTextStyleData>(
           this, _$identity);
 }
 
-abstract class _AppThemeTextStyleData implements AppThemeTextStyleData {
-  const factory _AppThemeTextStyleData(
+abstract class _DashlistTextStyleData implements DashlistTextStyleData {
+  const factory _DashlistTextStyleData(
       {dynamic title1,
       dynamic title2,
       dynamic paragraph1,
@@ -1102,7 +1103,7 @@ abstract class _AppThemeTextStyleData implements AppThemeTextStyleData {
       dynamic paragraph2,
       dynamic paragraph2Bold,
       dynamic paragraph3,
-      dynamic paragraph3Bold}) = _$_AppThemeTextStyleData;
+      dynamic paragraph3Bold}) = _$_DashlistTextStyleData;
 
   @override
   dynamic get title1 => throw _privateConstructorUsedError;
@@ -1122,19 +1123,19 @@ abstract class _AppThemeTextStyleData implements AppThemeTextStyleData {
   dynamic get paragraph3Bold => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppThemeTextStyleDataCopyWith<_AppThemeTextStyleData> get copyWith =>
+  _$DashlistTextStyleDataCopyWith<_DashlistTextStyleData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppThemeEdgeInsetsDataTearOff {
-  const _$AppThemeEdgeInsetsDataTearOff();
+class _$DashlistEdgeInsetsDataTearOff {
+  const _$DashlistEdgeInsetsDataTearOff();
 
-  _AppThemeEdgeInsetsData call(
+  _DashlistEdgeInsetsData call(
       {EdgeInsets small = const EdgeInsets.all(4),
       EdgeInsets regular = const EdgeInsets.all(12),
       EdgeInsets large = const EdgeInsets.all(24)}) {
-    return _AppThemeEdgeInsetsData(
+    return _DashlistEdgeInsetsData(
       small: small,
       regular: regular,
       large: large,
@@ -1143,35 +1144,35 @@ class _$AppThemeEdgeInsetsDataTearOff {
 }
 
 /// @nodoc
-const $AppThemeEdgeInsetsData = _$AppThemeEdgeInsetsDataTearOff();
+const $DashlistEdgeInsetsData = _$DashlistEdgeInsetsDataTearOff();
 
 /// @nodoc
-mixin _$AppThemeEdgeInsetsData {
+mixin _$DashlistEdgeInsetsData {
   EdgeInsets get small => throw _privateConstructorUsedError;
   EdgeInsets get regular => throw _privateConstructorUsedError;
   EdgeInsets get large => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppThemeEdgeInsetsDataCopyWith<AppThemeEdgeInsetsData> get copyWith =>
+  $DashlistEdgeInsetsDataCopyWith<DashlistEdgeInsetsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppThemeEdgeInsetsDataCopyWith<$Res> {
-  factory $AppThemeEdgeInsetsDataCopyWith(AppThemeEdgeInsetsData value,
-          $Res Function(AppThemeEdgeInsetsData) then) =
-      _$AppThemeEdgeInsetsDataCopyWithImpl<$Res>;
+abstract class $DashlistEdgeInsetsDataCopyWith<$Res> {
+  factory $DashlistEdgeInsetsDataCopyWith(DashlistEdgeInsetsData value,
+          $Res Function(DashlistEdgeInsetsData) then) =
+      _$DashlistEdgeInsetsDataCopyWithImpl<$Res>;
   $Res call({EdgeInsets small, EdgeInsets regular, EdgeInsets large});
 }
 
 /// @nodoc
-class _$AppThemeEdgeInsetsDataCopyWithImpl<$Res>
-    implements $AppThemeEdgeInsetsDataCopyWith<$Res> {
-  _$AppThemeEdgeInsetsDataCopyWithImpl(this._value, this._then);
+class _$DashlistEdgeInsetsDataCopyWithImpl<$Res>
+    implements $DashlistEdgeInsetsDataCopyWith<$Res> {
+  _$DashlistEdgeInsetsDataCopyWithImpl(this._value, this._then);
 
-  final AppThemeEdgeInsetsData _value;
+  final DashlistEdgeInsetsData _value;
   // ignore: unused_field
-  final $Res Function(AppThemeEdgeInsetsData) _then;
+  final $Res Function(DashlistEdgeInsetsData) _then;
 
   @override
   $Res call({
@@ -1197,25 +1198,25 @@ class _$AppThemeEdgeInsetsDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppThemeEdgeInsetsDataCopyWith<$Res>
-    implements $AppThemeEdgeInsetsDataCopyWith<$Res> {
-  factory _$AppThemeEdgeInsetsDataCopyWith(_AppThemeEdgeInsetsData value,
-          $Res Function(_AppThemeEdgeInsetsData) then) =
-      __$AppThemeEdgeInsetsDataCopyWithImpl<$Res>;
+abstract class _$DashlistEdgeInsetsDataCopyWith<$Res>
+    implements $DashlistEdgeInsetsDataCopyWith<$Res> {
+  factory _$DashlistEdgeInsetsDataCopyWith(_DashlistEdgeInsetsData value,
+          $Res Function(_DashlistEdgeInsetsData) then) =
+      __$DashlistEdgeInsetsDataCopyWithImpl<$Res>;
   @override
   $Res call({EdgeInsets small, EdgeInsets regular, EdgeInsets large});
 }
 
 /// @nodoc
-class __$AppThemeEdgeInsetsDataCopyWithImpl<$Res>
-    extends _$AppThemeEdgeInsetsDataCopyWithImpl<$Res>
-    implements _$AppThemeEdgeInsetsDataCopyWith<$Res> {
-  __$AppThemeEdgeInsetsDataCopyWithImpl(_AppThemeEdgeInsetsData _value,
-      $Res Function(_AppThemeEdgeInsetsData) _then)
-      : super(_value, (v) => _then(v as _AppThemeEdgeInsetsData));
+class __$DashlistEdgeInsetsDataCopyWithImpl<$Res>
+    extends _$DashlistEdgeInsetsDataCopyWithImpl<$Res>
+    implements _$DashlistEdgeInsetsDataCopyWith<$Res> {
+  __$DashlistEdgeInsetsDataCopyWithImpl(_DashlistEdgeInsetsData _value,
+      $Res Function(_DashlistEdgeInsetsData) _then)
+      : super(_value, (v) => _then(v as _DashlistEdgeInsetsData));
 
   @override
-  _AppThemeEdgeInsetsData get _value => super._value as _AppThemeEdgeInsetsData;
+  _DashlistEdgeInsetsData get _value => super._value as _DashlistEdgeInsetsData;
 
   @override
   $Res call({
@@ -1223,7 +1224,7 @@ class __$AppThemeEdgeInsetsDataCopyWithImpl<$Res>
     Object? regular = freezed,
     Object? large = freezed,
   }) {
-    return _then(_AppThemeEdgeInsetsData(
+    return _then(_DashlistEdgeInsetsData(
       small: small == freezed
           ? _value.small
           : small // ignore: cast_nullable_to_non_nullable
@@ -1242,10 +1243,10 @@ class __$AppThemeEdgeInsetsDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppThemeEdgeInsetsData
+class _$_DashlistEdgeInsetsData
     with DiagnosticableTreeMixin
-    implements _AppThemeEdgeInsetsData {
-  const _$_AppThemeEdgeInsetsData(
+    implements _DashlistEdgeInsetsData {
+  const _$_DashlistEdgeInsetsData(
       {this.small = const EdgeInsets.all(4),
       this.regular = const EdgeInsets.all(12),
       this.large = const EdgeInsets.all(24)});
@@ -1262,14 +1263,14 @@ class _$_AppThemeEdgeInsetsData
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppThemeEdgeInsetsData(small: $small, regular: $regular, large: $large)';
+    return 'DashlistEdgeInsetsData(small: $small, regular: $regular, large: $large)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppThemeEdgeInsetsData'))
+      ..add(DiagnosticsProperty('type', 'DashlistEdgeInsetsData'))
       ..add(DiagnosticsProperty('small', small))
       ..add(DiagnosticsProperty('regular', regular))
       ..add(DiagnosticsProperty('large', large));
@@ -1278,7 +1279,7 @@ class _$_AppThemeEdgeInsetsData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppThemeEdgeInsetsData &&
+        (other is _DashlistEdgeInsetsData &&
             (identical(other.small, small) ||
                 const DeepCollectionEquality().equals(other.small, small)) &&
             (identical(other.regular, regular) ||
@@ -1297,16 +1298,16 @@ class _$_AppThemeEdgeInsetsData
 
   @JsonKey(ignore: true)
   @override
-  _$AppThemeEdgeInsetsDataCopyWith<_AppThemeEdgeInsetsData> get copyWith =>
-      __$AppThemeEdgeInsetsDataCopyWithImpl<_AppThemeEdgeInsetsData>(
+  _$DashlistEdgeInsetsDataCopyWith<_DashlistEdgeInsetsData> get copyWith =>
+      __$DashlistEdgeInsetsDataCopyWithImpl<_DashlistEdgeInsetsData>(
           this, _$identity);
 }
 
-abstract class _AppThemeEdgeInsetsData implements AppThemeEdgeInsetsData {
-  const factory _AppThemeEdgeInsetsData(
+abstract class _DashlistEdgeInsetsData implements DashlistEdgeInsetsData {
+  const factory _DashlistEdgeInsetsData(
       {EdgeInsets small,
       EdgeInsets regular,
-      EdgeInsets large}) = _$_AppThemeEdgeInsetsData;
+      EdgeInsets large}) = _$_DashlistEdgeInsetsData;
 
   @override
   EdgeInsets get small => throw _privateConstructorUsedError;
@@ -1316,22 +1317,22 @@ abstract class _AppThemeEdgeInsetsData implements AppThemeEdgeInsetsData {
   EdgeInsets get large => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppThemeEdgeInsetsDataCopyWith<_AppThemeEdgeInsetsData> get copyWith =>
+  _$DashlistEdgeInsetsDataCopyWith<_DashlistEdgeInsetsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppThemeBorderRadiusDataTearOff {
-  const _$AppThemeBorderRadiusDataTearOff();
+class _$DashlistRadiusDataTearOff {
+  const _$DashlistRadiusDataTearOff();
 
-  _AppThemeBorderRadiusData call(
+  _DashlistRadiusData call(
       {SmoothBorderRadius small = const SmoothBorderRadius.all(
           SmoothRadius(cornerRadius: 4, cornerSmoothing: 1)),
       SmoothBorderRadius regular = const SmoothBorderRadius.all(
           SmoothRadius(cornerRadius: 12, cornerSmoothing: 1)),
       SmoothBorderRadius large = const SmoothBorderRadius.all(
           SmoothRadius(cornerRadius: 24, cornerSmoothing: 1))}) {
-    return _AppThemeBorderRadiusData(
+    return _DashlistRadiusData(
       small: small,
       regular: regular,
       large: large,
@@ -1340,24 +1341,24 @@ class _$AppThemeBorderRadiusDataTearOff {
 }
 
 /// @nodoc
-const $AppThemeBorderRadiusData = _$AppThemeBorderRadiusDataTearOff();
+const $DashlistRadiusData = _$DashlistRadiusDataTearOff();
 
 /// @nodoc
-mixin _$AppThemeBorderRadiusData {
+mixin _$DashlistRadiusData {
   SmoothBorderRadius get small => throw _privateConstructorUsedError;
   SmoothBorderRadius get regular => throw _privateConstructorUsedError;
   SmoothBorderRadius get large => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppThemeBorderRadiusDataCopyWith<AppThemeBorderRadiusData> get copyWith =>
+  $DashlistRadiusDataCopyWith<DashlistRadiusData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppThemeBorderRadiusDataCopyWith<$Res> {
-  factory $AppThemeBorderRadiusDataCopyWith(AppThemeBorderRadiusData value,
-          $Res Function(AppThemeBorderRadiusData) then) =
-      _$AppThemeBorderRadiusDataCopyWithImpl<$Res>;
+abstract class $DashlistRadiusDataCopyWith<$Res> {
+  factory $DashlistRadiusDataCopyWith(
+          DashlistRadiusData value, $Res Function(DashlistRadiusData) then) =
+      _$DashlistRadiusDataCopyWithImpl<$Res>;
   $Res call(
       {SmoothBorderRadius small,
       SmoothBorderRadius regular,
@@ -1365,13 +1366,13 @@ abstract class $AppThemeBorderRadiusDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppThemeBorderRadiusDataCopyWithImpl<$Res>
-    implements $AppThemeBorderRadiusDataCopyWith<$Res> {
-  _$AppThemeBorderRadiusDataCopyWithImpl(this._value, this._then);
+class _$DashlistRadiusDataCopyWithImpl<$Res>
+    implements $DashlistRadiusDataCopyWith<$Res> {
+  _$DashlistRadiusDataCopyWithImpl(this._value, this._then);
 
-  final AppThemeBorderRadiusData _value;
+  final DashlistRadiusData _value;
   // ignore: unused_field
-  final $Res Function(AppThemeBorderRadiusData) _then;
+  final $Res Function(DashlistRadiusData) _then;
 
   @override
   $Res call({
@@ -1397,11 +1398,11 @@ class _$AppThemeBorderRadiusDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AppThemeBorderRadiusDataCopyWith<$Res>
-    implements $AppThemeBorderRadiusDataCopyWith<$Res> {
-  factory _$AppThemeBorderRadiusDataCopyWith(_AppThemeBorderRadiusData value,
-          $Res Function(_AppThemeBorderRadiusData) then) =
-      __$AppThemeBorderRadiusDataCopyWithImpl<$Res>;
+abstract class _$DashlistRadiusDataCopyWith<$Res>
+    implements $DashlistRadiusDataCopyWith<$Res> {
+  factory _$DashlistRadiusDataCopyWith(
+          _DashlistRadiusData value, $Res Function(_DashlistRadiusData) then) =
+      __$DashlistRadiusDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {SmoothBorderRadius small,
@@ -1410,16 +1411,15 @@ abstract class _$AppThemeBorderRadiusDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AppThemeBorderRadiusDataCopyWithImpl<$Res>
-    extends _$AppThemeBorderRadiusDataCopyWithImpl<$Res>
-    implements _$AppThemeBorderRadiusDataCopyWith<$Res> {
-  __$AppThemeBorderRadiusDataCopyWithImpl(_AppThemeBorderRadiusData _value,
-      $Res Function(_AppThemeBorderRadiusData) _then)
-      : super(_value, (v) => _then(v as _AppThemeBorderRadiusData));
+class __$DashlistRadiusDataCopyWithImpl<$Res>
+    extends _$DashlistRadiusDataCopyWithImpl<$Res>
+    implements _$DashlistRadiusDataCopyWith<$Res> {
+  __$DashlistRadiusDataCopyWithImpl(
+      _DashlistRadiusData _value, $Res Function(_DashlistRadiusData) _then)
+      : super(_value, (v) => _then(v as _DashlistRadiusData));
 
   @override
-  _AppThemeBorderRadiusData get _value =>
-      super._value as _AppThemeBorderRadiusData;
+  _DashlistRadiusData get _value => super._value as _DashlistRadiusData;
 
   @override
   $Res call({
@@ -1427,7 +1427,7 @@ class __$AppThemeBorderRadiusDataCopyWithImpl<$Res>
     Object? regular = freezed,
     Object? large = freezed,
   }) {
-    return _then(_AppThemeBorderRadiusData(
+    return _then(_DashlistRadiusData(
       small: small == freezed
           ? _value.small
           : small // ignore: cast_nullable_to_non_nullable
@@ -1446,10 +1446,10 @@ class __$AppThemeBorderRadiusDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppThemeBorderRadiusData
+class _$_DashlistRadiusData
     with DiagnosticableTreeMixin
-    implements _AppThemeBorderRadiusData {
-  const _$_AppThemeBorderRadiusData(
+    implements _DashlistRadiusData {
+  const _$_DashlistRadiusData(
       {this.small = const SmoothBorderRadius.all(
           SmoothRadius(cornerRadius: 4, cornerSmoothing: 1)),
       this.regular = const SmoothBorderRadius.all(
@@ -1475,14 +1475,14 @@ class _$_AppThemeBorderRadiusData
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppThemeBorderRadiusData(small: $small, regular: $regular, large: $large)';
+    return 'DashlistRadiusData(small: $small, regular: $regular, large: $large)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppThemeBorderRadiusData'))
+      ..add(DiagnosticsProperty('type', 'DashlistRadiusData'))
       ..add(DiagnosticsProperty('small', small))
       ..add(DiagnosticsProperty('regular', regular))
       ..add(DiagnosticsProperty('large', large));
@@ -1491,7 +1491,7 @@ class _$_AppThemeBorderRadiusData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppThemeBorderRadiusData &&
+        (other is _DashlistRadiusData &&
             (identical(other.small, small) ||
                 const DeepCollectionEquality().equals(other.small, small)) &&
             (identical(other.regular, regular) ||
@@ -1510,16 +1510,15 @@ class _$_AppThemeBorderRadiusData
 
   @JsonKey(ignore: true)
   @override
-  _$AppThemeBorderRadiusDataCopyWith<_AppThemeBorderRadiusData> get copyWith =>
-      __$AppThemeBorderRadiusDataCopyWithImpl<_AppThemeBorderRadiusData>(
-          this, _$identity);
+  _$DashlistRadiusDataCopyWith<_DashlistRadiusData> get copyWith =>
+      __$DashlistRadiusDataCopyWithImpl<_DashlistRadiusData>(this, _$identity);
 }
 
-abstract class _AppThemeBorderRadiusData implements AppThemeBorderRadiusData {
-  const factory _AppThemeBorderRadiusData(
+abstract class _DashlistRadiusData implements DashlistRadiusData {
+  const factory _DashlistRadiusData(
       {SmoothBorderRadius small,
       SmoothBorderRadius regular,
-      SmoothBorderRadius large}) = _$_AppThemeBorderRadiusData;
+      SmoothBorderRadius large}) = _$_DashlistRadiusData;
 
   @override
   SmoothBorderRadius get small => throw _privateConstructorUsedError;
@@ -1529,48 +1528,49 @@ abstract class _AppThemeBorderRadiusData implements AppThemeBorderRadiusData {
   SmoothBorderRadius get large => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppThemeBorderRadiusDataCopyWith<_AppThemeBorderRadiusData> get copyWith =>
+  _$DashlistRadiusDataCopyWith<_DashlistRadiusData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppIconDataTearOff {
-  const _$AppIconDataTearOff();
+class _$DashlistIconDataTearOff {
+  const _$DashlistIconDataTearOff();
 
-  _AppIconData call({required PathIconData pathIcon}) {
-    return _AppIconData(
+  _DashlistIconData call({required PathIconData pathIcon}) {
+    return _DashlistIconData(
       pathIcon: pathIcon,
     );
   }
 }
 
 /// @nodoc
-const $AppIconData = _$AppIconDataTearOff();
+const $DashlistIconData = _$DashlistIconDataTearOff();
 
 /// @nodoc
-mixin _$AppIconData {
+mixin _$DashlistIconData {
   PathIconData get pathIcon => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppIconDataCopyWith<AppIconData> get copyWith =>
+  $DashlistIconDataCopyWith<DashlistIconData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppIconDataCopyWith<$Res> {
-  factory $AppIconDataCopyWith(
-          AppIconData value, $Res Function(AppIconData) then) =
-      _$AppIconDataCopyWithImpl<$Res>;
+abstract class $DashlistIconDataCopyWith<$Res> {
+  factory $DashlistIconDataCopyWith(
+          DashlistIconData value, $Res Function(DashlistIconData) then) =
+      _$DashlistIconDataCopyWithImpl<$Res>;
   $Res call({PathIconData pathIcon});
 }
 
 /// @nodoc
-class _$AppIconDataCopyWithImpl<$Res> implements $AppIconDataCopyWith<$Res> {
-  _$AppIconDataCopyWithImpl(this._value, this._then);
+class _$DashlistIconDataCopyWithImpl<$Res>
+    implements $DashlistIconDataCopyWith<$Res> {
+  _$DashlistIconDataCopyWithImpl(this._value, this._then);
 
-  final AppIconData _value;
+  final DashlistIconData _value;
   // ignore: unused_field
-  final $Res Function(AppIconData) _then;
+  final $Res Function(DashlistIconData) _then;
 
   @override
   $Res call({
@@ -1586,30 +1586,31 @@ class _$AppIconDataCopyWithImpl<$Res> implements $AppIconDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AppIconDataCopyWith<$Res>
-    implements $AppIconDataCopyWith<$Res> {
-  factory _$AppIconDataCopyWith(
-          _AppIconData value, $Res Function(_AppIconData) then) =
-      __$AppIconDataCopyWithImpl<$Res>;
+abstract class _$DashlistIconDataCopyWith<$Res>
+    implements $DashlistIconDataCopyWith<$Res> {
+  factory _$DashlistIconDataCopyWith(
+          _DashlistIconData value, $Res Function(_DashlistIconData) then) =
+      __$DashlistIconDataCopyWithImpl<$Res>;
   @override
   $Res call({PathIconData pathIcon});
 }
 
 /// @nodoc
-class __$AppIconDataCopyWithImpl<$Res> extends _$AppIconDataCopyWithImpl<$Res>
-    implements _$AppIconDataCopyWith<$Res> {
-  __$AppIconDataCopyWithImpl(
-      _AppIconData _value, $Res Function(_AppIconData) _then)
-      : super(_value, (v) => _then(v as _AppIconData));
+class __$DashlistIconDataCopyWithImpl<$Res>
+    extends _$DashlistIconDataCopyWithImpl<$Res>
+    implements _$DashlistIconDataCopyWith<$Res> {
+  __$DashlistIconDataCopyWithImpl(
+      _DashlistIconData _value, $Res Function(_DashlistIconData) _then)
+      : super(_value, (v) => _then(v as _DashlistIconData));
 
   @override
-  _AppIconData get _value => super._value as _AppIconData;
+  _DashlistIconData get _value => super._value as _DashlistIconData;
 
   @override
   $Res call({
     Object? pathIcon = freezed,
   }) {
-    return _then(_AppIconData(
+    return _then(_DashlistIconData(
       pathIcon: pathIcon == freezed
           ? _value.pathIcon
           : pathIcon // ignore: cast_nullable_to_non_nullable
@@ -1620,29 +1621,31 @@ class __$AppIconDataCopyWithImpl<$Res> extends _$AppIconDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppIconData with DiagnosticableTreeMixin implements _AppIconData {
-  const _$_AppIconData({required this.pathIcon});
+class _$_DashlistIconData
+    with DiagnosticableTreeMixin
+    implements _DashlistIconData {
+  const _$_DashlistIconData({required this.pathIcon});
 
   @override
   final PathIconData pathIcon;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppIconData(pathIcon: $pathIcon)';
+    return 'DashlistIconData(pathIcon: $pathIcon)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppIconData'))
+      ..add(DiagnosticsProperty('type', 'DashlistIconData'))
       ..add(DiagnosticsProperty('pathIcon', pathIcon));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppIconData &&
+        (other is _DashlistIconData &&
             (identical(other.pathIcon, pathIcon) ||
                 const DeepCollectionEquality()
                     .equals(other.pathIcon, pathIcon)));
@@ -1654,62 +1657,63 @@ class _$_AppIconData with DiagnosticableTreeMixin implements _AppIconData {
 
   @JsonKey(ignore: true)
   @override
-  _$AppIconDataCopyWith<_AppIconData> get copyWith =>
-      __$AppIconDataCopyWithImpl<_AppIconData>(this, _$identity);
+  _$DashlistIconDataCopyWith<_DashlistIconData> get copyWith =>
+      __$DashlistIconDataCopyWithImpl<_DashlistIconData>(this, _$identity);
 }
 
-abstract class _AppIconData implements AppIconData {
-  const factory _AppIconData({required PathIconData pathIcon}) = _$_AppIconData;
+abstract class _DashlistIconData implements DashlistIconData {
+  const factory _DashlistIconData({required PathIconData pathIcon}) =
+      _$_DashlistIconData;
 
   @override
   PathIconData get pathIcon => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppIconDataCopyWith<_AppIconData> get copyWith =>
+  _$DashlistIconDataCopyWith<_DashlistIconData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppIconThemeDataTearOff {
-  const _$AppIconThemeDataTearOff();
+class _$DashlistIconThemeDataTearOff {
+  const _$DashlistIconThemeDataTearOff();
 
-  _AppIconThemeData call({required AppIconData add}) {
-    return _AppIconThemeData(
+  _DashlistIconThemeData call({required DashlistIconData add}) {
+    return _DashlistIconThemeData(
       add: add,
     );
   }
 }
 
 /// @nodoc
-const $AppIconThemeData = _$AppIconThemeDataTearOff();
+const $DashlistIconThemeData = _$DashlistIconThemeDataTearOff();
 
 /// @nodoc
-mixin _$AppIconThemeData {
-  AppIconData get add => throw _privateConstructorUsedError;
+mixin _$DashlistIconThemeData {
+  DashlistIconData get add => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppIconThemeDataCopyWith<AppIconThemeData> get copyWith =>
+  $DashlistIconThemeDataCopyWith<DashlistIconThemeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppIconThemeDataCopyWith<$Res> {
-  factory $AppIconThemeDataCopyWith(
-          AppIconThemeData value, $Res Function(AppIconThemeData) then) =
-      _$AppIconThemeDataCopyWithImpl<$Res>;
-  $Res call({AppIconData add});
+abstract class $DashlistIconThemeDataCopyWith<$Res> {
+  factory $DashlistIconThemeDataCopyWith(DashlistIconThemeData value,
+          $Res Function(DashlistIconThemeData) then) =
+      _$DashlistIconThemeDataCopyWithImpl<$Res>;
+  $Res call({DashlistIconData add});
 
-  $AppIconDataCopyWith<$Res> get add;
+  $DashlistIconDataCopyWith<$Res> get add;
 }
 
 /// @nodoc
-class _$AppIconThemeDataCopyWithImpl<$Res>
-    implements $AppIconThemeDataCopyWith<$Res> {
-  _$AppIconThemeDataCopyWithImpl(this._value, this._then);
+class _$DashlistIconThemeDataCopyWithImpl<$Res>
+    implements $DashlistIconThemeDataCopyWith<$Res> {
+  _$DashlistIconThemeDataCopyWithImpl(this._value, this._then);
 
-  final AppIconThemeData _value;
+  final DashlistIconThemeData _value;
   // ignore: unused_field
-  final $Res Function(AppIconThemeData) _then;
+  final $Res Function(DashlistIconThemeData) _then;
 
   @override
   $Res call({
@@ -1719,82 +1723,82 @@ class _$AppIconThemeDataCopyWithImpl<$Res>
       add: add == freezed
           ? _value.add
           : add // ignore: cast_nullable_to_non_nullable
-              as AppIconData,
+              as DashlistIconData,
     ));
   }
 
   @override
-  $AppIconDataCopyWith<$Res> get add {
-    return $AppIconDataCopyWith<$Res>(_value.add, (value) {
+  $DashlistIconDataCopyWith<$Res> get add {
+    return $DashlistIconDataCopyWith<$Res>(_value.add, (value) {
       return _then(_value.copyWith(add: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$AppIconThemeDataCopyWith<$Res>
-    implements $AppIconThemeDataCopyWith<$Res> {
-  factory _$AppIconThemeDataCopyWith(
-          _AppIconThemeData value, $Res Function(_AppIconThemeData) then) =
-      __$AppIconThemeDataCopyWithImpl<$Res>;
+abstract class _$DashlistIconThemeDataCopyWith<$Res>
+    implements $DashlistIconThemeDataCopyWith<$Res> {
+  factory _$DashlistIconThemeDataCopyWith(_DashlistIconThemeData value,
+          $Res Function(_DashlistIconThemeData) then) =
+      __$DashlistIconThemeDataCopyWithImpl<$Res>;
   @override
-  $Res call({AppIconData add});
+  $Res call({DashlistIconData add});
 
   @override
-  $AppIconDataCopyWith<$Res> get add;
+  $DashlistIconDataCopyWith<$Res> get add;
 }
 
 /// @nodoc
-class __$AppIconThemeDataCopyWithImpl<$Res>
-    extends _$AppIconThemeDataCopyWithImpl<$Res>
-    implements _$AppIconThemeDataCopyWith<$Res> {
-  __$AppIconThemeDataCopyWithImpl(
-      _AppIconThemeData _value, $Res Function(_AppIconThemeData) _then)
-      : super(_value, (v) => _then(v as _AppIconThemeData));
+class __$DashlistIconThemeDataCopyWithImpl<$Res>
+    extends _$DashlistIconThemeDataCopyWithImpl<$Res>
+    implements _$DashlistIconThemeDataCopyWith<$Res> {
+  __$DashlistIconThemeDataCopyWithImpl(_DashlistIconThemeData _value,
+      $Res Function(_DashlistIconThemeData) _then)
+      : super(_value, (v) => _then(v as _DashlistIconThemeData));
 
   @override
-  _AppIconThemeData get _value => super._value as _AppIconThemeData;
+  _DashlistIconThemeData get _value => super._value as _DashlistIconThemeData;
 
   @override
   $Res call({
     Object? add = freezed,
   }) {
-    return _then(_AppIconThemeData(
+    return _then(_DashlistIconThemeData(
       add: add == freezed
           ? _value.add
           : add // ignore: cast_nullable_to_non_nullable
-              as AppIconData,
+              as DashlistIconData,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AppIconThemeData
+class _$_DashlistIconThemeData
     with DiagnosticableTreeMixin
-    implements _AppIconThemeData {
-  const _$_AppIconThemeData({required this.add});
+    implements _DashlistIconThemeData {
+  const _$_DashlistIconThemeData({required this.add});
 
   @override
-  final AppIconData add;
+  final DashlistIconData add;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppIconThemeData(add: $add)';
+    return 'DashlistIconThemeData(add: $add)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AppIconThemeData'))
+      ..add(DiagnosticsProperty('type', 'DashlistIconThemeData'))
       ..add(DiagnosticsProperty('add', add));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppIconThemeData &&
+        (other is _DashlistIconThemeData &&
             (identical(other.add, add) ||
                 const DeepCollectionEquality().equals(other.add, add)));
   }
@@ -1805,18 +1809,19 @@ class _$_AppIconThemeData
 
   @JsonKey(ignore: true)
   @override
-  _$AppIconThemeDataCopyWith<_AppIconThemeData> get copyWith =>
-      __$AppIconThemeDataCopyWithImpl<_AppIconThemeData>(this, _$identity);
+  _$DashlistIconThemeDataCopyWith<_DashlistIconThemeData> get copyWith =>
+      __$DashlistIconThemeDataCopyWithImpl<_DashlistIconThemeData>(
+          this, _$identity);
 }
 
-abstract class _AppIconThemeData implements AppIconThemeData {
-  const factory _AppIconThemeData({required AppIconData add}) =
-      _$_AppIconThemeData;
+abstract class _DashlistIconThemeData implements DashlistIconThemeData {
+  const factory _DashlistIconThemeData({required DashlistIconData add}) =
+      _$_DashlistIconThemeData;
 
   @override
-  AppIconData get add => throw _privateConstructorUsedError;
+  DashlistIconData get add => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppIconThemeDataCopyWith<_AppIconThemeData> get copyWith =>
+  _$DashlistIconThemeDataCopyWith<_DashlistIconThemeData> get copyWith =>
       throw _privateConstructorUsedError;
 }

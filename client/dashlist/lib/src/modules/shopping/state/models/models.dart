@@ -1,34 +1,11 @@
 import 'dart:convert';
 
+import 'package:dashlist/src/services/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'codecs.dart';
 part 'models.freezed.dart';
 part 'models.g.dart';
-
-/// Parse json list of [ShoppingList]
-List<ShoppingList> shoppingListFromJson(String str) {
-  return List<ShoppingList>.from(
-    (json.decode(str) as List<dynamic>).map<ShoppingList>(
-      (dynamic x) => ShoppingList.fromJson(x as Map<String, dynamic>),
-    ),
-  ).toList();
-}
-
-/// Encode list of [ShoppingList]
-String shoppingListToJson(List<ShoppingList> data) {
-  return json.encode(
-    List<dynamic>.from(data.map<Map<String, dynamic>>((x) => x.toJson())),
-  );
-}
-
-/// Parse json list of [ItemCategory]
-List<ItemCategory> categoriesListFromJson(String str) {
-  return List<ItemCategory>.from(
-    (json.decode(str) as List<dynamic>).map<ItemCategory>(
-      (dynamic x) => ItemCategory.fromJson(x as Map<String, dynamic>),
-    ),
-  ).toList();
-}
 
 abstract class Model {
   const Model();
@@ -48,20 +25,15 @@ class ShoppingList extends Model with _$ShoppingList {
 
   const ShoppingList._();
 
-  factory ShoppingList.fromJson(Map<String, dynamic> json) =>
-      _$ShoppingListFromJson(json);
+  factory ShoppingList.fromJson(Map<String, dynamic> json) {
+    return ShoppingListCodec.decode(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return ShoppingListCodec.encode(this);
+  }
 
   static String eventType = 'ShoppingList';
-
-  ShoppingList updateItemsWith(Item item) {
-    bool matchId(Item element) => element.id == item.id;
-
-    if (items.any(matchId)) {
-      return copyWith(items: items.map((e) => matchId(e) ? item : e).toList());
-    }
-
-    return copyWith(items: [...items, item]);
-  }
 }
 
 @freezed
@@ -72,11 +44,18 @@ class Item extends Model with _$Item {
     String? quantity,
     required bool isCompleted,
     required ItemCategory category,
+    required String shoppingList,
   }) = _Item;
 
   const Item._();
 
-  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+  factory Item.fromJson(Map<String, dynamic> json) {
+    return ItemCodec.decode(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return ItemCodec.encode(this);
+  }
 
   static String eventType = 'ListItem';
 }
