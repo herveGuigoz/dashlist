@@ -1,67 +1,71 @@
 import 'dart:convert';
 
+import 'package:dashlist/src/modules/shopping/state/delegate.dart';
 import 'package:dashlist/src/modules/shopping/state/models/models.dart';
-import 'package:dashlist/src/modules/shopping/state/providers.dart';
 import 'package:dashlist/src/services/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final shopActions = Provider((ref) {
-  final httpClient = ref.watch(httpClientProvider);
+  final delegate = ref.watch(shoppingListDelegateProvider);
   final bus = ref.watch(messageBus);
 
-  return ShopingListActions(httpClient, bus);
+  return ShopingListActions(delegate, bus);
 });
 
-class ShopingListActions extends Messenger {
-  ShopingListActions(this._client, MessageBus bus) : super(bus);
+class ShopingListActions {
+  ShopingListActions(this._delegate, this.bus);
 
-  final ApiClient _client;
+  final ShoppingListDelegate _delegate;
+  final MessageBus bus;
 
   /// Create new [ShoppingList] ressource.
   /// @Throw ApiException
   Future<void> createNewShoppingList(String name) async {
-    final response = await _client.post(shoppingListURL, body: {'name': name});
-    onNewShoppingList(response);
+    final shoppingList = await _delegate.createNewShoppingList(name);
+    bus.addEvent(BusEvent.shoppingList(value: shoppingList));
   }
 
   /// Edit [ShoppingList] name.
   /// @Throw ApiException
   Future<void> editShoppingListName(ShoppingList value, String name) async {
-    onShoppingUpdate(value, name);
-    final endpoint = '$shoppingListURL/${value.id}';
-    await _client.put(endpoint, body: {'name': name});
+    final shoppingList = value.copyWith(name: name);
+    bus.addEvent(BusEvent.shoppingList(value: shoppingList));
+    await _delegate.editShoppingList(shoppingList);
   }
 
   /// Remove given [ShoppingList] ressource.
   /// @Throw ApiException
   Future<void> deleteShoppingList(ShoppingList value) async {
-    onShoppingListDeleted(value);
-    await _client.delete('$shoppingListURL/${value.id}');
+    bus.addEvent(BusEvent.shoppingListDeleted(uuid: value.id));
+    await _delegate.deleteShoppingList(value);
   }
 
   /// Create new [Item] ressource.
   /// @Throw ApiException
-  Future<void> createShopItem(ShopItemValueObject value) async {
-    final body = value.toJson();
-    final response = await _client.post(shoppingListItemsURL, body: body);
-    onNewShopItem(value, response);
+  Future<void> createShopItem(
+    ShoppingList list,
+    ShopItemValueObject value,
+  ) async {
+    final item = await _delegate.createShopItem(list, value);
+    bus.addEvent(BusEvent.item(value: item));
   }
 
   /// Edit new [Item] ressource.
   /// @Throw ApiException
-  Future<void> editShopItemCompletion(Item item) async {
-    onShopItemCompletion(item);
-    await _client.put(
-      '$shoppingListItemsURL/${item.id}',
-      body: {'isCompleted': !item.isCompleted},
-    );
+  Future<void> editShopItemCompletion(ShoppingList list, Item item) async {
+    bus.addEvent(BusEvent.item(value: item));
+    await _delegate.editShopItem(list, item);
   }
 
   /// Clear completed [Item].
   /// @Throw ApiException
   Future<void> deleteCompletedItems(ShoppingList shoppingList) async {
-    onCompletedItems(shoppingList);
-    await _client.get('$shoppingListURL/${shoppingList.id}/clear');
+    final items = shoppingList.items.where((i) => !i.isCompleted).toList();
+    final event = BusEvent.shoppingList(
+      value: shoppingList.copyWith(items: items),
+    );
+    bus.addEvent(event);
+    await _delegate.deleteCompletedItems(shoppingList);
   }
 }
 

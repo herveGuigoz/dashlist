@@ -18,14 +18,16 @@ const _textStyle = TextStyle(
 const _padding = EdgeInsets.only(top: 32);
 
 class CreateItemPage extends ConsumerStatefulWidget {
-  const CreateItemPage({Key? key, required this.id}) : super(key: key);
+  const CreateItemPage({
+    Key? key,
+    required this.shoppingList,
+  }) : super(key: key);
 
   /// Path: /add/:id'
   static const routeName = '/add/:id';
   static String path(String id) => pathToFunction(routeName).call({'id': id});
 
-  /// The [ShoppingList] id
-  final String id;
+  final ShoppingList shoppingList;
 
   @override
   ConsumerState<CreateItemPage> createState() {
@@ -63,8 +65,9 @@ class _CreateShoppingItemPageState extends ConsumerState<CreateItemPage> {
     try {
       final service = ref.read(shopActions);
       await service.createShopItem(
+        widget.shoppingList,
         ShopItemValueObject(
-          shoppingListId: widget.id,
+          shoppingListId: widget.shoppingList.id,
           name: _nameController.value.text.trim(),
           quantity: _quantityController.value.text.trim(),
           category: category,

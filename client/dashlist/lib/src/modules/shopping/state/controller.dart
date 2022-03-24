@@ -1,7 +1,9 @@
+// ignore_for_file: use_setters_to_change_properties
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:dashlist/src/modules/shopping/state/delegate.dart';
 import 'package:dashlist/src/modules/shopping/state/models/models.dart';
-import 'package:dashlist/src/modules/shopping/state/subscriber.dart';
 import 'package:dashlist/src/services/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,15 +14,20 @@ typedef Json = Map<String, dynamic>;
 /// Listen for Mercure events in order to notify listener on updates.
 class ShoppingListController extends ListNotifier<ShoppingList> {
   ShoppingListController(
-    this.mercureSubscriber,
+    ShoppingListDelegate delegate,
     MessageBus bus,
     List<ShoppingList> items,
   ) : super(items) {
     _eventBusSubscription = bus.onEvent().listen(onBusEvent);
+    _sseSubscription = delegate.sse.listen(onSseEvent);
   }
 
-  final MercureSubscriber mercureSubscriber;
   late final StreamSubscription _eventBusSubscription;
+  late final StreamSubscription _sseSubscription;
+
+  void onSseEvent(List<ShoppingList> event) {
+    state = event;
+  }
 
   void onBusEvent(BusEvent event) {
     event.when(
@@ -31,6 +38,7 @@ class ShoppingListController extends ListNotifier<ShoppingList> {
   }
 
   void updateListItems(Item value) {
+    log(value.toString());
     // todo: check if list exist
     var list = state.firstWhere((e) => e.id == value.shoppingList);
     final itemExist = list.items.any((item) => item.id == value.id);
@@ -51,8 +59,8 @@ class ShoppingListController extends ListNotifier<ShoppingList> {
 
   @override
   void dispose() {
-    mercureSubscriber.dispose();
     _eventBusSubscription.cancel();
+    _sseSubscription.cancel();
     super.dispose();
   }
 }

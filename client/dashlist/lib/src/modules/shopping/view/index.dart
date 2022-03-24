@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:dashlist/src/components/components.dart';
 import 'package:dashlist/src/modules/shopping/shopping.dart';
 import 'package:dashlist/src/modules/shopping/view/create.dart';
@@ -26,7 +25,10 @@ class ShoppingListPage extends ConsumerWidget {
 
     return asyncList.when(
       loading: () => const Loader(),
-      error: (error, _) => const ErrorLayout(),
+      error: (error, _) {
+        print(error);
+        return const ErrorLayout();
+      },
       data: (_) => const ShoppingListView(),
     );
   }

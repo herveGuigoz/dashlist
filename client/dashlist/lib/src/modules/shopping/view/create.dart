@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -31,6 +30,7 @@ class _CreateListModalState extends State<CreateListModal> {
     if (value == null || value.isEmpty) {
       return 'Ce champs est requis';
     }
+    return null;
   }
 
   Future<void> _submit() async {

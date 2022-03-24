@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dashlist/src/services/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'codecs.dart';
 part 'models.freezed.dart';
@@ -91,5 +92,16 @@ class ShopItemValueObject {
       'shoppingList': '/shopping_lists/$shoppingListId',
       'category': '/categories/${category.name}'
     };
+  }
+
+  Item toItem() {
+    return Item(
+      id: const Uuid().v4(),
+      name: name,
+      quantity: quantity,
+      category: category,
+      isCompleted: false,
+      shoppingList: shoppingListId,
+    );
   }
 }
