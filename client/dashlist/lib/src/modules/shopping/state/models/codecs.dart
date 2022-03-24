@@ -1,9 +1,9 @@
 part of 'models.dart';
 
 mixin ShoppingListCodec {
-  static ShoppingList decode(Map<String, dynamic> json) {
+  static ShoppingList decode(Map<String, dynamic> json, [String? id]) {
     return ShoppingList(
-      id: json['id'] as String,
+      id: id ?? json['id'] as String,
       name: json['name'] as String,
       items: [
         for (final e in json['items'] as List<dynamic>)
@@ -16,15 +16,8 @@ mixin ShoppingListCodec {
     return <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'items': instance.items,
+      'items': instance.items.map((e) => e.toJson()).toList(),
     };
-  }
-
-  static List<ShoppingList> decodeResponse(Response response) {
-    return [
-      for (final json in jsonDecode(response.body) as List<dynamic>)
-        decode(json as Map<String, dynamic>)
-    ];
   }
 }
 
@@ -46,7 +39,7 @@ mixin ItemCodec {
       'name': instance.name,
       'quantity': instance.quantity,
       'isCompleted': instance.isCompleted,
-      'category': instance.category,
+      'category': instance.category.toJson(),
       'shoppingList': '/shopping_lists/${instance.shoppingList}',
     };
   }

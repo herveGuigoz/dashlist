@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:dashlist/src/components/components.dart';
@@ -42,7 +43,10 @@ class _DetailsViewState extends ConsumerState<ShoppingListDetailsView> {
   }
 
   Future<void> _createShopItem() async {
-    GoRouter.of(context).push(CreateItemPage.path(shoppingList.id));
+    GoRouter.of(context).push(
+      CreateItemPage.path(shoppingList.id),
+      extra: shoppingList,
+    );
   }
 
   Future<void> onTitleEdited(String input) async {
@@ -208,7 +212,11 @@ class CheckboxListItem extends ConsumerWidget {
         if (completed != null) {
           try {
             final service = ref.read(shopActions);
-            await service.editShopItemCompletion(shopItem);
+            final list = ref.read(scopedShoppingList);
+            await service.editShopItemCompletion(
+              list,
+              shopItem.copyWith(isCompleted: completed),
+            );
           } on ApiException catch (exception) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(exception.reason)),
