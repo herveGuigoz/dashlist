@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:dashlist/bootstrap.dart';
-import 'package:dashlist/src/components/components.dart';
-import 'package:dashlist/src/modules/app/configuration.dart';
-import 'package:dashlist/src/services/http/handshake_override.dart';
+import 'package:dashlist/components/components.dart';
+import 'package:dashlist/modules/app/configuration.dart';
+import 'package:dashlist/services/services.dart';
 import 'package:dashlist_theme/dashlist_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_json_view/flutter_json_view.dart';

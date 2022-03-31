@@ -29,6 +29,7 @@ dependencies:
   http: ^0.13.3
   mercure_client: ^1.0.1
   meta: ^1.7.0
+  openfoodfacts: ^1.7.0
   path_to_regexp: ^0.4.0
   uuid: ^3.0.5
 
